@@ -27,3 +27,10 @@ interface IMenuData {
 export interface IMenuResponse extends IGraphQlResponse<IMenuData>{
     data: IMenuData;
 }
+
+export interface IMappedMenuItem {
+    id: string;
+    label: string;
+    uri: string
+    children: { id: string; label: string; uri: string }[];
+}

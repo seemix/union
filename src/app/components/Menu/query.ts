@@ -1,7 +1,7 @@
 export const menuQuery = JSON.stringify({
     query: `query NewQuery {
     menu(id: 154, idType: DATABASE_ID) {
-    name  
+    name
     menuItems(where: {parentDatabaseId: 0}) { 
       nodes {
         id       
