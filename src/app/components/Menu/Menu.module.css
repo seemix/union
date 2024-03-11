@@ -1,4 +1,4 @@
-.menu_wrapper {
+.menu {
     background-color: #fafafa;
     width: 90vw;
     display: flex;
@@ -10,17 +10,17 @@
     font-weight: 600;
 }
 
-.menu_wrapper ul {
+.menu ul {
     width: 100%;
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
 }
 
-.menu_wrapper ul li {
+.menu ul li {
     list-style: none;
     font-size: 12px;
     font-weight: bold;
@@ -31,28 +31,29 @@
     margin: 0;
 }
 
-.menu_wrapper ul li a {
-    padding: 20px;
+.menu ul li a, .menu ul li span {
     display: block;
+    padding: 15px 20px 30px 15px;
+    cursor: pointer;
 }
 
-.menu_wrapper ul li a .arrow_right {
+.menu ul li .arrow_right {
     border: solid black;
     border-width: 0 2px 2px 0;
     display: inline-block;
     padding: 2px;
     transform: rotate(45deg);
     margin-bottom: 3px;
-    transition: .4s all ease-in-out;
+    transition: .1s all ease-in-out;
 }
 
-.menu_wrapper ul li ul {
+.menu ul li ul {
     float: left;
     left: 0;
     opacity: 0;
     padding: 0;
     position: absolute;
-    top: 30px;
+    top: 20px;
     visibility: hidden;
     transition: all .4s ease;
     z-index: 1;
@@ -62,32 +63,37 @@
     box-sizing: border-box;
 }
 
-.menu_wrapper ul li:hover > ul {
+
+.menu ul li:hover > ul {
     visibility: visible;
     transition: all .4s ease;
     opacity: 1;
-    top: 50px;
+    top: 55px;
     color: initial;
     height: fit-content;
 }
 
-.menu_wrapper ul li:hover {
+.menu ul li input {
+    display: none;
+}
+
+.menu ul li:hover {
     color: #5757cc;
     background-color: #e5e4e4;
 }
 
-.menu_wrapper ul li:hover > a .arrow_right {
+.menu ul li:hover > label span .arrow_right {
     border-color: #5757cc;
 }
 
-.menu_wrapper ul li ul li {
+.menu ul li ul li {
     background-color: #eeecec;
     overflow: hidden;
     padding: 0;
     border-top: 1px solid #d0d0d0;
 }
 
-.menu_wrapper ul li ul li a {
+.menu ul li ul li a {
     padding: 15px 20px;
     display: block;
     transition: 0.2s all ease-in-out;
@@ -95,49 +101,86 @@
     height: 100%;
 }
 
-.menu_wrapper ul li ul li a:hover {
-    margin-left: 5px;
-    margin-right: -5px;
-}
-
-.menu_wrapper ul li:hover span > i {
-    transform: rotate(45deg);
-    transition: .4s all ease-in-out;
+.menu ul li ul li a:hover {
+    margin-left: 3px;
+    margin-right: -3px;
 }
 
 
-@media screen and (max-width: 767px) {
-    .menu_wrapper ul {
-        flex-direction: column;
+@media screen and (max-width: 800px) {
+    .menu ul li:hover {
+        color: inherit;
+        background-color: inherit;
     }
 
-    .menu_wrapper ul li {
-        position: relative;
-        transition: .4s all ease-in-out;
-        height: 50px;
-    }
 
-    .menu_wrapper ul li a {
-        display: block;
-    }
-
-    .menu_wrapper ul li:hover {
-        height: auto;
-    }
-    .menu_wrapper ul li a {
-    margin-left: 5%;
-    }
-
-    .menu_wrapper ul li:hover > a {
-        margin-left: 10%;
-    }
-
-    .menu_wrapper ul li:hover > ul {
+    .menu ul li input:checked ~ ul {
+        visibility: visible;
+        height: fit-content;
+        transition: all 0s ease;
+        opacity: 1;
         top: 0;
     }
 
-    .menu_wrapper ul li ul {
+
+    .menu ul li:has(input:checked) {
+        height: auto;
+    }
+
+    .menu ul li:hover > ul {
+        visibility: inherit;
+        opacity: 0;
+        height: inherit;
+    }
+
+    .menu ul {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .menu ul li {
+        position: relative;
+        transition: .4s all ease-in-out;
+        height: 60px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background-color: #ccc;
+    }
+
+
+    .menu ul li a, .menu ul li span {
+        display: block;
+        padding: 20px;
+        margin-left: 20px;
+        height: 100%;
+
+    }
+
+    .menu ul li ul {
+        z-index: 0;
         position: relative;
         width: 100%;
+        opacity: 0;
+        padding: 0;
+        visibility: hidden;
+        flex-direction: column;
+        box-sizing: border-box;
+
     }
+    .menu ul li ul li a:hover {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .menu ul li .arrow_right {
+        transform: rotate(0);
+        border: 0;
+    }
+
+    .menu ul li .arrow_right::before {
+        content: "+";
+        display: block;
+    }
+
 }
