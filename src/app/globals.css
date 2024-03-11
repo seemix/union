@@ -2,6 +2,8 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    --link-color: #0f8ba9;
+    --link-active-color: #f1c40f;
 }
 
 a, a:hover, a:visited {

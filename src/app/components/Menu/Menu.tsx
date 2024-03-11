@@ -12,11 +12,14 @@ const Menu = async () => {
     return (
         <div>
             <h3>Menu</h3>
-            <div className={css.menu_wrapper}>
+            <nav className={css.menu}>
                 <ul>
                     {menu && menu.map(item => <li key={item.id}>
-                        <Link href={item.uri}>{item.label} {item.children.length > 0 &&
-                            <i className={css.arrow_right}/>}</Link>
+                        {item.children.length > 0 ? <><label htmlFor={item.id}>
+                            <span>{item.label} <i className={css.arrow_right}/> </span>
+                        </label>
+                            <input type={'checkbox'} id={item.id}/>
+                        </> : <Link href={item.uri}>{item.label}</Link>}
                         {item.children.length > 0 && <>
                             <ul> {item.children.map(child => <li key={child.id}>
                                 <Link href={child.uri}>{child.label}</Link>
@@ -24,7 +27,7 @@ const Menu = async () => {
                         </>}
                     </li>)}
                 </ul>
-            </div>
+            </nav>
 
         </div>
     );
