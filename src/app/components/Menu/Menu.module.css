@@ -106,7 +106,6 @@
     margin-right: -3px;
 }
 
-
 @media screen and (max-width: 800px) {
     .menu ul li:hover {
         color: inherit;
@@ -182,5 +181,4 @@
         content: "+";
         display: block;
     }
-
 }
