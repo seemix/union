@@ -1,11 +1,12 @@
-import styles from "./page.module.css";
 import React from 'react';
-import Menu from '@/app/components/Menu/Menu';
+
+import styles from './page.module.css';
+import TestComp from '@/app/components/TestComp';
 
 export default function Home() {
-  return (
-    <main className={styles.main}>
-     <Menu/>
-    </main>
-  );
+    return (
+        <main className={styles.main}>
+            <TestComp/>
+        </main>
+    );
 }

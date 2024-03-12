@@ -13,11 +13,13 @@ export const mappedMenu = (menu: IMenuResponse): IMappedMenuItem[] => {
                 } else if (part1 === 'cat') {
                     part1 = 'category/';
                 }
+                // console.log(part1);
                 const part2 = child.uri.split('=')[1];
                 return {
                     id: child.id,
                     label: child.label,
-                    uri: part1 + part2
+                    uri: part1,
+                    query: part2
                 };
             })
         };

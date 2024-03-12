@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { Menu } from '@/app/components';
 
 // const inter = Inter({ subsets: ['latin'] });
 
@@ -13,7 +14,12 @@ export default function RootLayout({children}: Readonly<{
 }>) {
     return (
         <html lang="en">
-        <body>{children}</body>
+        <body>
+        <h1>Header</h1>
+        <Menu/>
+        {children}
+        <h2>Footer</h2>
+        </body>
         </html>
     );
 }

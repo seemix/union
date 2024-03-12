@@ -2,7 +2,7 @@ import { menuQuery } from '@/app/components/Menu/query';
 import { IMenuResponse } from '@/app/components/Menu/types';
 import { getData } from '@/app/common/getData';
 import { mappedMenu } from '@/app/components/Menu/mapper';
-import MenuItem from '@/app/components/Menu/MenuItem';
+import { MenuItem } from '@/app/components';
 import css from './Menu.module.css';
 
 const Menu = async () => {
@@ -10,7 +10,7 @@ const Menu = async () => {
     const menu = mappedMenu(response);
     return (
         <div>
-            <h3>Menu</h3>
+            <h3>Philip Yancey Amazing Grace</h3>
             <nav className={css.menu}>
                 <ul>
                     {menu && menu.map(item => <MenuItem

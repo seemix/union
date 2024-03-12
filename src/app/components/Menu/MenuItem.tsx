@@ -13,7 +13,7 @@ const MenuItem = (item: IMappedMenuItem) => {
             </> : <Link href={item.uri}>{item.label}</Link>}
             {item.children.length > 0 && <>
                 <ul> {item.children.map(child => <li key={child.id}>
-                    <Link href={child.uri}>{child.label}</Link>
+                    <Link href={{ pathname: child.uri, query: { id: child.query } }}>{child.label}</Link>
                 </li>)}</ul>
             </>}
         </li>
