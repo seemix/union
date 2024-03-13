@@ -1,0 +1,153 @@
+.card {
+    background-color: #fff;
+    box-shadow: 0 6px 26px rgba(0, 0, 0, .15);
+    width: 450px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    min-height: 480px;
+}
+
+.picture_overlay:hover {
+    opacity: .85;
+    transition: all 0.4s ease-in-out 0s;
+}
+
+
+.picture_overlay:hover ~ .card_bottom .exc {
+    visibility: visible;
+    transition: all 0.3s ease-in-out .2s;
+    height: auto;
+    margin-left: 0;
+    opacity: 1
+}
+
+.picture_overlay:hover ~ .card_bottom h3 {
+    visibility: hidden;
+    max-height: 0;
+    margin-left: 30px;
+
+}
+
+.picture_overlay:hover > .card_bottom h4 {
+    visibility: hidden;
+    max-height: 0;
+}
+
+.exc {
+    color: black;
+    font-size: 16px;
+    visibility: hidden;
+    margin-left: -20px;
+    position: relative;
+    height: 0;
+    opacity: 0;
+}
+
+.card_picture {
+    width: 100%;
+    height: 235px;
+    /*object-fit: cover;*/
+    display: flex;
+    border-radius: 8px 8px 0 0;
+    flex-direction: column;
+    justify-content: space-between;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    transition: all 0.4s ease-in-out 0s;
+}
+
+.picture_overlay h3 {
+    text-align: center;
+    color: white;
+    padding: 25px;
+    width: 100%;
+    font-weight: 400;
+    font-size: 20px;
+    text-transform: uppercase;
+    bottom: 0;
+    position: absolute;
+}
+
+.picture_overlay {
+    cursor: pointer;
+    background: #0d1a50;
+    background: linear-gradient(to top, #0d1a50 2%, #bd0554 92%);
+    position: absolute;
+    height: 235px;
+    width: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    transition: all .6s ease-in-out;
+
+}
+
+.card_caption {
+    font-weight: 400;
+    font-size: 24px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.cc_smaller {
+    font-size: 21px;
+}
+
+.card_date {
+    text-align: center;
+    font-size: 17px;
+    font-weight: 400;
+    font-family: "Roboto Slab", sans-serif;
+}
+
+.card_bottom {
+    padding: 20px;
+    margin-top: -10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 50%;
+}
+
+.button_wrapper {
+    display: flex;
+    justify-content: right;
+    align-items: flex-end;
+    height: 100%;
+    margin-top: auto;
+}
+
+.button {
+    margin-top: 10px;
+    border-radius: .25rem;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 400;
+    padding-left: 25px;
+    padding-right: 25px;
+    color: #fff;
+    height: 40px;
+    font-size: 0.8rem;
+    line-height: 14px;
+    letter-spacing: 1.1px;
+    transition: .2s .1s;
+    background-image: linear-gradient(to bottom, #0d1a50 35%, #bd0554 92%);
+    border: 0 solid;
+    overflow: hidden;
+}
+
+.button:hover {
+    cursor: pointer;
+    transition: all .3s ease-in;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .15);
+}
+
+.button:active {
+    transform: translateY(0);
+}

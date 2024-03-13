@@ -23,3 +23,13 @@ h1, h2, h3, h4, h5, h6 {
 p {
     font-family: 'Roboto Slab', sans-serif;
 }
+
+.main {
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5rem 15rem;
+    min-height: 100vh;
+}
