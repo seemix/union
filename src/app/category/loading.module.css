@@ -1,0 +1,88 @@
+.loader_container {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+.loader {
+    background-image: url("https://baptist.org.md/ru/wp-content/uploads/2021/10/cropped-cropped-cropped-1234-1.png");
+    background-position: center;
+    background-size: cover;
+    z-index: 20;
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    -webkit-animation: fade-in 1.9s cubic-bezier(0.390, 0.575, 0.565, 1.000) infinite both;
+    animation: fade-in 1.9s cubic-bezier(0.390, 0.575, 0.565, 1.000) infinite both;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+@-webkit-keyframes loader {
+    0% {
+        opacity: .2;
+        /*scale: .67;*/
+        filter: blur(1px);
+    }
+    50% {
+        opacity: 1;
+        /*scale: 1;*/
+        filter: blur(0);
+    }
+    100% {
+        opacity: .2;
+        /*scale: .67;*/
+        filter: blur(1px);
+
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: .2;
+        /*scale: .67;*/
+        filter: blur(1px);
+    }
+
+    25% {
+        opacity: 1;
+        /*scale: 1;*/
+        filter: blur(0);
+
+    }
+    50% {
+        opacity: .2;
+        /*scale: .67;*/
+        filter: blur(1px);
+    }
+    100% {
+        opacity: .2;
+        /*scale: .67;*/
+        filter: blur(0);
+    }
+}
+
+.loader_spin {
+    animation: spin 1s linear infinite;
+    border: solid 4px #280202;
+    background: rgba(255, 255, 255, 0);
+    border-top: solid 5px transparent;
+    border-radius: 100%;
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    z-index: 21;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

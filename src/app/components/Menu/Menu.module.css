@@ -6,8 +6,8 @@
     padding: 20px;
     border: 1px solid gray;
     border-radius: 30px;
+    margin: 10px auto;
     /*font-family: Verdana, 'Openy Sans', sans-serif;*/
-
 }
 
 .menu ul {
@@ -56,9 +56,9 @@
     opacity: 0;
     padding: 0;
     position: absolute;
-    top: 20px;
+    top: 50px;
     visibility: hidden;
-    transition: all .4s ease;
+    transition: all .3s ease;
     z-index: 1;
     gap: 0;
     flex-direction: column;
@@ -68,7 +68,7 @@
 
 .menu ul li:hover > ul {
     visibility: visible;
-    transition: all .4s ease;
+    transition: all .3s ease-in-out;
     opacity: 1;
     top: 55px;
     color: initial;
@@ -98,7 +98,7 @@
 .menu ul li ul li a {
     padding: 15px 20px;
     display: block;
-    transition: 0.2s all ease-in-out;
+    transition: .3s all ease-in-out;
     width: 100%;
     height: 100%;
 }
@@ -141,7 +141,7 @@
 
     .menu ul li {
         position: relative;
-        transition: .4s all ease-in-out;
+        transition: .3s all ease-in-out;
         height: 60px;
         overflow: hidden;
         display: flex;

@@ -1,0 +1,36 @@
+.pagination_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px;
+}
+.pagination {
+    background-image: none;
+    width: 35px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #010152;
+    color: #280202;
+    line-height: 0;
+    border-radius: 3px;
+}
+.pagination.active:hover {
+    cursor: initial;
+    transform: initial;
+    box-shadow: initial;
+}
+
+.active {
+    border: 0;
+    font-weight: 600;
+    cursor: initial;
+    font-size: 1em;
+}
+
+.dots {
+    width: 40px;
+    height: 40px;
+    border-bottom: 2px dotted #010152;
+}
