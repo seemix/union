@@ -1,0 +1,20 @@
+.views_wrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.date_wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.card_date {
+    text-align: center;
+    font-size: calc(14px + (17 - 14) * ((100vw - 360px) / (1920 - 360)));
+    font-weight: 400;
+    font-family: "Roboto Slab", sans-serif;
+}
+

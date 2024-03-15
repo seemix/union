@@ -11,14 +11,14 @@
     /*margin-top: 20px;*/
 }
 .post_content blockquote {
-    background-color: bisque;
+    background-color: #fff3e5;
     border-left: 4px solid navy;
     padding: 20px;
     color: gray;
     position: relative;
     font-style: italic;
-    max-width: 80%;
-    margin: 0 auto;
+    max-width: 95%;
+    margin: 0 auto 20px;
 }
 .post_content blockquote img {
     float: left;
