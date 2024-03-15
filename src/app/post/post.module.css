@@ -1,0 +1,48 @@
+.post_content img {
+    /*width: 100%;*/
+    /*height: 565px;*/
+    /*height: auto;*/
+    /*margin: 0 auto  ;*/
+}
+
+
+.post_content p {
+    margin-bottom: 30px;
+    /*margin-top: 20px;*/
+}
+.post_content blockquote {
+    background-color: bisque;
+    border-left: 4px solid navy;
+    padding: 20px;
+    color: gray;
+    position: relative;
+    font-style: italic;
+    max-width: 80%;
+    margin: 0 auto;
+}
+.post_content blockquote img {
+    float: left;
+    margin-right: 20px;
+    border-radius: 50%;
+    /*margin-top: -20px;*/
+}
+/*.post_content blockquote:before {*/
+/*    content: "''";*/
+/*    position: absolute;*/
+/*    top: -12%;*/
+/*    left: 2%;*/
+/*    font-size: 5em;*/
+/*}*/
+
+
+.alignleft {
+    float: left;
+    margin: 15px;
+}
+
+
+.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

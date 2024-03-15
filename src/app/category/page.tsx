@@ -1,10 +1,11 @@
 import React from 'react';
-import PostCard from '@/app/category/components/PostCard/PostCard';
-import css from './page.module.css';
+
 import { baseURL } from '@/app/assets/common';
 import { mappedCategoryPosts } from '@/app/category/mapper';
 import { IMappedCategoryPost } from '@/app/category/types';
 import { Pagination } from '@/app/components';
+import { CategoryName, PostCard } from '@/app/category/components';
+import css from './page.module.css';
 
 const Category = async ({ searchParams }: { searchParams: { id: string, page: string } }) => {
     let queryString = 'posts&categories=' + searchParams.id + '&per_page=8';
@@ -26,7 +27,7 @@ const Category = async ({ searchParams }: { searchParams: { id: string, page: st
 
     return (
         <main className={'main'}>
-            <h1>Category {searchParams.id}</h1>
+           <CategoryName id={searchParams.id}/>
             <div className={css.cards_wrapper}>
                 {!resp.ok && <h1>33333</h1>}
                 {posts.length > 0 && posts.map(post => <PostCard

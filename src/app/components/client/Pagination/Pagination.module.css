@@ -23,10 +23,11 @@
 }
 
 .active {
-    border: 0;
+    border: 1px solid gray;
     font-weight: 600;
     cursor: initial;
     font-size: 1em;
+    background-color: white;
 }
 
 .dots {

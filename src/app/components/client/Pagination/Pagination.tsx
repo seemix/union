@@ -20,7 +20,7 @@ const Pagination = ({ pages }: { pages: number }) => {
             firstPart.push(page);
         } else if (page - currentPage < 3 && currentPage - page < 3) {
             secondPart.push(page);
-        } else if (pages - currentPage > 3 && pages - page < 2) {
+        } else if (pages - currentPage > 2 && pages - page < 2) {
             thirdPart.push(page);
         }
     });
@@ -28,10 +28,10 @@ const Pagination = ({ pages }: { pages: number }) => {
         <>
             <div className={css.pagination_wrapper}>
                 <PaginationButtons buttons={firstPart}/>
-                {firstPart.length > 0 &&
+                {firstPart.length > 0 && secondPart[0] - firstPart[1] > 1 &&
                     <div className={css.dots}/>}
                 <PaginationButtons buttons={secondPart}/>
-                {thirdPart.length > 0 &&
+                {thirdPart.length > 0 && thirdPart[0] - +secondPart.slice(-1) > 1 &&
                     <div className={css.dots}/>}
                 <PaginationButtons buttons={thirdPart}/>
             </div>
