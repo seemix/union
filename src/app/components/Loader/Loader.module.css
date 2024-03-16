@@ -68,7 +68,7 @@
 
 .loader_spin {
     animation: spin 1s linear infinite;
-    border: solid 4px #280202;
+    border: solid 2px #280202;
     background: rgba(255, 255, 255, 0);
     border-top: solid 5px transparent;
     border-radius: 100%;

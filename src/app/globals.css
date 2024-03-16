@@ -14,7 +14,7 @@ a, a:hover, a:visited {
 
 :root {
     --background-color: #f6f6f6;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Roboto Slab', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -40,16 +40,14 @@ ul {
     background-color: var(--background-color);
     display: flex;
     flex-direction: column;
-    /*justify-content: space-between;*/
     align-items: center;
-    /*padding: 5rem 15rem;*/
     max-width: 1000px;
-    /*min-height: 100vh;*/
     margin: 0 auto;
     padding: calc(12px + (25 - 12) * ((100vw - 360px) / (1920 - 360)));
 }
 .main li {
     font-family: 'Roboto Slab', sans-serif;
+    line-height: 1.8em;
 }
 button {
     margin-top: 10px;
