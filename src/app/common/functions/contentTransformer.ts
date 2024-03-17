@@ -18,15 +18,3 @@ export const contentTransformer = (inputString: string): string => {
             return `<div class="iframe_container"><iframe${attributes}>${content}</iframe></div>`;
         });
 };
-
-export const imageLinkTransformer = (inputString: string, path: string): string => {
-    const regex = /<a\s+(?:[^>]*?\s+)?href=['"](.*?)['"][^>]*>(<img[^>]*>)<\/a>/g;
-    return inputString.replace(regex, (match, href, imgTag) => {
-        const filenameMatch = /\/([^\/]+)$/i.exec(href);
-        if (filenameMatch) {
-            const filename = filenameMatch[1];
-            return `<a href="${path}&lightbox=${filename}">${imgTag}</a>`;
-        }
-        return match;
-    });
-};

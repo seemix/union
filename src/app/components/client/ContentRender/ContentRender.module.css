@@ -1,0 +1,56 @@
+.post_content {
+    width: 100%;
+}
+.post_content p {
+    margin-bottom: 30px;
+    font-size: calc(15px + (16 - 15) * ((100vw - 800px) / (1920 - 800)));
+}
+
+.post_content blockquote {
+    padding-left: calc(70px + (90 - 70) * ((100vw - 360px) / (1920 - 360)));
+    padding-top: calc(40px + (50 - 40) * ((100vw - 360px) / (1920 - 360)));
+    padding-bottom: calc(10px + (15 - 10) * ((100vw - 360px) / (1920 - 360)));
+    padding-right: calc(15px + (20 - 15) * ((100vw - 360px) / (1920 - 360)));
+    position: relative;
+    background-color: white;
+    margin-bottom: 30px;
+    border-radius: 6px;
+    box-shadow: 0 20px 40px 0 rgba(64, 1, 4, .1), 0 -6px 0 0 rgba(248, 99, 107, .004);
+}
+
+.post_content blockquote p {
+    font-size: calc(15px + (17 - 15) * ((100vw - 360px) / (1920 - 360)));
+    line-height: 28px;
+    font-weight: 400;
+    color: #282828;
+}
+
+
+.post_content blockquote:before {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-family: Arial, serif;
+    content: "\201C";
+    font-size: calc(120px + (160 - 120) * ((100vw - 360px) / (1920 - 360)));
+    color: rgba(0, 0, 0, 0.3);
+
+}
+
+.post_content blockquote::after {
+    content: "";
+    top: 20px;
+    left: 50%;
+    margin-left: -100px;
+    position: absolute;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+    height: 3px;
+    width: 200px;
+}
+
+.post_content blockquote img {
+    float: left;
+    margin-right: 20px;
+    border-radius: 50%;
+    margin-top: 0;
+}

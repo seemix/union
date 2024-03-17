@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Page = ({ searchParams }: { searchParams: { id: string } }) => {
+const Page = async ({ searchParams }: { searchParams: { id: string } }) => {
     return (
-        <div>
-            <h1>Page {searchParams.id}</h1>
+        <div className={'main'}>
+            <h2>Page {searchParams.id}</h2>
         </div>
     );
 };
