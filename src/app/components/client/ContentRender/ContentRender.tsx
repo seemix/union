@@ -18,12 +18,10 @@ const ContentRender = ({ content, slides }: { content: string, slides: SlideImag
         return -1;
     };
     const handleClick = (e: any) => {
-        if (e.target.srcset?.toString() || e.target.src?.toString()) {
+        if (e.target.src) {
             e.preventDefault();
-            // @ts-ignore
-            const link = e.target.srcset?.trim().split(' ')
-                .filter(item => item.startsWith('http://') || item.startsWith('https://'))
-                .sort((a, b) => a.length - b.length)[0];
+            const link = decodeURIComponent(e.target.src)
+                .replace(/-\d+x\d+(_[a-zA-Zа-яА-Я0-9]+)?\./, '.');
             setSlideIndex(findSlideIndex(slides, link));
             setOpen(true);
         }

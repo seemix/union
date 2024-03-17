@@ -14,7 +14,6 @@ const Page = async ({ searchParams }: { searchParams: { id: string, link: string
     const rawPost: IRawPost = await response.json();
     const post = postMapper(rawPost);
     const slides = imageParser(post.content);
-
     return (
         <div className={'main'}>
             <div className={css.categories_wrapper}>
