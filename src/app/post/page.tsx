@@ -5,19 +5,18 @@ import Link from 'next/link';
 import { baseURL } from '@/app/assets/common';
 import { IRawPost } from '@/app/post/types';
 import { imageParser } from '@/app/common/functions/imageParser';
-import { contentTransformer } from '@/app/common/functions/contentTransformer';
+import { contentTransformer, imageLinkTransformer } from '@/app/common/functions/contentTransformer';
 import { DateViews } from '@/app/components';
 import { postMapper } from '@/app/post/mapper';
-import css from './post.module.css';
 import LightBox from '@/app/components/client/LightBox/LightBox';
+import css from './post.module.css';
 
 const Page = async ({ searchParams }: { searchParams: { id: string, link: string } }) => {
     const response = await fetch(baseURL + 'posts/' + searchParams.id + '&_embed=wp:term');
     const rawPost: IRawPost = await response.json();
     const post = postMapper(rawPost);
     const slides = imageParser(post.content);
-    console.log(post.content);
-    // console.log(slides);
+    const content = imageLinkTransformer(post.content, `post/?id=${post.id}`);
     return (
         <div className={'main'}>
             <LightBox slides={slides}/>
@@ -29,7 +28,7 @@ const Page = async ({ searchParams }: { searchParams: { id: string, link: string
             {/*<img src={post.fimg_url} width={'100%'} alt={post.title}/>*/}
             {/*<br/>*/}
             <div className={css.post_content}>
-                {Parser().parse(post.content)}
+                {Parser().parse(content)}
                 {/*{bodyText}*/}
             </div>
         </div>

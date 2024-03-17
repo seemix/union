@@ -28,10 +28,7 @@ const Pagination = ({ pages }: { pages: number }) => {
     });
     const prevNextPage = (page: number) => {
         const params = new URLSearchParams(searchParams);
-
-
         params.set('page', String(page));
-
         router.push(`${pathname}?${params.toString()}`);
     };
     return (

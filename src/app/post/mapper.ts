@@ -12,7 +12,7 @@ export const postMapper = (post: IRawPost): IMappedPost => {
         categories: post._embedded['wp:term'][0].map(item => {
             return {
                 id: item.id,
-                link: 'category/?id='+item.link.split('=')[1],
+                link: 'category/?id=' + item.link.split('=')[1],
                 name: item.name
             };
         })
