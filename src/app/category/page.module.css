@@ -5,3 +5,33 @@
     width: 100%;
     justify-content: center;
 }
+
+.cards_wrapper button {
+    margin-top: 10px;
+    border-radius: .25rem;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 400;
+    padding-left: calc(18px + (23 - 18) * ((100vw - 360px) / (1920 - 360)));
+    padding-right: calc(18px + (23 - 18) * ((100vw - 360px) / (1920 - 360)));
+    color: #fff;
+    height: calc(33px + (40 - 33) * ((100vw - 360px) / (1920 - 360)));
+    font-size: 0.7rem;
+    line-height: 13px;
+    letter-spacing: 1.1px;
+    transition: .2s .1s;
+    background-image: linear-gradient(to bottom, #0d1a50 35%, #bd0554 92%);
+    border: 0 solid;
+    overflow: hidden;
+}
+
+.cards_wrapper button:hover {
+    cursor: pointer;
+    transition: all .3s ease-in;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .15);
+}
+
+.cards_wrapper button:active {
+    transform: translateY(0);
+}

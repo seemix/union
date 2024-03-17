@@ -1,11 +1,12 @@
 .menu {
     background-color: #fafafa;
-    width: 90vw;
+    /*width: calc(100vw + (90 - 100) * ((100vw - 800px) / (1920 - 800)));*/
+    width: 95vw;
     display: flex;
     justify-content: center;
-    padding: 20px;
+    padding: 20px calc(10px + (20 - 10) * ((100vw - 800px) / (1920 - 800)));
     border: 1px solid gray;
-    border-radius: 30px;
+    border-radius: 10px;
     margin: 10px auto;
     /*font-family: Verdana, 'Openy Sans', sans-serif;*/
 }
@@ -17,7 +18,7 @@
     padding: 0;
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: calc(2px + (15 - 2) * ((100vw - 360px) / (1920 - 360)));
 }
 
 .menu ul li {
@@ -33,11 +34,18 @@
 
 .menu ul li a, .menu ul li span {
     display: block;
-    padding: 15px 20px 20px 15px;
+    padding-top: 20px;
+    padding-right: calc(10px + (20 - 10) * ((100vw - 800px) / (1920 - 800)));
+    padding-left: calc(5px + (15 - 5) * ((100vw - 800px) / (1920 - 800)));;
+    padding-bottom: 20px;
+    /*top */
+    /*right/
+    /*bottom*/
+    /*left*/
     cursor: pointer;
     font-weight: 500;
     letter-spacing: 0.04em;
-    font-size: 14px;
+    font-size: calc(12px + (13 - 12) * ((100vw - 800px) / (1920 - 800)));
 }
 
 .menu ul li .arrow_right {

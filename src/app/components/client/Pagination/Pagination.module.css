@@ -2,7 +2,8 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin: 20px;
+    margin-top: 50px;
+    margin-bottom: 20px;
 }
 .pagination {
     background-image: none;
@@ -15,6 +16,7 @@
     color: #280202;
     line-height: 0;
     border-radius: 3px;
+    cursor: pointer;
 }
 .pagination.active:hover {
     cursor: initial;
