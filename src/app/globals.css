@@ -60,15 +60,19 @@ ul {
     font-family: 'Roboto Slab', sans-serif;
     line-height: 1.8em;
 }
-
+/*WP content classes*/
 .alignright {
     float: right;
     margin: 15px;
+    max-width: 100%;
+    height: auto;
 }
 
 .alignleft {
     float: left;
     margin: 15px;
+    max-width: 100%;
+    height: auto;
 }
 
 .aligncenter {
@@ -83,6 +87,8 @@ ul {
     flex-direction: row;
     gap: 20px;
     flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
 }
 .gallery-item {
     display: block;

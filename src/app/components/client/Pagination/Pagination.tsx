@@ -20,7 +20,7 @@ const Pagination = ({ pages }: { pages: number }) => {
     arr.forEach(page => {
         if (currentPage > 3 && page < 3) {
             firstPart.push(page);
-        } else if (page - currentPage < 3 && currentPage - page < 3) {
+        } else if (page - currentPage < 3 && currentPage - page < 4) {
             secondPart.push(page);
         } else if (pages - currentPage > 2 && pages - page < 2) {
             thirdPart.push(page);
