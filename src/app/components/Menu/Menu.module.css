@@ -1,14 +1,12 @@
 .menu {
     background-color: #fafafa;
-    /*width: calc(100vw + (90 - 100) * ((100vw - 800px) / (1920 - 800)));*/
-    width: 95vw;
+    width: 100%;
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
-    padding: 20px calc(10px + (20 - 10) * ((100vw - 800px) / (1920 - 800)));
-    border: 1px solid gray;
-    border-radius: 10px;
-    margin: 10px auto;
-    /*font-family: Verdana, 'Openy Sans', sans-serif;*/
+    padding: 0 calc(10px + (20 - 10) * ((100vw - 800px) / (1920 - 800)));
+    border-bottom: 1px solid gray;
+    /*position: fixed;*/
 }
 
 .menu ul {

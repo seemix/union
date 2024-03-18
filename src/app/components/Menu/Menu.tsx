@@ -10,7 +10,6 @@ const Menu = async () => {
     const menu = mappedMenu(response);
     return (
         <div>
-            {/*<h3>Philip Yancey Amazing Grace</h3>*/}
             <nav className={css.menu}>
                 <ul>
                     {menu && menu.map(item => <MenuItem
