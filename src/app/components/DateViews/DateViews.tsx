@@ -10,7 +10,7 @@ const DateViews = ({ views, date }: { views: number, date: string }) => {
                 <IoMdEye/>
                 <p><small>{views}</small></p>
             </div>
-            <h4 className={css.card_date}>{date}</h4>
+            <div className={css.card_date}>{date}</div>
         </div>
     );
 };

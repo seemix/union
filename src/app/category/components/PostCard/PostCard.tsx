@@ -2,8 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 
 import { IMappedCategoryPost } from '@/app/category/types';
-import css from './PostCard.module.css';
 import { DateViews } from '@/app/components';
+import css from './PostCard.module.css';
 
 const PostCard = (post: IMappedCategoryPost) => {
     return (

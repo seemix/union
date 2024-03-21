@@ -1,5 +1,6 @@
 export { default as ContentRender } from './client/ContentRender/ContentRender';
 export { default as DateViews } from './DateViews/DateViews';
+export { default as Header } from './Header/Header';
 export { default as Loader } from './Loader/Loader';
 export { default as LightBox } from './client/LightBox/LightBox';
 export { default as MenuItem } from './Menu/MenuItem';

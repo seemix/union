@@ -6,7 +6,6 @@
     overflow: hidden;
     border-radius: 8px;
     min-height: calc(380px + (480 - 380) * ((100vw - 360px) / (1920 - 360)));
-
 }
 
 .picture_overlay:hover {
@@ -93,29 +92,18 @@
     font-size: calc(18px + (21 - 18) * ((100vw - 360px) / (1920 - 360)));
 }
 
-/*.date_wrapper {*/
-/*    display: flex;*/
-/*    justify-content: space-between;*/
-/*    padding: 0 10px;*/
-/*}*/
-
-
-/*.views_wrapper {*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    gap: 5px;*/
-/*}*/
-
 .card_bottom {
-    padding: 20px;
+    padding: 15px;
     margin-top: -10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /*min-height: 180px;*/
 }
 .bottom_content {
     min-height: 135px;
+}
+.bottom_content a h3:hover {
+    color: var(--blue);
 }
 
 .button_wrapper {

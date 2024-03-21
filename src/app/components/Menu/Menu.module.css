@@ -1,12 +1,18 @@
-.menu {
-    background-color: #fafafa;
-    width: 100%;
-    box-sizing: border-box;
+
+nav.menu {
+    /*background-color: #fafafa;*/
+    /*background-color: rgba(255,255,255,0);*/
+    /*width: 100%;*/
+    /*box-sizing: border-box;*/
     display: flex;
     justify-content: center;
     padding: 0 calc(10px + (20 - 10) * ((100vw - 800px) / (1920 - 800)));
-    border-bottom: 1px solid gray;
-    /*position: fixed;*/
+    /*border-bottom: 1px solid gray;*/
+    /*border-top: 1px solid gray;*/
+    /*position: sticky;*/
+    font-family: 'Roboto Slab', sans-serif;
+    /*letter-spacing: 0.07em;*/
+
 }
 
 .menu ul {
@@ -21,9 +27,8 @@
 
 .menu ul li {
     list-style: none;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: bold;
-    /*letter-spacing: 1px;*/
     text-transform: uppercase;
     position: relative;
     float: left;
@@ -32,22 +37,22 @@
 
 .menu ul li a, .menu ul li span {
     display: block;
+    color: whitesmoke;
+    text-shadow: 1px 1px 1px #000;
     padding-top: 20px;
     padding-right: calc(10px + (20 - 10) * ((100vw - 800px) / (1920 - 800)));
     padding-left: calc(5px + (15 - 5) * ((100vw - 800px) / (1920 - 800)));;
     padding-bottom: 20px;
-    /*top */
-    /*right/
-    /*bottom*/
-    /*left*/
     cursor: pointer;
-    font-weight: 500;
-    letter-spacing: 0.04em;
+    font-weight: 400;
+    letter-spacing: 0.0em;
+    /*letter-spacing: 0.05em;*/
     font-size: calc(12px + (13 - 12) * ((100vw - 800px) / (1920 - 800)));
 }
 
 .menu ul li .arrow_right {
-    border: solid black;
+    /*border: solid #2d2d2d;*/
+    border: solid white;
     border-width: 0 2px 2px 0;
     display: inline-block;
     padding: 2px;
@@ -79,6 +84,7 @@
     top: 55px;
     color: initial;
     height: fit-content;
+    text-shadow: initial;
 }
 
 .menu ul li input {
@@ -86,12 +92,23 @@
 }
 
 .menu ul li:hover {
-    color: #5757cc;
+    /*color: #5757cc;*/
     background-color: #e5e4e4;
+    /*text-shadow: initial;*/
 }
 
+.menu ul li:hover > label span {
+    /*color: #5757cc;*/
+    color: black;
+
+    text-shadow: inherit;
+    /*background-color: #e5e4e4;*/
+}
+
+
 .menu ul li:hover > label span .arrow_right {
-    border-color: #5757cc;
+    /*border-color: #5757cc;*/
+    border-color: rgb(var(--text));
 }
 
 .menu ul li ul li {
@@ -107,14 +124,20 @@
     transition: .3s all ease-in-out;
     width: 100%;
     height: 100%;
+    color: inherit;
+    text-shadow: initial;
 }
 
 .menu ul li ul li a:hover {
     margin-left: 3px;
     margin-right: -3px;
+    text-shadow: initial;
 }
 
 @media screen and (max-width: 800px) {
+    nav.menu {
+        position: relative;
+    }
     .menu ul li:hover {
         color: inherit;
         background-color: inherit;
@@ -128,7 +151,6 @@
         opacity: 1;
         top: 0;
     }
-
 
     .menu ul li:has(input:checked) {
         height: auto;
