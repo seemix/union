@@ -8,10 +8,25 @@
     box-sizing: border-box;
     transition: all 0.4s ease-in-out;
     display: flex;
-    align-items: center;
+    /*align-items: center;*/
+    padding: 10px 0;
     justify-content: space-evenly;
+}
+.logo_wrapper {
+    width: 170px;
+    margin: 5px 0;
+}
+.top_bar img {
+    width: 165px;
+    transition: all .5s ease-in-out;
 }
 
 .scroll {
-    background-color: rgb(var(--dark_blue));
+    background-color: rgb(var(--blue));
+    padding: 0;
+    align-items: center;
+}
+
+.scroll img {
+   width: 110px;
 }

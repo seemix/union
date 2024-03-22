@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { Header, Menu } from '@/app/components';
+import { ArrowUp, Footer, Header, Menu } from '@/app/components';
 import TopBar from '@/app/components/client/TopBar/TopBar';
 
 // const inter = Inter({ subsets: ['latin'] });
@@ -18,9 +18,9 @@ export default function RootLayout({ children }: Readonly<{
         <body>
         <TopBar children={<Menu/>}></TopBar>
         <Header/>
-        {/*<Menu/>*/}
         <main>{children}</main>
-        <h2>Footer</h2>
+        <Footer/>
+        <ArrowUp/>
         </body>
         </html>
     );

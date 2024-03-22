@@ -1,18 +1,9 @@
 
 nav.menu {
-    /*background-color: #fafafa;*/
-    /*background-color: rgba(255,255,255,0);*/
-    /*width: 100%;*/
-    /*box-sizing: border-box;*/
     display: flex;
     justify-content: center;
     padding: 0 calc(10px + (20 - 10) * ((100vw - 800px) / (1920 - 800)));
-    /*border-bottom: 1px solid gray;*/
-    /*border-top: 1px solid gray;*/
-    /*position: sticky;*/
     font-family: 'Roboto Slab', sans-serif;
-    /*letter-spacing: 0.07em;*/
-
 }
 
 .menu ul {
@@ -45,7 +36,7 @@ nav.menu {
     padding-bottom: 20px;
     cursor: pointer;
     font-weight: 400;
-    letter-spacing: 0.0em;
+    letter-spacing: 0.04em;
     /*letter-spacing: 0.05em;*/
     font-size: calc(12px + (13 - 12) * ((100vw - 800px) / (1920 - 800)));
 }
@@ -91,24 +82,12 @@ nav.menu {
     display: none;
 }
 
-.menu ul li:hover {
-    /*color: #5757cc;*/
-    background-color: #e5e4e4;
-    /*text-shadow: initial;*/
-}
-
 .menu ul li:hover > label span {
-    /*color: #5757cc;*/
-    color: black;
-
     text-shadow: inherit;
-    /*background-color: #e5e4e4;*/
 }
-
 
 .menu ul li:hover > label span .arrow_right {
-    /*border-color: #5757cc;*/
-    border-color: rgb(var(--text));
+    border-color: rgb(var(--red));
 }
 
 .menu ul li ul li {
@@ -132,12 +111,14 @@ nav.menu {
     margin-left: 3px;
     margin-right: -3px;
     text-shadow: initial;
+    color: rgb(var(--red));
 }
 
 @media screen and (max-width: 800px) {
     nav.menu {
         position: relative;
     }
+
     .menu ul li:hover {
         color: inherit;
         background-color: inherit;
@@ -198,10 +179,12 @@ nav.menu {
         box-sizing: border-box;
 
     }
+
     .menu ul li ul li a:hover {
         margin-left: 20px;
         margin-right: 20px;
     }
+
     .menu ul li .arrow_right {
         transform: rotate(0);
         border: 0;

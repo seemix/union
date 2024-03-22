@@ -66,8 +66,8 @@
 }
 
 .picture_overlay {
-    background: #0d1a50;
-    background: linear-gradient(to top, #0d1a50 2%, #bd0554 92%);
+    background: rgba(var(--blue), 0.9);
+    background: linear-gradient(to top, rgb(var(--blue)) 2%, rgb(var(--red)) 92%);
     position: absolute;
     height: calc(170px + (235 - 170) * ((100vw - 360px) / (1920 - 360)));
     width: 100%;

@@ -11,10 +11,9 @@ const LightBox = ({ slides, index, open, setOpen }: {
     open: boolean,
     setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
-
     return (
         <Lightbox open={open}
-                  index={index}
+                  index={index || 0}
                   close={() => setOpen(false)}
                   slides={slides}
                   plugins={[Slideshow, Zoom]}
