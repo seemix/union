@@ -1,7 +1,8 @@
 import React from 'react';
+import Link from 'next/link';
+
 import { IMappedMenuItem } from '@/app/components/Menu/types';
 import css from '@/app/components/Menu/Menu.module.css';
-import Link from 'next/link';
 
 const MenuItem = (item: IMappedMenuItem) => {
     return (

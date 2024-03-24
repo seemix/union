@@ -24,7 +24,7 @@ const ContentRender = ({ content, slides }: { content: string, slides: SlideImag
                 .replace(/-\d+x\d+(_[a-zA-Zа-яА-Я0-9]+)?\./, '.');
             setSlideIndex(findSlideIndex(slides, link));
             setOpen(true);
-        }
+        } else return;
     };
     return (
         <div onClick={handleClick} className={css.post_content}>

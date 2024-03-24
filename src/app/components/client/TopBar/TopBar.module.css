@@ -1,32 +1,38 @@
 .top_bar {
     background-color: rgba(255, 255, 255, 0);
-    position: fixed;
-    left: 0;
+    position: sticky;
+    /*left: 0;*/
     top: 0;
     z-index: 3;
     width: 100%;
     box-sizing: border-box;
     transition: all 0.4s ease-in-out;
     display: flex;
-    /*align-items: center;*/
-    padding: 10px 0;
+    align-items: center;
+    padding: 0;
     justify-content: space-evenly;
+    border-bottom: 2px solid gray;
+
 }
+
 .logo_wrapper {
     width: 170px;
     margin: 5px 0;
 }
+
 .top_bar img {
     width: 165px;
     transition: all .5s ease-in-out;
 }
 
 .scroll {
-    background-color: rgb(var(--blue));
-    padding: 0;
-    align-items: center;
+    /*background-color: rgb(var(--blue));*/
+    /*padding: 0;*/
+    /*align-items: center;*/
+    background-color: #f0f0f0;
+    border-bottom: 2px solid gray;
 }
 
 .scroll img {
-   width: 110px;
+    width: 110px;
 }

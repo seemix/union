@@ -3,8 +3,9 @@ import React from 'react';
 import { baseURL } from '@/app/assets/common';
 import { mappedCategoryPosts } from '@/app/category/mapper';
 import { IMappedCategoryPost } from '@/app/category/types';
-import { Pagination } from '@/app/components';
+import { AnimatedComponent, Pagination } from '@/app/components';
 import { CategoryName, PostCard } from '@/app/category/components';
+import { blockAppearAnimation } from '@/app/category/animation';
 import css from './page.module.css';
 
 const Category = async ({ searchParams }: { searchParams: { id: string, page: string } }) => {
@@ -14,7 +15,7 @@ const Category = async ({ searchParams }: { searchParams: { id: string, page: st
         method: 'GET'
     });
     let pages = 1;
-    let posts: IMappedCategoryPost[] = [];
+    let posts: IMappedCategoryPost[];
     if (resp.ok) {
         const data = await resp.json();
         if (resp.headers.get('X-WP-TotalPages')) {
@@ -27,17 +28,22 @@ const Category = async ({ searchParams }: { searchParams: { id: string, page: st
 
     return (
         <main className={'main'}>
-           <CategoryName id={searchParams.id}/>
+            <CategoryName id={searchParams.id}/>
             <div className={css.cards_wrapper}>
                 {!resp.ok && <h1>33333</h1>}
-                {posts.length > 0 && posts.map(post => <PostCard
-                    id={post.id}
-                    date={post.date}
-                    title={post.title}
-                    views={post.views}
-                    excerpt={post.excerpt}
-                    image={post.image}
-                    key={post.id}/>)}
+                {posts.length > 0 && posts.map(post =>
+                    <AnimatedComponent
+                        key={post.id}
+                        animation={blockAppearAnimation}
+                        children={<PostCard
+                            id={post.id}
+                            date={post.date}
+                            title={post.title}
+                            views={post.views}
+                            excerpt={post.excerpt}
+                            image={post.image}
+                            key={post.id}/>}>
+                    </AnimatedComponent>)}
             </div>
             <Pagination pages={pages}/>
         </main>

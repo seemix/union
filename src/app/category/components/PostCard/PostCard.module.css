@@ -4,7 +4,7 @@
     width: calc(320px + (450 - 320) * ((100vw - 360px) / (1920 - 360)));
     position: relative;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 4px;
     min-height: calc(380px + (480 - 380) * ((100vw - 360px) / (1920 - 360)));
 }
 
@@ -29,13 +29,14 @@
 }
 
 .excerpt {
-    color: black;
+    color: rgb(var(--text));
     font-size: calc(14px + (16 - 14) * ((100vw - 360px) / (1920 - 360)));
     visibility: hidden;
     margin-left: -20px;
     position: relative;
     height: 0;
     opacity: 0;
+    margin-top: -20px;
 }
 
 .card_picture {
@@ -43,7 +44,7 @@
     height: calc(170px + (235 - 170) * ((100vw - 360px) / (1920 - 360)));
     /*object-fit: cover;*/
     display: flex;
-    border-radius: 8px 8px 0 0;
+    border-radius: 4px 4px 0 0;
     flex-direction: column;
     justify-content: space-between;
     background-size: cover;

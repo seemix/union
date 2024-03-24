@@ -3,7 +3,15 @@ nav.menu {
     display: flex;
     justify-content: center;
     padding: 0 calc(10px + (20 - 10) * ((100vw - 800px) / (1920 - 800)));
-    font-family: 'Roboto Slab', sans-serif;
+    /*font-family: 'Roboto Slab', sans-serif;*/
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    /*background-color: rgb(var(--text));*/
+    /*background: linear-gradient(to right, rgba(var(--blue), 1) 10%, rgba(var(--text), 1) 90%);;*/
+
+    position: sticky;
+    top: 0;
+    z-index: 3;
 }
 
 .menu ul {
@@ -28,8 +36,8 @@ nav.menu {
 
 .menu ul li a, .menu ul li span {
     display: block;
-    color: whitesmoke;
-    text-shadow: 1px 1px 1px #000;
+    /*color: whitesmoke;*/
+    /*text-shadow: 1px 1px 1px #000;*/
     padding-top: 20px;
     padding-right: calc(10px + (20 - 10) * ((100vw - 800px) / (1920 - 800)));
     padding-left: calc(5px + (15 - 5) * ((100vw - 800px) / (1920 - 800)));;
@@ -38,12 +46,12 @@ nav.menu {
     font-weight: 400;
     letter-spacing: 0.04em;
     /*letter-spacing: 0.05em;*/
-    font-size: calc(12px + (13 - 12) * ((100vw - 800px) / (1920 - 800)));
+    font-size: calc(13px + (14 - 13) * ((100vw - 800px) / (1920 - 800)));
 }
 
 .menu ul li .arrow_right {
     /*border: solid #2d2d2d;*/
-    border: solid white;
+    border: solid rgb(var(--text));
     border-width: 0 2px 2px 0;
     display: inline-block;
     padding: 2px;
@@ -82,12 +90,16 @@ nav.menu {
     display: none;
 }
 
-.menu ul li:hover > label span {
-    text-shadow: inherit;
-}
+/*.menu ul li:hover > label span {*/
+/*    text-shadow: inherit;*/
+/*}*/
 
 .menu ul li:hover > label span .arrow_right {
     border-color: rgb(var(--red));
+}
+
+.menu ul li:hover > label span {
+    color: rgb(var(--red));
 }
 
 .menu ul li ul li {

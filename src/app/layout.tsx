@@ -16,8 +16,9 @@ export default function RootLayout({ children }: Readonly<{
     return (
         <html lang="en">
         <body>
-        <TopBar children={<Menu/>}></TopBar>
         <Header/>
+        <TopBar children={<Menu/>}></TopBar>
+        {/*<Menu/>*/}
         <main>{children}</main>
         <Footer/>
         <ArrowUp/>

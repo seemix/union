@@ -5,8 +5,22 @@
 .post_content p {
     margin-bottom: 30px;
     font-size: calc(15px + (16 - 15) * ((100vw - 800px) / (1920 - 800)));
+    animation: appear .5s linear;
+    animation-timeline: view();
+    animation-range: entry 20% cover 20%;
 }
-
+@keyframes appear {
+    from {
+        scale: .98;
+        padding-top: 50px;
+        opacity: .5;
+    }
+    to {
+        padding-top: 0;
+        scale: 1;
+        opacity: 1;
+    }
+}
 .post_content blockquote {
     padding-left: calc(70px + (90 - 70) * ((100vw - 360px) / (1920 - 360)));
     padding-top: calc(40px + (50 - 40) * ((100vw - 360px) / (1920 - 360)));

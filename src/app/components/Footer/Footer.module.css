@@ -2,6 +2,6 @@
     margin-top: auto;
     width: 100%;
     min-height: 200px;
-    background-color: rgb(var(--dark_blue));
+    background-color: rgb(var(--text));
     color: whitesmoke;
 }

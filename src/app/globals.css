@@ -59,6 +59,7 @@ h5 {
 p {
     font-family: 'Roboto Slab', sans-serif;
     line-height: 1.6em;
+    font-weight: 400;
 }
 ul, ol, dl {
     margin-left: 30px;
