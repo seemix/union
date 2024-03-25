@@ -18,7 +18,7 @@ const ContentRender = ({ content, slides }: { content: string, slides: SlideImag
         return -1;
     };
     const handleClick = (e: any) => {
-        if (e.target.src) {
+        if (e.target?.src) {
             e.preventDefault();
             const link = decodeURIComponent(e.target.src)
                 .replace(/-\d+x\d+(_[a-zA-Zа-яА-Я0-9]+)?\./, '.');
