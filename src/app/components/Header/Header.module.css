@@ -3,24 +3,24 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 250px;
-    background-image: url("https://baptist.org.md/ru/wp-content/uploads/2021/09/IMG_0346.jpg");
-    background-position: center;
-    background-size: cover;
+    height: 180px;
+    /*background-image: url("https://baptist.org.md/ru/wp-content/uploads/2021/09/IMG_0346.jpg");*/
+    /*background-position: center;*/
+    /*background-size: cover;*/
     position: relative;
 }
 
 .header_wrapper img {
-    margin-top: 40px;
+    /*margin-top: 40px;*/
     z-index: 2;
 }
 
 .header_wrapper h1 {
-    color: white;
+    /*color: white;*/
     z-index: 2;
     text-transform: uppercase;
-    text-shadow: 1px 1px 1px #000;
-    margin-top: 80px;
+    /*text-shadow: 1px 1px 1px #000;*/
+    margin-top: 20px;
 }
 
 .header_overlay {

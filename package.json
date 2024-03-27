@@ -17,6 +17,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.0.1",
+    "swiper": "^11.0.7",
     "yet-another-react-lightbox": "^3.17.1"
   },
   "devDependencies": {

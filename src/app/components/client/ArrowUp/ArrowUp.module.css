@@ -1,11 +1,13 @@
 .arrow_up {
-    background: linear-gradient(to top, rgb(var(--blue)) 2%, rgb(var(--red)) 92%);
+    /*background: linear-gradient(to top, rgb(var(--blue)) 2%, rgb(var(--red)) 92%);*/
     position: fixed;
+    background-color: rgb(var(--red));
     bottom: 18px;
     right: 18px;
     width: 40px;
     height: 40px;
-    border-radius: 5px;
+    border-radius: 3px;
     color: white;
     cursor: pointer;
+    border: 0;
 }

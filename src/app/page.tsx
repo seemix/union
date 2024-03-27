@@ -1,12 +1,12 @@
 import React from 'react';
 
 import styles from './page.module.css';
-import TestComp from '@/app/components/TestComp';
+import { Main } from '@/app/components';
 
 export default function Home() {
     return (
-        <main className={styles.main}>
-            <TestComp/>
+        <main className={'main'}>
+            <Main/>
         </main>
     );
 }

@@ -12,11 +12,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #010152;
-    color: #280202;
+    /*border: 1px solid #010152;*/
+    color: whitesmoke;
     line-height: 0;
-    border-radius: 3px;
+    border-radius: 2px;
     cursor: pointer;
+    background-color: rgb(var(--red));
+    border: 0;
 }
 .pagination.active:hover {
     cursor: initial;
@@ -25,15 +27,16 @@
 }
 
 .active {
-    border: 1px solid gray;
+    border: 1px solid rgb(var(--red));
     font-weight: 600;
     cursor: initial;
     font-size: 1em;
+    color: rgb(var(--text));
     background-color: white;
 }
 
 .dots {
     width: 40px;
     height: 40px;
-    border-bottom: 2px dotted #010152;
+    border-bottom: 2px dotted rgb(var(--text));
 }

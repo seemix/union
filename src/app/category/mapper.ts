@@ -3,7 +3,7 @@ import { IRawPost } from '@/app/category/types';
 import { contentTransformer } from '@/app/common/functions/contentTransformer';
 import { dateTransformer } from '@/app/common';
 
-export const mappedCategoryPosts = (posts: IRawPost[]): IMappedCategoryPost[] => {
+export const mappedCategoryPosts = (posts: IRawPost[], excerptLength = 18): IMappedCategoryPost[] => {
     return posts.map(post => {
         return {
             id: post.id,
@@ -17,7 +17,7 @@ export const mappedCategoryPosts = (posts: IRawPost[]): IMappedCategoryPost[] =>
                 .slice(0, 2)
                 .join('. ')
                 .split(/\s+/)
-                .slice(0, 18).join(' ') + '...'
-        }
-    })
-}
+                .slice(0, excerptLength).join(' ') + '...'
+        };
+    });
+};

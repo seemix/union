@@ -72,7 +72,7 @@
 
 .loader_spin {
     animation: spin 1s linear infinite;
-    border: solid 2px rgb(var(--text));
+    border: solid 2px rgb(var(--red));
     /*background: rgb(var(--text));*/
     border-top: solid 5px transparent;
     border-radius: 100%;

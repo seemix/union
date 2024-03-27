@@ -16,18 +16,20 @@ a:hover {
 }
 
 :root {
-    --background-color: #fafafa;
+    --background-light: #fafafa;
+    --background-dark:  #f0f0f0;
     font-family: 'Roboto Slab', sans-serif;
     --text: 45, 45, 45;
     /*--blue: 3, 3, 107;*/
-    --blue: 13, 26, 80;
-    --red: 189, 5, 84;
+    /*--blue: 13, 26, 80;*/
+    --blue: 204 204 204;
+    --red: 224, 64, 64;
     --dark_blue: 3, 3, 77;
 
     color: var(--text);
 }
 body {
-    background-color: #f0f0f0;
+    background-color: var(--background-light);
     display: flex;
     flex-direction: column;
     min-height: 100dvh;
@@ -66,7 +68,8 @@ ul, ol, dl {
     margin-bottom: 20px;
 }
 .main {
-    background-color: var(--background-color);
+    /*background-color: var(--background-color);*/
+    background-color: var(--background-dark);
     display: flex;
     flex-direction: column;
     align-items: center;

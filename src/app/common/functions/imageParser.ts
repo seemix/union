@@ -22,7 +22,7 @@ export const imageParser = (text: string) => {
         if (hrefMatch) {
             return hrefMatch[1];
         }
-        return null;
+        return '';
     });
     return urls.filter(url => url).map(url => {
         return { src: url?.toString().replace(/-\d+x\d+(_[a-zA-Zа-яА-Я0-9]+)?\./, '.') };

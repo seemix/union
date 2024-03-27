@@ -67,8 +67,8 @@
 }
 
 .picture_overlay {
-    background: rgba(var(--blue), 0.9);
-    background: linear-gradient(to top, rgb(var(--blue)) 2%, rgb(var(--red)) 92%);
+    /*background: rgba(var(--blue), 0.9);*/
+    background: linear-gradient(to top, rgba(var(--text, 1)) 2%, rgb(var(--red)) 92%);
     position: absolute;
     height: calc(170px + (235 - 170) * ((100vw - 360px) / (1920 - 360)));
     width: 100%;
@@ -100,11 +100,13 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
 .bottom_content {
     min-height: 135px;
 }
+
 .bottom_content a h3:hover {
-    color: var(--blue);
+    color: var(--red);
 }
 
 .button_wrapper {
@@ -113,4 +115,8 @@
     align-items: flex-end;
     height: 100%;
     margin-top: 15px;
+}
+
+.more_button {
+    background-color: rgb(var(--red));
 }

@@ -1,4 +1,3 @@
-
 nav.menu {
     display: flex;
     justify-content: center;
@@ -125,7 +124,6 @@ nav.menu {
         background-color: inherit;
     }
 
-
     .menu ul li input:checked ~ ul {
         visibility: visible;
         height: fit-content;
@@ -160,13 +158,11 @@ nav.menu {
         background-color: #ccc;
     }
 
-
     .menu ul li a, .menu ul li span {
         display: block;
         padding: 20px;
         margin-left: 20px;
         height: 100%;
-
     }
 
     .menu ul li ul {
@@ -178,7 +174,6 @@ nav.menu {
         visibility: hidden;
         flex-direction: column;
         box-sizing: border-box;
-
     }
 
     .menu ul li ul li a:hover {
