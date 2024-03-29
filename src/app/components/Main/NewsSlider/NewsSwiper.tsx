@@ -3,7 +3,6 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules';
-import { IMappedCategoryPost } from '@/app/category/types';
 import Image from 'next/image';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -11,8 +10,10 @@ import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
 // import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import css from './NewsSwiper.module.css';
 import Link from 'next/link';
+
+import { IMappedCategoryPost } from '@/app/category/types';
+import css from './NewsSwiper.module.css';
 
 const NewsSwiper = ({ slides }: { slides: IMappedCategoryPost[] }) => {
     const swiperSettings = {
@@ -24,17 +25,12 @@ const NewsSwiper = ({ slides }: { slides: IMappedCategoryPost[] }) => {
             disableOnInteraction: true,
             pauseOnMouseEnter: true
         },
-//        pauseOnMouseEnter: true,
         effect: 'fade',
-
+        navigation: true,
         fadeEffect: {
             crossFade: true,
         },
-        //  pagination: {
-        //    clickable: true,
-        // },
         modules: [Autoplay, EffectFade, Navigation, Pagination],
-        // loop: true
     };
     return (
         <Swiper className={css.slider_wrapper} {...swiperSettings}>

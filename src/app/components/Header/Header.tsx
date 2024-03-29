@@ -1,13 +1,18 @@
 import React from 'react';
+import Image from 'next/image';
 
+import logo from '../../assets/images/logo.webp';
 import css from './Header.module.css';
 
 const Header = () => {
     return (
         <header className={css.header_wrapper}>
-            {/*<div className={css.header_overlay}></div>*/}
-            <img src={'https://baptist.org.md/ru/wp-content/uploads/2021/10/cropped-cropped-cropped-1234-1.png'} width={200}/>
-            {/*<h1>Союз церквей ЕХБ Молдовы</h1>*/}
+            <Image src={logo.src} alt={'logo'} width={125} height={125}/>
+            <h1>
+                СОЮЗ ЦЕРКВЕЙ
+                <span className={css.red_text}>евангельских христиан-баптистов</span>
+                МОЛДОВЫ
+            </h1>
         </header>
     );
 };

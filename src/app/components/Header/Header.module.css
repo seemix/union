@@ -1,26 +1,22 @@
 .header_wrapper {
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    justify-content: space-evenly   ;
     height: 180px;
-    /*background-image: url("https://baptist.org.md/ru/wp-content/uploads/2021/09/IMG_0346.jpg");*/
-    /*background-position: center;*/
-    /*background-size: cover;*/
     position: relative;
+    gap: 40px;
 }
 
-.header_wrapper img {
-    /*margin-top: 40px;*/
-    z-index: 2;
+.red_text {
+    color: rgb(var(--red));
 }
 
 .header_wrapper h1 {
-    /*color: white;*/
     z-index: 2;
-    text-transform: uppercase;
-    /*text-shadow: 1px 1px 1px #000;*/
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 
 .header_overlay {
@@ -30,5 +26,4 @@
     width: 100%;
     height: 100%;
     background: linear-gradient(to bottom, rgba(var(--blue), .85) 20%, rgba(var(--red), .75) 70%);;
-    /*background: linear-gradient(to right, rgba(var(--blue), 1) 20%, rgba(var(--red), 1) 70%);;*/
 }

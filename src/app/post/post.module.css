@@ -11,5 +11,5 @@
 }
 
 .categories_wrapper a:hover {
-    color: var(--blue);
+    color: rgb(var(--red));
 }

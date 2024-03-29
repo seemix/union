@@ -11,7 +11,7 @@
 }
 
 .loader {
-    background-image: url("https://baptist.org.md/ru/wp-content/uploads/2021/10/cropped-cropped-cropped-1234-1.png");
+    background-image: url("../../assets/images/logo.webp");
     background-position: center;
     background-size: cover;
     z-index: 20;
