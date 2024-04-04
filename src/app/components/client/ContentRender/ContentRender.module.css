@@ -11,6 +11,21 @@
     animation-range: entry 20% cover 20%;
 }
 
+.post_content img {
+    scale: .9;
+    opacity: 0;
+    animation: fade-in linear forwards;
+    animation-timeline: view();
+    animation-range: 0 250px;
+}
+
+@keyframes fade-in {
+    to {
+        scale: 1;
+        opacity: 1;
+    }
+}
+
 @keyframes appear {
     from {
         padding-top: 80px;

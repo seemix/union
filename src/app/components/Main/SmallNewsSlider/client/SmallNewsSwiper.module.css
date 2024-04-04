@@ -1,0 +1,32 @@
+.slider_wrapper {
+    /*max-width: 385px;*/
+    max-width: 350px;
+    width: 100%;
+    height: 100%;
+}
+.single_slide {
+    position: relative;
+}
+
+.single_slide .caption {
+    font-size: 24px;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    background-color: rgba(255,255,255,.8);
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    transition: all .3s ease-in-out .5s;
+}
+
+.label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    background-color: rgb(var(--red));
+    color: whitesmoke;
+    font-size: 14px;
+    text-transform: uppercase;
+}

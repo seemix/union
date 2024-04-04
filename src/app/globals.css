@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Slab:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline+Text:wght@100..900&display=swap');
+
 
 * {
     padding: 0;
@@ -81,7 +83,7 @@ ul, ol, dl {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: calc(12px + (25 - 12) * ((100vw - 360px) / (1920 - 360)));
 }
@@ -147,4 +149,9 @@ ul, ol, dl {
 
 .yarl__thumbnails_container {
     background-color: rgba(0, 0, 0, .85) !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: rgb(var(--red)) !important;
 }

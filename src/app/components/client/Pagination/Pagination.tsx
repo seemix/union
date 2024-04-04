@@ -37,10 +37,10 @@ const Pagination = ({ pages }: { pages: number }) => {
                 {currentPage > 1 && <button
                     onClick={() => prevNextPage(currentPage - 1)}
                     className={css.pagination}>⬅</button>}
-                <PaginationButtons buttons={firstPart}/>
+                {currentPage > 1 && <PaginationButtons buttons={firstPart}/>}
                 {firstPart.length > 0 && secondPart[0] - firstPart[1] > 1 &&
                     <div className={css.dots}/>}
-                <PaginationButtons buttons={secondPart}/>
+                {pages > 1 && <PaginationButtons buttons={secondPart}/>}
                 {thirdPart.length > 0 && thirdPart[0] - +secondPart.slice(-1) > 1 &&
                     <div className={css.dots}/>}
                 <PaginationButtons buttons={thirdPart}/>

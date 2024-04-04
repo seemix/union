@@ -71,7 +71,7 @@ nav.menu {
     visibility: visible;
     transition: all .3s ease-in-out;
     opacity: 1;
-    top: 60px;
+    top: 61px;
     color: initial;
     height: fit-content;
     text-shadow: initial;
@@ -80,7 +80,6 @@ nav.menu {
 .menu ul li input {
     display: none;
 }
-
 
 .menu ul li:hover > label span .arrow_right {
     border-color: rgb(var(--red));
@@ -91,10 +90,10 @@ nav.menu {
 }
 
 .menu ul li ul li {
-    background-color: #eeecec;
+    background-color: var(--background-dark);
     overflow: hidden;
     padding: 0;
-    border-top: 1px solid #d0d0d0;
+    border-top: 1px solid rgba(var(--text, .8));
 }
 
 .menu ul li ul li a {
@@ -116,7 +115,13 @@ nav.menu {
 
 @media screen and (max-width: 800px) {
     nav.menu {
-        position: relative;
+        position: absolute;
+        top: 10px;
+        right: 0;
+    }
+
+    .show_menu {
+        right: 0;
     }
 
     .menu ul li:hover {
