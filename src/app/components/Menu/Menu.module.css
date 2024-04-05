@@ -88,6 +88,9 @@ nav.menu {
 .menu ul li:hover > label span {
     color: rgb(var(--red));
 }
+.menu ul li:hover {
+    background-color: var(--background-dark);
+}
 
 .menu ul li ul li {
     background-color: var(--background-dark);
