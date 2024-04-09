@@ -25,10 +25,7 @@ const Header = () => {
                     <Link href={''}> <FaInstagram size={'1.5em'}/></Link>
                     <Link href={''}> <FaYoutube size={'1.6em'}/></Link>
                 </div>
-                <div>
-                    <BurgerMenuButton/>
-                </div>
-
+                <BurgerMenuButton/>
             </header>
         </>
     );
