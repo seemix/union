@@ -31,13 +31,36 @@
 .opened_menu {
     right: 0;
 }
+
+.close_button_wrapper {
+    display: none;
+}
 @media screen and (max-width: 800px) {
     .top_bar {
         position: fixed;
-        /*top: 100px;*/
-        /*right: 0;*/
         width: auto;
         border: 1px solid rgb(var(--text));
-        /*right: -100%;*/
+        right: -100%;
+        flex-direction: column;
     }
+
+    .close_button_wrapper {
+        display: flex;
+        width: 100%;
+        padding: 10px;
+        background-color: var(--background-dark);
+    }
+
+    .close_button_wrapper button {
+        margin-left: auto;
+        border: 0;
+        cursor: pointer;
+    }
+}
+.scroll {
+    background-color: var(--background-dark);
+    border-bottom: 2px solid gray;
+}
+.opened_menu {
+    right: 0;
 }

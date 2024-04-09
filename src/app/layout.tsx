@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { ArrowUp, Footer, Header, Menu } from '@/app/components';
 import TopBar from '@/app/components/client/TopBar/TopBar';
+import AppWrapper from '@/app/context/context';
 
 // const inter = Inter({ subsets: ['latin'] });
 
@@ -16,12 +17,13 @@ export default function RootLayout({ children }: Readonly<{
     return (
         <html lang="en">
         <body>
-        <Header/>
-        <TopBar children={<Menu/>}></TopBar>
-        {/*<Menu/>*/}
-        <main>{children}</main>
-        <Footer/>
-        <ArrowUp/>
+        <AppWrapper>
+            <Header/>
+            <TopBar children={<Menu/>}></TopBar>
+            <main>{children}</main>
+            <Footer/>
+            <ArrowUp/>
+        </AppWrapper>
         </body>
         </html>
     );

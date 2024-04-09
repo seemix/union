@@ -12,7 +12,6 @@ const PostCard = (post: IMappedCategoryPost) => {
             <div className={css.picture_overlay}>
                 <h3>{post.title}</h3>
             </div>
-            {/*<img src={post.image} alt={post.title} className={css.card_picture}/>*/}
             <div className={css.card_bottom}>
                 <DateViews views={post.views} date={post.date}/>
                 <div className={css.bottom_content}>

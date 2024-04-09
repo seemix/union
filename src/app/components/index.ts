@@ -1,5 +1,6 @@
 export { default as AnimatedComponent } from './client/AnimatedComponent/AnimatedComponent';
 export { default as ArrowUp } from './client/ArrowUp/ArrowUp';
+export { default as BurgerMenuButton } from './client/BurgerMenuButton/BurgerMenuButton';
 export { default as ContentRender } from './client/ContentRender/ContentRender';
 export { default as DateViews } from './DateViews/DateViews';
 export { default as Footer } from './Footer/Footer';

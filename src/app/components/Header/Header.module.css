@@ -32,9 +32,7 @@
 .header_wrapper h1 {
     z-index: 2;
     display: flex;
-    /*font-family: "Big Shoulders Inline Text", sans-serif;*/
     flex-direction: column;
-    /*font-weight: 900;*/
     align-items: center;
     font-size: calc(20px + (26 - 20) * ((100vw - 800px) / (1920 - 800)));
 }
