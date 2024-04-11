@@ -6,14 +6,13 @@ export const mappedMenu = (menu: IMenuResponse): IMappedMenuItem[] => {
             id: item.id,
             label: item.label,
             uri: item.uri,
-            children: item.childItems.nodes.map(child => {
+            subMenu: item.childItems.nodes.map(child => {
                 let part1 = child.uri.slice(2).split('=')[0];
                 if (part1 === 'page_id') {
                     part1 = 'page/';
                 } else if (part1 === 'cat') {
                     part1 = 'category/';
                 }
-                // console.log(part1);
                 const part2 = child.uri.split('=')[1];
                 return {
                     id: child.id,

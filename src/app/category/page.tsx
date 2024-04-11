@@ -34,15 +34,15 @@ const Category = async ({ searchParams }: { searchParams: { id: string, page: st
                 {posts.length > 0 && posts.map(post =>
                     <AnimatedComponent
                         key={post.id}
-                        animation={blockAppearAnimation}
-                        children={<PostCard
+                        animation={blockAppearAnimation}>
+                        <PostCard
                             id={post.id}
                             date={post.date}
                             title={post.title}
                             views={post.views}
                             excerpt={post.excerpt}
                             image={post.image}
-                            key={post.id}/>}>
+                            key={post.id}/>
                     </AnimatedComponent>)}
             </div>
             <Pagination pages={pages}/>

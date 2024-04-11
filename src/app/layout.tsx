@@ -19,7 +19,7 @@ export default function RootLayout({ children }: Readonly<{
         <body>
         <AppWrapper>
             <Header/>
-            <TopBar children={<Menu/>}></TopBar>
+            <TopBar><Menu/></TopBar>
             <main>{children}</main>
             <Footer/>
             <ArrowUp/>

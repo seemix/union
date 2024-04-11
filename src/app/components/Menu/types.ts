@@ -32,5 +32,5 @@ export interface IMappedMenuItem {
     id: string;
     label: string;
     uri: string
-    children: { id: string; label: string; uri: string; query: string }[];
+    subMenu: { id: string; label: string; uri: string; query: string }[];
 }
