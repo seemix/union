@@ -52,6 +52,7 @@
     background-repeat: no-repeat;
     position: relative;
     transition: all 0.4s ease-in-out 0s;
+    background-image: url("https://baptist.org.md/ru/wp-content/uploads/2021/10/cropped-cropped-cropped-1234-1.png");
 }
 
 .picture_overlay h3 {

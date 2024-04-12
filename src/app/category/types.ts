@@ -20,4 +20,5 @@ export interface IMappedCategoryPost {
     views: number;
     excerpt: string;
     image?: string;
+    subtype?: string;
 }

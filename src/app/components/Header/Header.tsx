@@ -3,8 +3,7 @@ import Link from 'next/link';
 import { FaInstagram, FaYoutube } from 'react-icons/fa';
 import { FaFacebookF } from 'react-icons/fa6';
 
-
-import { BurgerMenuButton } from '@/app/components';
+import { BurgerMenuButton, SearchForm } from '@/app/components';
 import logo from '../../assets/images/logo.webp';
 import css from './Header.module.css';
 
@@ -21,10 +20,11 @@ const Header = () => {
                     МОЛДОВЫ
                 </h1>
                 <div className={css.social_wrapper}>
-                    <Link href={''}> <FaFacebookF size={'1.4em'}/></Link>
-                    <Link href={''}> <FaInstagram size={'1.5em'}/></Link>
-                    <Link href={''}> <FaYoutube size={'1.6em'}/></Link>
+                    <Link href={''}> <FaFacebookF size={'1.6em'}/></Link>
+                    <Link href={''}> <FaInstagram size={'1.7em'}/></Link>
+                    <Link href={''}> <FaYoutube size={'1.9em'}/></Link>
                 </div>
+                <SearchForm/>
                 <BurgerMenuButton/>
             </header>
         </>
