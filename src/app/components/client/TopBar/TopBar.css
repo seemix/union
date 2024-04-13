@@ -60,7 +60,7 @@
 }
 .scroll {
     /*background-color: var(--background-dark);*/
-    border-bottom: 2px solid rgb(var(--red));
+    border-bottom: 2px solid rgb(var(--background-dark));
     /*color: rgb(var(--text));*/
 }
 .opened_menu {
