@@ -13,11 +13,9 @@ const Search = async ({ searchParams }: { searchParams: { q: string, page: strin
     const pages = Number(response.headers.get('X-WP-TotalPages'));
     const data = await response.json();
     const posts: IMappedCategoryPost[] = mappedSearchResults(data);
-    console.log(posts);
     return (
         <div className={'main'}>
-            <h2>search results for <span className={css.red_text}> '{searchParams.q}' </span></h2>
-            {/*{posts && posts.map(post => <li key={post.id}> {post.title}</li>)}*/}
+            <h2>результаты поиска  <span className={css.red_text}> '{searchParams.q}' </span></h2>
             <div className={css.cards_wrapper}>
                 {posts.length > 0 && posts.map(post =>
                     <AnimatedComponent
