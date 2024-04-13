@@ -1,5 +1,5 @@
 .top_bar {
-    background-color: var(--background-light);
+    background-color: rgb(var(--gray));
     position: sticky;
     top: 0;
     z-index: 3;
@@ -24,9 +24,10 @@
     transition: all .5s ease-in-out;
 }
 .scroll {
-    background-color: var(--background-dark);
-    border-bottom: 2px solid gray;
+    /*background-color: var(--background-dark);*/
+    border-bottom: 20px solid rgb(var(--red));
 }
+
 
 .opened_menu {
     right: 0;
@@ -58,8 +59,9 @@
     }
 }
 .scroll {
-    background-color: var(--background-dark);
-    border-bottom: 2px solid gray;
+    /*background-color: var(--background-dark);*/
+    border-bottom: 2px solid rgb(var(--red));
+    /*color: rgb(var(--text));*/
 }
 .opened_menu {
     right: 0;

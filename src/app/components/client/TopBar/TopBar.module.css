@@ -1,5 +1,5 @@
 .top_bar {
-    background-color: var(--background-light);
+    /*background-color: var(--background-light);*/
     position: sticky;
     top: 0;
     z-index: 3;

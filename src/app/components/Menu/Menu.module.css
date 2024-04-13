@@ -36,13 +36,16 @@ nav.menu {
     padding-left: calc(5px + (15 - 5) * ((100vw - 800px) / (1920 - 800)));;
     padding-bottom: 20px;
     cursor: pointer;
+    color: whitesmoke;
+
     font-weight: 400;
     letter-spacing: 0.04em;
     font-size: calc(13px + (14 - 13) * ((100vw - 800px) / (1920 - 800)));
 }
 
 .menu ul li .arrow_right {
-    border: solid rgb(var(--text));
+    /*border: solid rgb(var(--text));*/
+    border: solid whitesmoke;
     border-width: 0 2px 2px 0;
     display: inline-block;
     padding: 2px;
@@ -87,17 +90,19 @@ nav.menu {
 
 .menu ul li:hover > label span {
     color: rgb(var(--red));
+    background-color: var(--background-dark);
 }
 
-.menu ul li:hover {
+.menu ul li:hover > a {
     background-color: var(--background-dark);
+    color: rgb(var(--red));
 }
 
 .menu ul li ul li {
     background-color: var(--background-dark);
     overflow: hidden;
     padding: 0;
-    border-top: 1px solid rgba(var(--text, .8));
+    border-bottom: 1px solid rgba(var(--text, .8));
 }
 
 .menu ul li ul li a {
@@ -173,6 +178,7 @@ nav.menu {
         margin-left: 20px;
         height: 100%;
         font-size: 16px;
+        color: rgb(var(--text));
     }
 
     .menu ul li ul {
