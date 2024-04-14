@@ -1,10 +1,10 @@
 'use client';
 
 import React, { KeyboardEvent, useRef } from 'react';
+import { useRouter } from 'next/navigation';
+import { GoSearch } from 'react-icons/go';
 
 import css from './SearchForm.module.css';
-import { GoSearch } from 'react-icons/go';
-import { useRouter } from 'next/navigation';
 
 const SearchForm = () => {
     const router = useRouter();

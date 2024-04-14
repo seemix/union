@@ -9,25 +9,23 @@ import css from './Header.module.css';
 
 const Header = () => {
     return (
-        <>
-            <header className={css.header_wrapper}>
+        <header>
+            <div className={css.header_top}>
+                <h1> союз церквей <span className={css.red_text}> евангельских христиан-баптистов </span>молдовы </h1>
+                <div className={css.social_wrapper}>
+                    <Link href={''}> <FaFacebookF size={'1.3em'}/></Link>
+                    <Link href={''}> <FaInstagram size={'1.4em'}/></Link>
+                    <Link href={''}> <FaYoutube size={'1.5em'}/></Link>
+                </div>
+            </div>
+            <div className={css.header_wrapper}>
                 <div className={css.logo_wrapper}>
                     <Image src={logo.src} alt={'logo'} layout={'fill'} objectFit={'cover'}/>
                 </div>
-                <h1>
-                    СОЮЗ ЦЕРКВЕЙ
-                    <span className={css.red_text}>евангельских христиан-баптистов</span>
-                    МОЛДОВЫ
-                </h1>
-                <div className={css.social_wrapper}>
-                    <Link href={''}> <FaFacebookF size={'1.6em'}/></Link>
-                    <Link href={''}> <FaInstagram size={'1.7em'}/></Link>
-                    <Link href={''}> <FaYoutube size={'1.9em'}/></Link>
-                </div>
                 <SearchForm/>
                 <BurgerMenuButton/>
-            </header>
-        </>
+            </div>
+        </header>
     );
 };
 

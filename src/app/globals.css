@@ -19,7 +19,7 @@ a:hover {
 
 :root {
     --background-light: #fafafa;
-    --background-dark: #f0f0f0;
+    --background-dark:   #f0f0f0;;
     font-family: 'Roboto Slab', sans-serif;
     --text: 45, 45, 45;
     --gray: 68, 68, 68;

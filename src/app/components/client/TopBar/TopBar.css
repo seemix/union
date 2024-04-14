@@ -25,9 +25,8 @@
 }
 .scroll {
     /*background-color: var(--background-dark);*/
-    border-bottom: 20px solid rgb(var(--red));
+    /*border-bottom: 20px solid rgb(var(--red));*/
 }
-
 
 .opened_menu {
     right: 0;
@@ -40,7 +39,7 @@
     .top_bar {
         position: fixed;
         width: auto;
-        border: 1px solid rgb(var(--text));
+        border-left: 1px solid rgb(var(--text));
         right: -100%;
         flex-direction: column;
     }
