@@ -22,7 +22,7 @@
 
 .label {
     position: absolute;
-    top: 0;
+    top: 5px;
     right: 0;
     padding: 10px;
     background-color: rgb(var(--red));

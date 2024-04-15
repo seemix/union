@@ -31,6 +31,7 @@ const SmallNewsSwiper = ({ slides, caption = '' }: { slides: IMappedCategoryPost
                     <div style={{
                         width: '100%',
                         height: '100%',
+                        borderRadius: '4px',
                         backgroundPosition: 'center',
                         backgroundSize: 'cover',
                         backgroundImage: `url(${slide.image})`

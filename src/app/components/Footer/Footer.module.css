@@ -6,5 +6,7 @@
     color: var(--background-dark);
     display: flex;
     justify-content: center;
+    gap: 30px;
     padding: 20px;
+    font-size: 14px;
 }
