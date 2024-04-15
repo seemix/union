@@ -366,7 +366,10 @@ const bibleArray: string[] = [
     'Откр. 20, 21, 22',
 ];
 const sequenceNumberOfCurrentDay = (date: Date): number => {
-    return Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+    const startOfYear = new Date(date.getFullYear(), 0, 0);
+    const diff = date.getTime() - startOfYear.getTime();
+    const oneDay = 1000 * 60 * 60 * 24;
+    return Math.floor(diff / oneDay);
 };
 const currentDate = new Date();
 const dayNumber = sequenceNumberOfCurrentDay(currentDate);
