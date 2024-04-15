@@ -25,9 +25,9 @@
     top: 5px;
     right: 0;
     padding: 10px;
-    background-color: rgb(var(--red));
+    background-color: rgb(var(--green));
     color: whitesmoke;
-    font-size: 14px;
+    font-size: 13px;
     text-transform: uppercase;
 }
 

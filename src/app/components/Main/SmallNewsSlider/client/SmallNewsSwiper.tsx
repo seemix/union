@@ -21,7 +21,7 @@ const SmallNewsSwiper = ({ slides, caption = '' }: { slides: IMappedCategoryPost
         autoplay: {
             delay: 7000,
         },
-        effect: 'slide',
+        effect: 'fade',
         modules: [Autoplay, EffectFade, Navigation, Pagination],
     };
     return (

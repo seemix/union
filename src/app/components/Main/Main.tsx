@@ -11,20 +11,22 @@ const Main = async () => {
     const newsInWorld = await getSlides(27, 5, 0);
     const prayerRelay = await getSlides(203, 1, 0);
     return (
-        <div>
-        <div className={css.main_container}>
-            <div className={css.big}>
-                <NewsSwiper slides={news}/>
+        <div className={css.main_wrapper}>
+            <div className={css.main_container}>
+                <div className={css.big}>
+                    <NewsSwiper slides={news}/>
+                </div>
+                {/*<div className={css.small_wrapper}>*/}
+                    <div className={css.small1}>
+                        <SmallNewsSwiper slides={newsInWorld} caption={'Христиане в мире'}/>
+                    </div>
+                    <div className={css.small2}>
+                        <SmallNewsSwiper slides={prayerRelay} caption={''}/>
+                        {/*<img src="" alt="glgf" width={'100%'}/>*/}
+                    </div>
+                {/*</div>*/}
             </div>
-            <div className={css.small1}>
-                <SmallNewsSwiper slides={newsInWorld} caption={'Христиане в мире'}/>
-            </div>
-            <div className={css.small2}>
-                <SmallNewsSwiper slides={prayerRelay} caption={''}/>
-                {/*<img src="" alt="glgf" width={'100%'}/>*/}
-            </div>
-        </div>
-            <BottomWidgets />
+            <BottomWidgets/>
         </div>
     );
 };

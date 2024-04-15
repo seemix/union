@@ -19,12 +19,13 @@
 }
 
 .widget_card svg {
-    color: rgb(var(--gray));
+    color: rgb(var(--green));
 }
 
 .widget_card h3 {
     font-size: 22px;
     margin-top: 20px;
+    text-align: center;
 }
 
 .link {
