@@ -1,10 +1,10 @@
 import React from 'react';
 
-import css from './Main.module.css';
 import { SmallNewsSwiper } from '@/app/components';
 import { getSlides } from '@/app/components/Main/getSlides';
 import NewsSwiper from '@/app/components/Main/NewsSlider/client/NewsSwiper';
 import BottomWidgets from '@/app/components/Main/BottomWidgets/BottomWidgets';
+import css from './Main.module.css';
 
 const Main = async () => {
     const news = await getSlides(17, 5, 50);
