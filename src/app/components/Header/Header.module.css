@@ -56,10 +56,11 @@
 
 @media screen and (max-width: 800px) {
     .header_top h1 {
-        display: none;
+        font-size: 14px;
+        text-align: left;
     }
     .header_top {
-        justify-content: right;
+        /*justify-content: right;*/
         /*padding: 10px;*/
     }
 }

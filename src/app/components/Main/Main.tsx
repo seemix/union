@@ -21,7 +21,7 @@ const Main = async () => {
                         <SmallNewsSwiper slides={newsInWorld} caption={'Христиане в мире'}/>
                     </div>
                     <div className={css.small2}>
-                        <SmallNewsSwiper slides={prayerRelay} caption={''}/>
+                        <SmallNewsSwiper slides={prayerRelay} caption={'молитвенная эстафета'}/>
                         {/*<img src="" alt="glgf" width={'100%'}/>*/}
                     </div>
                 {/*</div>*/}
