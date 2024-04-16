@@ -19,7 +19,7 @@
 }
 
 .widget_card svg {
-    color: rgb(var(--green));
+    /*color: rgb(var(--green));*/
 }
 
 .widget_card h3 {

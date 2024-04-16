@@ -26,6 +26,9 @@ a:hover {
     --blue: 204 204 204;
     --red: 224, 64, 64;
     --green: 45, 181, 183;
+    --green-hex: #2db5b7;
+    --red-hex: #E04040FF;
+    --gray-hex: #444;
     --dark_blue: 3, 3, 77;
     color: rgb(var(--text));
 }
