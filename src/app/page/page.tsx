@@ -5,7 +5,11 @@ import { contentTransformer, imageParser } from '@/app/common';
 import { pageMapper } from '@/app/page/mapper';
 
 const Page = async ({ searchParams }: { searchParams: { id: string } }) => {
-    const response = await fetch(baseURL + 'pages/' + searchParams.id);
+    const response = await fetch(baseURL + 'pages/' + searchParams.id, {
+        next: {
+            revalidate: 60
+        }
+    });
     const rawPage = await response.json();
     const page = pageMapper(rawPage);
     const slides = imageParser(page.content);
