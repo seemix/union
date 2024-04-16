@@ -1,15 +1,17 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { IoMdClose } from 'react-icons/io';
 
 import { useAppContext } from '@/app/context/context';
 import './TopBar.css';
 import { SocialIcons } from '@/app/components';
+import { useOutsideClick } from '@/app/hooks/outsideClick';
 
 const TopBar = ({ children }: { children: React.ReactNode }) => {
     const { state, setState } = useAppContext();
     const [classes, setClasses] = useState<string[]>(['']);
+    const menuRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (state.openMenu) {
@@ -18,26 +20,28 @@ const TopBar = ({ children }: { children: React.ReactNode }) => {
             setClasses(classes => classes.filter(item => item !== 'opened_menu'));
         }
     }, [state]);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 80) {
-                setClasses(classes => !classes.includes('scroll') ? [...classes, 'scroll'] : [...classes]);
-            } else {
-                setClasses(classes => classes.filter(item => item !== 'scroll'));
-            }
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
+    const closeMenu = () => {
+        setState({ openMenu: false });
+    };
+    // useEffect(() => {
+    //     const handleScroll = () => {
+    //         if (window.scrollY > 80) {
+    //             setClasses(classes => !classes.includes('scroll') ? [...classes, 'scroll'] : [...classes]);
+    //         } else {
+    //             setClasses(classes => classes.filter(item => item !== 'scroll'));
+    //         }
+    //     };
+    //     window.addEventListener('scroll', handleScroll);
+    //     return () => {
+    //         window.removeEventListener('scroll', handleScroll);
+    //     };
+    // }, []);
+    useOutsideClick(menuRef, closeMenu);
     return (
-        <div className={'top_bar ' + classes.join(' ')}>
+        <div className={'top_bar ' + classes.join(' ')} ref={menuRef}>
             <div className={'close_button_wrapper'}>
                 <SocialIcons/>
-                <button onClick={() => setState(state.openMenu = false)}><IoMdClose size={'2.9em'}/></button>
+                <button onClick={closeMenu}><IoMdClose size={'2.9em'}/></button>
             </div>
             {children}
         </div>

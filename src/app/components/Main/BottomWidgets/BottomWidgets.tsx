@@ -2,10 +2,10 @@ import React from 'react';
 import { LuChurch } from 'react-icons/lu';
 import { LiaBibleSolid } from 'react-icons/lia';
 import { MdOutlineOnlinePrediction } from 'react-icons/md';
-
-import css from './BottomWidgets.module.css';
-import { biblePassage } from '@/app/components/Main/bible';
 import Link from 'next/link';
+
+import { biblePassage } from '@/app/components/Main/bible';
+import css from './BottomWidgets.module.css';
 
 const BottomWidgets = () => {
     const passage = biblePassage();
@@ -13,7 +13,7 @@ const BottomWidgets = () => {
         <div className={css.widgets_wrapper}>
             <div className={css.widget_card}>
                 <Link href={'/page?id=111876'} className={css.link}>
-                    <LuChurch size={'3em'} color={'var(--green-hex)'}/>
+                    <LuChurch size={'3em'} color={'var(--gray-hex)'}/>
                     <h3>Контакты церквей</h3>
                 </Link>
             </div>

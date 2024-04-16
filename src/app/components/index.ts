@@ -8,6 +8,7 @@ export { default as DateViews } from './DateViews/DateViews';
 export { default as Footer } from './Footer/Footer';
 export { default as Header } from './Header/Header';
 export { default as Loader } from './Loader/Loader';
+export { default as Label } from './Label/Label';
 export { default as LightBox } from './client/LightBox/LightBox';
 export { default as Main } from './Main/Main';
 export { default as MenuItem } from './Menu/MenuItem';

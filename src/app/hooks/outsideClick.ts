@@ -1,17 +1,17 @@
-// import { useEffect, useRef } from 'react';
-//
-// export const useOutsideClick = (callback) => {
-//     const ref = useRef();
-//     useEffect(() => {
-//         const handleClick = (event: MouseEvent) => {
-//             if (ref.current && !ref.current?.contains(event.target)) {
-//                 callback();
-//             }
-//         };
-//         document.addEventListener('click', handleClick, true);
-//         return () => {
-//             document.removeEventListener('click', handleClick, true);
-//         };
-//     }, [ref, callback]);
-//     return ref;
-// };
+import { useEffect } from 'react';
+
+export const useOutsideClick = (ref: React.RefObject<HTMLElement>, callback: () => void) => {
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (ref.current && !ref.current.contains(event.target as Node)) {
+                callback();
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [ref, callback]);
+};

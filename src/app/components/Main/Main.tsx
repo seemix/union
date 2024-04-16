@@ -15,10 +15,10 @@ const Main = async () => {
                     <NewsSwiper slides={news}/>
                 </div>
                     <div className={css.small1}>
-                        <SmallNewsSwiper slides={newsInWorld} caption={'Христиане в мире'}/>
+                        <SmallNewsSwiper slides={newsInWorld} caption={'Христиане в мире'} color={'green'}/>
                     </div>
                     <div className={css.small2}>
-                        <SmallNewsSwiper slides={prayerRelay} caption={'молитвенная эстафета'}/>
+                        <SmallNewsSwiper slides={prayerRelay} caption={'молитвенная эстафета'} color={'red'}/>
                     </div>
             </div>
             <BottomWidgets/>

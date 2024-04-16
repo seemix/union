@@ -1,0 +1,27 @@
+.label {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    padding: 10px;
+    color: whitesmoke;
+    text-transform: uppercase;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+.big_text {
+    font-size: calc(14px + (16 - 14) * ((100vw - 800px) / (1920 - 800)));
+}
+
+.small_text {
+    font-size: calc(12px + (14 - 12) * ((100vw - 800px) / (1920 - 800)));
+
+}
+
+.background_red {
+    background-color: var(--red-hex);
+}
+
+.background_green {
+    background-color: var(--green-hex);
+}

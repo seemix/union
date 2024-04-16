@@ -41,16 +41,5 @@
 }
 
 .excerpt p {
-    font-size: calc(16px + (18 - 16) * ((100vw - 800px) / (1920 - 800)));
-}
-
-.label {
-    position: absolute;
-    top: 10px;
-    right: 0;
-    padding: 10px;
-    background-color: rgb(var(--red));
-    color: whitesmoke;
-    font-size: calc(14px + (16 - 14) * ((100vw - 800px) / (1920 - 800)));
-    text-transform: uppercase;
+    font-size: calc(16px + (17 - 16) * ((100vw - 800px) / (1920 - 800)));
 }

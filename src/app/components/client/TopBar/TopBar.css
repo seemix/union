@@ -23,6 +23,7 @@
     width: 165px;
     transition: all .5s ease-in-out;
 }
+
 .scroll {
     /*background-color: var(--background-dark);*/
     /*border-bottom: 20px solid rgb(var(--red));*/
@@ -35,6 +36,7 @@
 .close_button_wrapper {
     display: none;
 }
+
 @media screen and (max-width: 800px) {
     .top_bar {
         position: fixed;
@@ -56,12 +58,18 @@
         border: 0;
         cursor: pointer;
     }
+
+    .close_button_wrapper button:hover svg {
+        color: rgb(var(--red));
+    }
 }
+
 .scroll {
     /*background-color: var(--background-dark);*/
     border-bottom: 2px solid rgb(var(--background-dark));
     /*color: rgb(var(--text));*/
 }
+
 .opened_menu {
     right: 0;
 }

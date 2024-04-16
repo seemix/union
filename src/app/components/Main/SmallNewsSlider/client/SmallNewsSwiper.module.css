@@ -4,6 +4,7 @@
     /*max-width: 600px;*/
     height: 100%;
 }
+
 .single_slide {
     position: relative;
 }
@@ -13,27 +14,16 @@
     position: absolute;
     bottom: -20px;
     left: 0;
-    background-color: rgba(255,255,255,.8);
+    background-color: rgba(255, 255, 255, .8);
     padding: 0;
     width: 100%;
     text-align: center;
     transition: all .3s ease-in-out .5s;
 }
 
-.label {
-    position: absolute;
-    top: 5px;
-    right: 0;
-    padding: 10px;
-    background-color: rgb(var(--green));
-    color: whitesmoke;
-    font-size: 13px;
-    text-transform: uppercase;
-}
 
 @media screen and (max-width: 600px) {
     .slider_wrapper {
-        width: 100%
-    ;
+        width: 100%;
     }
 }
