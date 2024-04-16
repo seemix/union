@@ -164,3 +164,11 @@ ul, ol, dl {
 .swiper-button-prev {
     color: rgb(var(--red)) !important;
 }
+
+/*clean classes*/
+/*#faq ul li {*/
+/*    display: none;*/
+/*}*/
+/*#faq ul input {*/
+/*    display: none;*/
+/*}*/

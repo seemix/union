@@ -6,7 +6,6 @@ import { DateViews } from '@/app/components';
 import css from './PostCard.module.css';
 
 const PostCard = (post: IMappedCategoryPost) => {
-
     return (
         <div className={css.card}>
             <div className={css.card_picture} style={{ backgroundImage: `url(${post.image})` }}/>
