@@ -5,6 +5,7 @@ import { IoMdClose } from 'react-icons/io';
 
 import { useAppContext } from '@/app/context/context';
 import './TopBar.css';
+import { SocialIcons } from '@/app/components';
 
 const TopBar = ({ children }: { children: React.ReactNode }) => {
     const { state, setState } = useAppContext();
@@ -33,9 +34,9 @@ const TopBar = ({ children }: { children: React.ReactNode }) => {
     }, []);
 
     return (
-        // <div className={!scroll ? css.top_bar : css.top_bar + ' ' + css.scroll}>
         <div className={'top_bar ' + classes.join(' ')}>
             <div className={'close_button_wrapper'}>
+                <SocialIcons/>
                 <button onClick={() => setState(state.openMenu = false)}><IoMdClose size={'2.9em'}/></button>
             </div>
             {children}

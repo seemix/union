@@ -28,15 +28,7 @@ const SmallNewsSwiper = ({ slides, caption = '' }: { slides: IMappedCategoryPost
         <Swiper className={css.slider_wrapper} {...swiperSettings} >
             {slides.map(slide => <SwiperSlide key={slide.id} className={css.single_slide}>
                 <Link href={'post?id=' + slide.id}>
-                    <div style={{
-                        width: '100%',
-                        height: '100%',
-                        borderRadius: '4px',
-                        backgroundPosition: 'center',
-                        backgroundSize: 'cover',
-                        backgroundImage: `url(${slide.image})`
-                    }}></div>
-                    {/*<img src={slide.image} alt={slide.title} width={'100%'}/>*/}
+                    <div className={'slide_picture'} style={{ backgroundImage: `url(${slide.image})` }}/>
                     {caption && <span className={css.label}>{caption}</span>}
                     <h4 className={css.caption}>{slide.title}</h4>
                 </Link>

@@ -16,13 +16,7 @@
 }
 
 .social_wrapper {
-    display: flex;
-    gap: calc(20px + (25 - 20) * ((100vw - 320px) / (1920 - 320)));
-    padding: 10px;
-}
-
-.social_wrapper a:hover {
-    color: rgb(var(--red));
+    display: block;
 }
 
 .red_text {

@@ -19,7 +19,7 @@ a:hover {
 
 :root {
     --background-light: #fafafa;
-    --background-dark:   #f0f0f0;;
+    --background-dark: #f0f0f0;;
     font-family: 'Roboto Slab', sans-serif;
     --text: 45, 45, 45;
     --gray: 68, 68, 68;
@@ -92,6 +92,14 @@ ul, ol, dl {
 .main li {
     font-family: 'Roboto Slab', sans-serif;
     line-height: 1.8em;
+}
+
+.slide_picture {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    background-position: center;
+    background-size: cover;
 }
 
 /*WP content classes*/

@@ -1,5 +1,6 @@
 export { default as AnimatedComponent } from './client/AnimatedComponent/AnimatedComponent';
 export { default as ArrowUp } from './client/ArrowUp/ArrowUp';
+export { default as BottomWidgets } from './Main/BottomWidgets/BottomWidgets';
 export { default as BurgerMenuButton } from './client/BurgerMenuButton/BurgerMenuButton';
 export { default as CategoryName } from './CategoryName/CategoryName';
 export { default as ContentRender } from './client/ContentRender/ContentRender';
@@ -11,8 +12,10 @@ export { default as LightBox } from './client/LightBox/LightBox';
 export { default as Main } from './Main/Main';
 export { default as MenuItem } from './Menu/MenuItem';
 export { default as Menu } from './Menu/Menu';
+export { default as NewsSwiper } from './Main/NewsSlider/client/NewsSwiper';
 export { default as Pagination } from './client/Pagination/Pagination';
 export { default as PaginationButtons } from './client/Pagination/PaginationButtons';
 export { default as PostCard } from './PostCard/PostCard';
 export { default as SearchForm } from './client/SearchForm/SearchForm';
 export { default as SmallNewsSwiper } from './Main/SmallNewsSlider/client/SmallNewsSwiper';
+export { default as SocialIcons } from './SocialIcons/SocialIcons';
