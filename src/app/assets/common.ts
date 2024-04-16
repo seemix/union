@@ -1,3 +1,4 @@
+export const frontendUrl = 'https://bunion.vercel.app/';
 export const graphqlUrl = 'https://baptist.org.md/ru/index.php?graphql';
 export const baseURL = 'https://baptist.org.md/ru/?rest_route=/wp/v2/';
 export const faceBookUrl = 'https://www.facebook.com/baptist.md';
