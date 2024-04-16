@@ -1,9 +1,8 @@
 .widgets_wrapper {
     display: flex;
-    gap: 20px;
+    gap: calc(10px + (20 - 10) * ((100vw - 800px) / (1920 - 800)));
     width: 100%;
     justify-content: center;
-    /*border: 1px solid #ddd;*/
     margin-top: 20px;
 }
 
@@ -16,10 +15,6 @@
     align-items: center;
     flex-direction: column;
     width: 250px;
-}
-
-.widget_card svg {
-    /*color: rgb(var(--green));*/
 }
 
 .widget_card h3 {
