@@ -23,7 +23,7 @@
 }
 .footer_top p {
     margin-bottom: 20px;
-    font-size: calc(13px + (13 - 12) * ((100vw - 320px) / (1920 - 320)));;
+    font-size: 12px;
 }
 .footer_top p:before {
     content: "> ";
