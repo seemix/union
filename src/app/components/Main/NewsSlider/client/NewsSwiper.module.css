@@ -37,7 +37,7 @@
     left: 0;
     padding: 30px;
     background-color: rgba(255, 255, 255, .85);
-    transition: all 0.5s ease-in-out .3s;
+    transition: all .5s ease-in-out .4s;
 }
 
 .excerpt p {
