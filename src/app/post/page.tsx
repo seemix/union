@@ -4,13 +4,17 @@ import Link from 'next/link';
 import { baseURL } from '@/app/assets/common';
 import { IRawPost } from '@/app/post/types';
 import { imageParser } from '@/app/common/functions/imageParser';
-import { contentTransformer} from '@/app/common/functions/contentTransformer';
+import { contentTransformer } from '@/app/common/functions/contentTransformer';
 import { ContentRender, DateViews } from '@/app/components';
 import { postMapper } from '@/app/post/mapper';
 import css from './post.module.css';
 
 const Page = async ({ searchParams }: { searchParams: { id: string, link: string } }) => {
-    const response = await fetch(baseURL + 'posts/' + searchParams.id + '&_embed=wp:term');
+    const response = await fetch(baseURL + 'posts/' + searchParams.id + '&_embed=wp:term', {
+        next: {
+            revalidate: 30
+        }
+    });
     const rawPost: IRawPost = await response.json();
     const post = postMapper(rawPost);
     const slides = imageParser(post.content);
