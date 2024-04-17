@@ -2,7 +2,6 @@
     width: 320px;
     padding: 1em;
     position: relative;
-    /*margin-top: 10px;*/
 }
 
 .search {
@@ -17,7 +16,7 @@
     border: 2px solid rgb(var(--red));
     height: var(--size);
     margin-left: auto;
-    padding: 3px;
+    padding: 2px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -28,7 +27,7 @@
 
 .search__input {
     border: 0;
-    padding: 0.25em 1em;
+    padding: .2em .7em;
     flex-grow: 1;
     outline: 0;
     z-index: 2;
@@ -51,7 +50,6 @@
     cursor: pointer;
     border-radius: 5px;
     transition: background 200ms ease-out;
-    /*width: calc(var(--size) - 10px);*/
     height: calc(var(--size) - 10px);
     background: rgb(var(--red));
     color: white;
@@ -60,7 +58,6 @@
 
 .search:focus-within {
     border: 2px solid rgb(var(--red));
-    /*width: 100%;*/
 }
 
 .search:focus-within .search__input {
