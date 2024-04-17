@@ -12,7 +12,7 @@ import css from './post.module.css';
 const Page = async ({ searchParams }: { searchParams: { id: string, link: string } }) => {
     const response = await fetch(baseURL + 'posts/' + searchParams.id + '&_embed=wp:term', {
         next: {
-            revalidate: 30
+            revalidate: 10
         }
     });
     const rawPost: IRawPost = await response.json();
