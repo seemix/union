@@ -24,10 +24,6 @@
     transition: all .5s ease-in-out;
 }
 
-.scroll {
-    /*background-color: var(--background-dark);*/
-    /*border-bottom: 20px solid rgb(var(--red));*/
-}
 
 .opened_menu {
     right: 0;
@@ -40,7 +36,7 @@
 @media screen and (max-width: 800px) {
     .top_bar {
         position: fixed;
-        width: auto;
+        width: 60%;
         border-left: 1px solid rgb(var(--text));
         right: -100%;
         flex-direction: column;

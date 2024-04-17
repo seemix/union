@@ -6,8 +6,8 @@ import { AnimatedComponent, Pagination, PostCard } from '@/app/components';
 import { blockAppearAnimation } from '@/app/category/animation';
 import css from './page.module.css';
 
-const Search = async ({ searchParams }: { searchParams: { q: string, page: string } }) => {
-    let queryString = 'search&_embed=self&search=' + searchParams.q + '&per_page=8';
+const Search = async ({ searchParams }: { searchParams: { query: string, page: string } }) => {
+    let queryString = 'search&_embed=self&search=' + searchParams.query + '&per_page=8';
     if (searchParams.page) queryString += '&page=' + searchParams.page;
     const response = await fetch(baseURL + queryString);
     const pages = Number(response.headers.get('X-WP-TotalPages'));
@@ -15,7 +15,7 @@ const Search = async ({ searchParams }: { searchParams: { q: string, page: strin
     const posts: IMappedCategoryPost[] = mappedSearchResults(data);
     return (
         <div className={'main'}>
-            <h2>результаты поиска  <span className={css.red_text}> '{searchParams.q}' </span></h2>
+            <h2>результаты поиска  <span className={css.red_text}> '{searchParams.query}' </span></h2>
             <div className={css.cards_wrapper}>
                 {posts.length > 0 && posts.map(post =>
                     <AnimatedComponent

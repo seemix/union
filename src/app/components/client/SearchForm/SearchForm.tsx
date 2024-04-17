@@ -12,7 +12,7 @@ const SearchForm = () => {
 
     const handleSearch = () => {
         if (searchInput.current?.value && searchInput.current?.value.length > 2) {
-            router.push('/search?q=' + searchInput.current?.value);
+            router.push('/search?query=' + searchInput.current?.value);
         }
     };
     const handleInput = (e: KeyboardEvent<HTMLInputElement>) => {

@@ -1,7 +1,7 @@
 .card {
     background-color: #fff;
     box-shadow: 0 6px 26px rgba(0, 0, 0, .15);
-    width: calc(320px + (450 - 320) * ((100vw - 360px) / (1920 - 360)));
+    width: calc(360px + (450 - 360) * ((100vw - 360px) / (1920 - 360)));
     position: relative;
     overflow: hidden;
     border-radius: 4px;
