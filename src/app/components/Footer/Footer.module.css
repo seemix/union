@@ -23,7 +23,7 @@
 }
 .footer_top p {
     margin-bottom: 20px;
-    font-size: calc(12px + (14 - 12) * ((100vw - 320px) / (1920 - 320)));;
+    font-size: calc(13px + (13 - 12) * ((100vw - 320px) / (1920 - 320)));;
 }
 .footer_top p:before {
     content: "> ";
@@ -44,6 +44,7 @@
     font-family: 'Oswald', sans-serif;
     letter-spacing: .03em;
     display: flex;
+    gap: 10px;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
