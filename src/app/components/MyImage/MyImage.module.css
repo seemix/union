@@ -5,3 +5,11 @@
     border-radius: 4px 4px 0 0;
     position: relative;
 }
+.picture {
+    transition: opacity 2s;
+    object-fit: cover;
+    object-position: center;
+}
+.opacity0 {
+    opacity: 0;
+}

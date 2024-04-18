@@ -36,7 +36,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className={css.footer_bottom}>
-                <small>copyright c 2024 BAPTIST UNION OF MOLDOVA</small>
+                <small>copyright © 2024 BAPTIST UNION OF MOLDOVA</small>
                 <SocialIcons/>
             </div>
         </footer>
