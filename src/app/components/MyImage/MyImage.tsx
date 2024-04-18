@@ -17,16 +17,16 @@ const MyImage = async ({ img }: { img: string }) => {
 
     };
     const buffer = await fetch(img).then(async (res) => {
-     //   return Buffer.from(await res.arrayBuffer());
+       return Buffer.from(await res.arrayBuffer());
     });
-  //  const { base64 } = await getPlaiceholder(buffer);
+   const { base64 } = await getPlaiceholder(buffer);
     return (
         <div className={css.picture_wrapper}>
             {<Image src={await checkRemoteImage(img) as string} alt={img} fill
                     className={`${css.picture}`}
                     sizes={'(max-width: 1920px) 25vw'}
-                  //  placeholder={'blur'}
-                    //blurDataURL={base64}
+                   placeholder={'blur'}
+                    blurDataURL={base64}
             />}
         </div>
     );
