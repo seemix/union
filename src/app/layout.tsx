@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import './globals.css';
 import { ArrowUp, Footer, Header, Menu } from '@/app/components';
 import TopBar from '@/app/components/client/TopBar/TopBar';
 import AppWrapper from '@/app/context/context';
+import './globals.css';
 
 // const inter = Inter({ subsets: ['latin'] });
 

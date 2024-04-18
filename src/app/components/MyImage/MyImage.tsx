@@ -20,7 +20,7 @@ const MyImage = async ({ img }: { img: string }) => {
             {await checkRemoteImage(img) ? <Image src={img} alt={img} fill
                     //placeholder={'blur'}
                     // blurDataURL={await getBase64(img)}
-                                                  style={{ objectFit: 'cover' }}
+                                                  style={{ objectFit: 'cover', objectPosition: 'center' }}
 
                 /> :
                 <Image src={fallBackImage} alt={img} fill placeholder={'blur'}/>}
