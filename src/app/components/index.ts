@@ -13,6 +13,7 @@ export { default as LightBox } from './client/LightBox/LightBox';
 export { default as Main } from './Main/Main';
 export { default as MenuItem } from './Menu/MenuItem';
 export { default as Menu } from './Menu/Menu';
+export { default as MyImage } from './MyImage/MyImage';
 export { default as NewsSwiper } from './Main/NewsSlider/client/NewsSwiper';
 export { default as Pagination } from './client/Pagination/Pagination';
 export { default as PaginationButtons } from './client/Pagination/PaginationButtons';

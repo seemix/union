@@ -11,6 +11,7 @@ export const mappedCategoryPosts = (posts: IRawPost[], excerptLength = 18): IMap
             date: dateTransformer(post.date),
             views: post.views,
             image: post.fimg_url,
+                //.replace(/\.(\w+)$/, '-520x260.$1'),
             excerpt: contentTransformer(post.excerpt.rendered)
                 .replace(/<[^>]*>/g, '')
                 .split(/[.!?]/)

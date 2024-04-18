@@ -15,7 +15,7 @@ const Header = () => {
             </div>
             <div className={css.header_wrapper}>
                 <div className={css.logo_wrapper}>
-                    <Image src={logo.src} alt={'logo'} layout={'fill'} objectFit={'cover'}/>
+                    <Image src={logo.src} alt={'logo'} fill/>
                 </div>
                 <SearchForm/>
                 <BurgerMenuButton/>

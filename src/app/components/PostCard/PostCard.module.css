@@ -42,7 +42,6 @@
 .card_picture {
     width: 100%;
     height: calc(170px + (235 - 170) * ((100vw - 360px) / (1920 - 360)));
-    /*object-fit: cover;*/
     display: flex;
     border-radius: 4px 4px 0 0;
     flex-direction: column;
@@ -51,8 +50,7 @@
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
-    transition: all 0.4s ease-in-out 0s;
-    background-image: url("https://baptist.org.md/ru/wp-content/uploads/2021/10/cropped-cropped-cropped-1234-1.png");
+    transition: all 0.4s ease-in-out 0s;    /*background-image: url("https://baptist.org.md/ru/wp-content/uploads/2021/10/cropped-cropped-cropped-1234-1.png");*/
 }
 
 .picture_overlay h3 {
