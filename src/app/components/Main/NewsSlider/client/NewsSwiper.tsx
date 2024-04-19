@@ -3,22 +3,25 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules';
+
+// import 'swiper/components/lazy/lazy';
 import Link from 'next/link';
 import 'swiper/css';
 import 'swiper/css/navigation';
 // import 'swiper/css';
 import 'swiper/css/effect-fade';
 // import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import Image from 'next/image';
 
+import 'swiper/css/pagination';
 import { IMappedCategoryPost } from '@/app/category/types';
 import { Label } from '@/app/components';
 import css from './NewsSwiper.module.css';
-import Image from 'next/image';
 
 const NewsSwiper = ({ slides }: { slides: IMappedCategoryPost[] }) => {
     const swiperSettings = {
         speed: 1500,
+        lazy: true,
         spaceBetween: 0,
         slidesPerView: 1,
         autoplay: {
@@ -40,7 +43,7 @@ const NewsSwiper = ({ slides }: { slides: IMappedCategoryPost[] }) => {
                     <Link href={'post?id=' + slide.id}>
                         <div className={'slide_picture'}>
                             <Image src={slide.image as string} alt={slide.image as string} fill
-                                   className={css.picture}
+                                   className={'swiper-lazy'+ css.picture}
                                    sizes={'(max-width: 1920px) 60vw, (max-width: 800px) 50vw'}/>
                         </div>
                         <Label text={'новости братства'} size={'big'} color={'red'}/>
