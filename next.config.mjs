@@ -1,10 +1,12 @@
-/** @type {import('next').NextConfig} */
-// import withPlaiceholder from '@plaiceholder/next';
+// @ts-check
 
-const nextConfig = {
+/**
+ * @type {import('next').NextConfig}
+ */
+const config = {
     images: {
-        domains: ['baptist.org.md']
-    }
+        domains: ["baptist.org.md"],
+    },
 };
 
-export default nextConfig;
+export default config;

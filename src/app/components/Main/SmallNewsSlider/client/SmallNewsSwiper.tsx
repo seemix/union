@@ -12,7 +12,7 @@ import 'swiper/css/effect-fade';
 import 'swiper/css/pagination';
 
 import { IMappedCategoryPost } from '@/app/category/types';
-import { Label } from '@/app/components';
+import { Label, MyImage } from '@/app/components';
 import css from './SmallNewsSwiper.module.css';
 
 const SmallNewsSwiper = ({ slides, caption = '', color = 'red' }: {
@@ -33,7 +33,7 @@ const SmallNewsSwiper = ({ slides, caption = '', color = 'red' }: {
         <Swiper className={css.slider_wrapper} {...swiperSettings} >
             {slides.map(slide => <SwiperSlide key={slide.id} className={css.single_slide}>
                 <Link href={'post?id=' + slide.id}>
-                    {/*<MyImage img={slide.image as string}/>*/}
+                    {/*<MyImage img={slide.image as string} />*/}
                     <div className={'slide_picture'} style={{ backgroundImage: `url(${slide.image})` }}/>
                     {caption && <Label text={caption} size={'small'} color={color}/>}
                     <h4 className={css.caption}>{slide.title}</h4>
