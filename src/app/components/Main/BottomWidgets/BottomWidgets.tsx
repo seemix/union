@@ -18,7 +18,7 @@ const BottomWidgets = () => {
                 </Link>
             </div>
             <div className={css.widget_card}>
-                <Link href={'page?id=11'} className={css.link}>
+                <Link href={''} className={css.link}>
                     <LiaBibleSolid size={'3em'} color={'var(--gray-hex)'}/>
                     <h3>Библия за год</h3>
                 </Link>
