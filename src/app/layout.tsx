@@ -20,7 +20,7 @@ export default function RootLayout({ children }: Readonly<{
         <AppWrapper>
             <Header/>
             <TopBar><Menu/></TopBar>
-            <main>{children}</main>
+            <main style={{ minHeight: '50vh' }}>{children}</main>
             <Footer/>
             <ArrowUp/>
         </AppWrapper>
