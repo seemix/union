@@ -16,6 +16,7 @@ import Image from 'next/image';
 import 'swiper/css/pagination';
 import { IMappedCategoryPost } from '@/app/category/types';
 import { Label } from '@/app/components';
+import preloadBackground from '@/app/assets/images/preload.webp';
 import css from './NewsSwiper.module.css';
 
 const NewsSwiper = ({ slides }: { slides: IMappedCategoryPost[] }) => {
@@ -44,6 +45,8 @@ const NewsSwiper = ({ slides }: { slides: IMappedCategoryPost[] }) => {
                         <div className={'slide_picture'}>
                             <Image src={slide.image as string} alt={slide.image as string} fill
                                    className={'swiper-lazy'+ css.picture}
+                                   placeholder={'blur'}
+                                   blurDataURL={preloadBackground.src}
                                    sizes={'(max-width: 1920px) 60vw, (max-width: 800px) 50vw'}/>
                         </div>
                         <Label text={'новости братства'} size={'big'} color={'red'}/>

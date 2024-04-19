@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 
 import fallBackImage from '../../assets/images/fallback.webp';
+import preloadBackground from '@/app/assets/images/preload.webp';
 import css from './MyImage.module.css';
 
 const MyImage = async ({ img }: { img: string }) => {
@@ -18,8 +19,8 @@ const MyImage = async ({ img }: { img: string }) => {
             {<Image src={await checkRemoteImage(img) as string} alt={img} fill
                     className={css.picture}
                     sizes={'(max-width: 1920px) 35vw'}
-                    //   placeholder={'blur'}
-                //  blurDataURL={String(getBase64FromUrl(img))}
+                    placeholder={'blur'}
+                    blurDataURL={preloadBackground.src}
             />}
         </div>
     );

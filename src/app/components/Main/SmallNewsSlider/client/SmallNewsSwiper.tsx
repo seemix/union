@@ -14,6 +14,7 @@ import 'swiper/css/pagination';
 import Image from 'next/image';
 import { IMappedCategoryPost } from '@/app/category/types';
 import { Label } from '@/app/components';
+import preloadBackground from '@/app/assets/images/preload.webp';
 import css from './SmallNewsSwiper.module.css';
 
 const SmallNewsSwiper = ({ slides, caption = '', color = 'red' }: {
@@ -39,6 +40,8 @@ const SmallNewsSwiper = ({ slides, caption = '', color = 'red' }: {
                         <Image src={slide.image as string} alt={slide.image as string} fill
                                style={{ objectFit: 'cover', objectPosition: 'center' }}
                                className={'swiper-lazy'}
+                               placeholder={'blur'}
+                               blurDataURL={preloadBackground.src}
                                sizes={'(max-width: 1920px) 30vw (max-width: 600px) 60vw'}/>
                     </div>
                     {caption && <Label text={caption} size={'small'} color={color}/>}
