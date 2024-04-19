@@ -14,6 +14,7 @@ import 'swiper/css/pagination';
 import { IMappedCategoryPost } from '@/app/category/types';
 import { Label } from '@/app/components';
 import css from './NewsSwiper.module.css';
+import Image from 'next/image';
 
 const NewsSwiper = ({ slides }: { slides: IMappedCategoryPost[] }) => {
     const swiperSettings = {
@@ -37,8 +38,11 @@ const NewsSwiper = ({ slides }: { slides: IMappedCategoryPost[] }) => {
             {
                 slides.map(slide => <SwiperSlide key={slide.id} className={css.single_slide}>
                     <Link href={'post?id=' + slide.id}>
-                        <div className={'slide_picture'} style={{ backgroundImage: `url(${slide.image})` }}/>
-                        {/*<MyImage img={slide.image as string}/>*/}
+                        <div className={'slide_picture'}>
+                            <Image src={slide.image as string} alt={slide.image as string} fill
+                                   style={{ objectFit: 'cover', objectPosition: 'center' }}
+                                   sizes={'(max-width: 1920px) 60vw, (max-width: 800px) 50vw'}/>
+                        </div>
                         <Label text={'новости братства'} size={'big'} color={'red'}/>
                         <h4 className={css.caption}>{slide.title}</h4>
                         <div className={css.excerpt}><p>{slide.excerpt}</p></div>
