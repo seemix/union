@@ -44,7 +44,7 @@ const NewsSwiper = ({ slides }: { slides: IMappedCategoryPost[] }) => {
                                    sizes={'(max-width: 1920px) 60vw, (max-width: 800px) 50vw'}/>
                         </div>
                         <Label text={'новости братства'} size={'big'} color={'red'}/>
-                        <h3 className={css.caption}>{slide.title}</h3>
+                        <h2 className={css.caption}>{slide.title}</h2>
                         <div className={css.excerpt}><p>{slide.excerpt}</p></div>
                     </Link>
                 </SwiperSlide>)

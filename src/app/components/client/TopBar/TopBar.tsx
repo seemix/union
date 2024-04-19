@@ -23,25 +23,13 @@ const TopBar = ({ children }: { children: React.ReactNode }) => {
     const closeMenu = () => {
         setState({ openMenu: false });
     };
-    // useEffect(() => {
-    //     const handleScroll = () => {
-    //         if (window.scrollY > 80) {
-    //             setClasses(classes => !classes.includes('scroll') ? [...classes, 'scroll'] : [...classes]);
-    //         } else {
-    //             setClasses(classes => classes.filter(item => item !== 'scroll'));
-    //         }
-    //     };
-    //     window.addEventListener('scroll', handleScroll);
-    //     return () => {
-    //         window.removeEventListener('scroll', handleScroll);
-    //     };
-    // }, []);
+
     useOutsideClick(menuRef, closeMenu);
     return (
         <div className={'top_bar ' + classes.join(' ')} ref={menuRef}>
             <div className={'close_button_wrapper'}>
                 <SocialIcons/>
-                <button onClick={closeMenu}><IoMdClose size={'2.9em'}/></button>
+                <button onClick={closeMenu} aria-label={'close-menu'}><IoMdClose size={'2.9em'}/></button>
             </div>
             {children}
         </div>

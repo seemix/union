@@ -18,7 +18,7 @@ const Main = async () => {
                         <SmallNewsSwiper slides={newsInWorld} caption={'Христиане в мире'} color={'green'}/>
                     </div>
                     <div className={css.small2}>
-                        <SmallNewsSwiper slides={prayerRelay} caption={'молитвенная эстафета'} color={'red'}/>
+                        {/*<SmallNewsSwiper slides={prayerRelay} caption={'молитвенная эстафета'} color={'red'}/>*/}
                     </div>
             </div>
             <BottomWidgets/>
