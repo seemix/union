@@ -2,13 +2,15 @@
 
 import React from 'react';
 
-import css from './BurgerMenuButton.module.css';
 import { useAppContext } from '@/app/context/context';
+import css from './BurgerMenuButton.module.css';
 
 const BurgerMenuButton = () => {
     const { state, setState } = useAppContext();
     return (
-        <button className={css.button_wrapper} onClick={() => setState({ openMenu: !state.openMenu })}>
+        <button className={css.button_wrapper}
+                onClick={() => setState({ openMenu: !state.openMenu })}
+                aria-label={'menu'}>
             <label className={css.hamburger_menu}>
                 <div className={css.top_bar}></div>
                 <div className={css.center_bar}></div>

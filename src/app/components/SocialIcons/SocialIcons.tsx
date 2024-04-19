@@ -9,9 +9,9 @@ import css from './SocialIcons.module.css';
 const SocialIcons = () => {
     return (
         <div className={css.social_icons}>
-            <Link href={faceBookUrl}> <FaFacebookF size={'1.6em'}/></Link>
-            <Link href={instagramUrl}> <FaInstagram size={'1.7em'}/></Link>
-            <Link href={youtubeUrl}> <FaYoutube size={'1.8em'}/></Link>
+            <Link href={faceBookUrl} aria-label={'Facebook'}> <FaFacebookF size={'1.6em'}/></Link>
+            <Link href={instagramUrl} aria-label={'Instagram'}> <FaInstagram size={'1.7em'}/></Link>
+            <Link href={youtubeUrl} aria-label={'Youtube'}> <FaYoutube size={'1.8em'}/></Link>
         </div>
     );
 };

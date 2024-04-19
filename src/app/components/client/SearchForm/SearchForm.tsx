@@ -23,7 +23,7 @@ const SearchForm = () => {
             <div className={css.search}>
                 <input onKeyDown={handleInput} ref={searchInput} type={'text'} className={css.search__input}
                        placeholder={'поиск...'}/>
-                <button onClick={handleSearch} className={css.search__submit}>
+                <button onClick={handleSearch} className={css.search__submit} aria-label={'search'}>
                     <GoSearch size={'1.3em'}/>
                 </button>
             </div>

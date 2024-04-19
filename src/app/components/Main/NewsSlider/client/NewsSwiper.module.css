@@ -43,3 +43,7 @@
 .excerpt p {
     font-size: calc(16px + (17 - 16) * ((100vw - 800px) / (1920 - 800)));
 }
+.picture {
+    object-position: center;
+    object-fit: cover;
+}

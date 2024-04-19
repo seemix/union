@@ -16,9 +16,9 @@ const MyImage = async ({ img }: { img: string }) => {
     return (
         <div className={css.picture_wrapper}>
             {<Image src={await checkRemoteImage(img) as string} alt={img} fill
-                    // className={'slide_picture'}
-                    sizes={'(max-width: 1920px) 30vw'}
-                //   placeholder={'blur'}
+                    className={css.picture}
+                    sizes={'(max-width: 1920px) 35vw'}
+                    //   placeholder={'blur'}
                 //  blurDataURL={String(getBase64FromUrl(img))}
             />}
         </div>
