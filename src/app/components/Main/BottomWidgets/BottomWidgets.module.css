@@ -22,7 +22,9 @@
     margin-top: 20px;
     text-align: center;
 }
-
+.widget_card p {
+    font-size: calc(14px + (15 - 14) * ((100vw - 360px) / (1920 - 360)));;
+}
 .link {
     display: flex;
     align-items: center;

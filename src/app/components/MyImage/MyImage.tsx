@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 
-import fallBackImage from '../../assets/images/fallback.webp';
-import preloadBackground from '@/app/assets/images/preload.webp';
+import fallBackImage from '@/app/assets/images/fallback.webp';
+import { blurDataUrl } from '@/app/assets/common';
 import css from './MyImage.module.css';
 
 const MyImage = async ({ img }: { img: string }) => {
@@ -20,7 +20,7 @@ const MyImage = async ({ img }: { img: string }) => {
                     className={css.picture}
                     sizes={'(max-width: 1920px) 35vw'}
                     placeholder={'blur'}
-                    blurDataURL={preloadBackground.src}
+                    blurDataURL={blurDataUrl}
             />}
         </div>
     );
