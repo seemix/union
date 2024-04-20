@@ -1,12 +1,7 @@
 .slider_wrapper {
-    /*width: calc(310px + (370 - 310) * ((100vw - 800px) / (1920 - 800)));*/
-    /*height: calc(169px + (209 - 169) * ((100vw - 800px) / (1920 - 800)));*/
     width: 350px;
-    /*width: 100%;*/
     height: 100%;
-    /*object-fit: cover;*/
     aspect-ratio: 16 / 9;
-    /*border: 1px solid blue;*/
 }
 
 .single_slide {

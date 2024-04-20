@@ -1,10 +1,6 @@
 .slider_wrapper {
-    /*max-width: 772px;*/
     width: 100%;
-    /*width: 770px;*/
-    /*height: 445px;*/
     aspect-ratio: 16 / 9;
-    /*border: 1px solid red;*/
     min-height: 430px;
 }
 
@@ -58,6 +54,6 @@
     .slider_wrapper {
         width: 100%;
         aspect-ratio: 16 / 9;
-        min-height: auto;
+        min-height: 330px;
     }
 }
