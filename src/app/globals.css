@@ -104,6 +104,11 @@ ul, ol, dl {
     background-size: cover;
 }
 
+.marked_text {
+    background-color: #afec70;
+    padding: 5px;
+}
+
 /*WP content classes*/
 .alignright {
     float: right;

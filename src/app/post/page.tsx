@@ -7,9 +7,11 @@ import { imageParser } from '@/app/common/functions/imageParser';
 import { contentTransformer } from '@/app/common/functions/contentTransformer';
 import { ContentRender, DateViews } from '@/app/components';
 import { postMapper } from '@/app/post/mapper';
+import { markText } from '@/app/common//functions/markText';
+
 import css from './post.module.css';
 
-const Page = async ({ searchParams }: { searchParams: { id: string, link: string } }) => {
+const Page = async ({ searchParams }: { searchParams: { id: string, link: string, query?: string } }) => {
     const response = await fetch(baseURL + 'posts/' + searchParams.id + '&_embed=wp:term', {
         next: {
             revalidate: 10
@@ -17,6 +19,9 @@ const Page = async ({ searchParams }: { searchParams: { id: string, link: string
     });
     const rawPost: IRawPost = await response.json();
     const post = postMapper(rawPost);
+    if (searchParams.query) {
+        post.content = markText(post.content, searchParams.query);
+    }
     const slides = imageParser(post.content);
     return (
         <div className={'main'}>

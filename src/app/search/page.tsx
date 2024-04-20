@@ -29,6 +29,7 @@ const Search = async ({ searchParams }: { searchParams: { query: string, page: s
                             views={post.views}
                             excerpt={post.excerpt}
                             image={post.image}
+                            query={searchParams.query}
                             key={post.id}/>
                     </AnimatedComponent>)}
             </div>

@@ -21,4 +21,5 @@ export interface IMappedCategoryPost {
     excerpt: string;
     image?: string;
     subtype?: string;
+    query?: string;
 }
