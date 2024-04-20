@@ -54,6 +54,6 @@
     .slider_wrapper {
         width: 100%;
         aspect-ratio: 16 / 9;
-        min-height: 230px;
+        min-height: 220px;
     }
 }
