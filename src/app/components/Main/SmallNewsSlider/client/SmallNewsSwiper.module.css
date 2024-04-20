@@ -1,6 +1,12 @@
 .slider_wrapper {
+    /*width: calc(310px + (370 - 310) * ((100vw - 800px) / (1920 - 800)));*/
+    /*height: calc(169px + (209 - 169) * ((100vw - 800px) / (1920 - 800)));*/
     width: 350px;
+    /*width: 100%;*/
     height: 100%;
+    /*object-fit: cover;*/
+    aspect-ratio: 16 / 9;
+    /*border: 1px solid blue;*/
 }
 
 .single_slide {
@@ -19,9 +25,17 @@
     transition: all .3s ease-in-out .5s;
 }
 
+@media screen and (max-width: 800px) {
+    .slider_wrapper {
+        height: 290px;
+        width: 100%;
+    }
+}
 
 @media screen and (max-width: 600px) {
     .slider_wrapper {
-        width: 100%;
+        width: auto;
+        /*width: 100%;*/
+        aspect-ratio: 16 / 9;
     }
 }

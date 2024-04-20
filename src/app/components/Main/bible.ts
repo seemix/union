@@ -371,8 +371,7 @@ const sequenceNumberOfCurrentDay = (date: Date): number => {
     const oneDay = 1000 * 60 * 60 * 24;
     return Math.floor(diff / oneDay);
 };
-const currentDate = new Date();
-const dayNumber = sequenceNumberOfCurrentDay(currentDate);
+const dayNumber = sequenceNumberOfCurrentDay(new Date());
 
 export const biblePassage = () => {
     if (dayNumber === 60) return bibleArray[59];

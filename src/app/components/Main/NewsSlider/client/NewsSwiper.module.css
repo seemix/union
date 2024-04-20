@@ -1,8 +1,13 @@
 .slider_wrapper {
-    max-width: 772px;
+    /*max-width: 772px;*/
     width: 100%;
-    height: 100%;
+    /*width: 770px;*/
+    /*height: 445px;*/
+    aspect-ratio: 16 / 9;
+    /*border: 1px solid red;*/
+    min-height: 430px;
 }
+
 .single_slide {
     position: relative;
 }
@@ -16,7 +21,7 @@
     position: absolute;
     bottom: -20px;
     left: 0;
-    background-color: rgba(255,255,255,.8);
+    background-color: rgba(255, 255, 255, .8);
     padding: 15px;
     width: 100%;
     text-align: center;
@@ -43,7 +48,17 @@
 .excerpt p {
     font-size: calc(16px + (17 - 16) * ((100vw - 800px) / (1920 - 800)));
 }
+
 .picture {
     object-position: center;
     object-fit: cover;
+}
+
+@media screen and (max-width: 600px) {
+    .slider_wrapper {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        min-height: 290px;
+    }
+
 }
