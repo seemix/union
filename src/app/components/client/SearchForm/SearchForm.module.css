@@ -15,7 +15,7 @@
     border: 2px solid rgb(var(--red));
     height: var(--size);
     margin-left: auto;
-    padding: 2px;
+    padding: 3px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
