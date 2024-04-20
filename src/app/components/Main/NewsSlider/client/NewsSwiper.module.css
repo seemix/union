@@ -13,7 +13,7 @@
 }
 
 .single_slide .caption {
-    font-size: calc(27px + (30 - 27) * ((100vw - 800px) / (1920 - 800)));
+    font-size: calc(23px + (27 - 23) * ((100vw - 800px) / (1920 - 800)));
     position: absolute;
     bottom: -20px;
     left: 0;
