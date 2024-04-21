@@ -10,6 +10,9 @@
     animation-timeline: view();
     animation-range: entry 20% cover 20%;
 }
+.post_content li {
+    font-size: calc(15px + (16 - 15) * ((100vw - 800px) / (1920 - 800)));
+}
 
 .post_content img {
     scale: .9;
@@ -37,7 +40,7 @@
 }
 
 .post_content blockquote {
-    padding-left: calc(70px + (90 - 70) * ((100vw - 360px) / (1920 - 360)));
+    padding-left: calc(50px + (90 - 50) * ((100vw - 360px) / (1920 - 360)));
     padding-top: calc(40px + (50 - 40) * ((100vw - 360px) / (1920 - 360)));
     padding-bottom: calc(10px + (15 - 10) * ((100vw - 360px) / (1920 - 360)));
     padding-right: calc(15px + (20 - 15) * ((100vw - 360px) / (1920 - 360)));
