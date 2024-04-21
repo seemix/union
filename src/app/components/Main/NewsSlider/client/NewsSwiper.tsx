@@ -49,7 +49,7 @@ const NewsSwiper = ({ slides }: { slides: IMappedCategoryPost[] }) => {
                                    className={'swiper-lazy' + css.picture}
                                    placeholder={'blur'}
                                    blurDataURL={blurDataUrl}
-                                   sizes={'(max-width: 1920px) 60vw, (max-width: 800px) 50vw'}/>
+                                   sizes={'(max-width: 1920px) 70vw, (max-width: 800px) 50vw'}/>
                         </div>
                         <Label text={'новости братства'} size={'big'} color={'red'}/>
                         <h2 className={css.caption}>{slide.title}</h2>

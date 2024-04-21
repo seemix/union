@@ -7,7 +7,7 @@ const DateViews = ({ views, date }: { views: number, date: string }) => {
     return (
         <div className={css.date_wrapper}>
             <div className={css.views_wrapper}>
-                {views && <>
+                {views > 0 && <>
                     <IoMdEye/>
                     <p><small>{views}</small></p>
                 </>}
