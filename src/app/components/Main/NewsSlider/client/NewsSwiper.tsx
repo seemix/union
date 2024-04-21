@@ -43,7 +43,9 @@ const NewsSwiper = ({ slides }: { slides: IMappedCategoryPost[] }) => {
                 slides.map(slide => <SwiperSlide key={slide.id} className={css.single_slide}>
                     <Link href={'post?id=' + slide.id}>
                         <div className={'slide_picture'}>
-                            <Image src={slide.image as string} alt={slide.image as string} fill
+                            <Image src={slide.image as string} alt={slide.image as string}
+                                   fill
+                                   style={{ objectFit: 'cover', objectPosition: 'center' }}
                                    className={'swiper-lazy' + css.picture}
                                    placeholder={'blur'}
                                    blurDataURL={blurDataUrl}

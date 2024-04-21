@@ -5,7 +5,7 @@
  */
 const config = {
     images: {
-        domains: ["baptist.org.md"],
+        domains: ['baptist.org.md'],
     },
 };
 

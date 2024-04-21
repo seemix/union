@@ -20,7 +20,6 @@
     line-height: 13px;
     letter-spacing: 1.1px;
     transition: .2s .1s;
-    /*background-image: linear-gradient(to bottom, #0d1a50 35%, #bd0554 92%);*/
     border: 0 solid;
     overflow: hidden;
 }
