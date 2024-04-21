@@ -10,7 +10,7 @@ import css from './page.module.css';
 const Category = async ({ searchParams }: { searchParams: { id: string, page: string } }) => {
     let queryString = 'posts&categories=' + searchParams.id + '&per_page=8';
     if (searchParams.page) queryString += '&page=' + searchParams.page;
-    const response = await fetch(baseURL + queryString);
+    const response = await fetch(baseURL + queryString, { cache: 'no-cache' });
     let pages = 1;
     let posts: IMappedCategoryPost[];
     if (response.ok) {
