@@ -3,12 +3,13 @@ import { VscError } from 'react-icons/vsc';
 
 import css from './Error.module.css';
 
-const Error = ({ message }: { message: string }) => {
+const Error = () => {
     return (
         <div className={'main'}>
             <div className={css.error_wrapper}>
-                <h2><VscError/> Ошибка загрузки</h2>
-                <p>{message}</p>
+                <h2><VscError/> Ошибка</h2>
+                {/*<p>{message}</p>*/}
+                <h1>404 | Страница не найдена</h1>
             </div>
         </div>
     );
