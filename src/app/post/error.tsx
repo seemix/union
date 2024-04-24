@@ -8,7 +8,7 @@ const ErrorComponent = ({ error }: {
     error: Error & { digest?: string }
 }) => {
     return (
-        <Error message={error.message}/>
+        <Error/>
     );
 };
 
