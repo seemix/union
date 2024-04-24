@@ -1,0 +1,7 @@
+.error_wrapper {
+    padding: 20px;
+    border: 1px solid var(--red-hex);
+}
+.error_wrapper h2 {
+    color: var(--red-hex);
+}

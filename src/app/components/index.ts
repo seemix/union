@@ -5,6 +5,7 @@ export { default as BurgerMenuButton } from './client/BurgerMenuButton/BurgerMen
 export { default as CategoryName } from './CategoryName/CategoryName';
 export { default as ContentRender } from './client/ContentRender/ContentRender';
 export { default as DateViews } from './DateViews/DateViews';
+export { default as Error } from './Error/Error';
 export { default as Footer } from './Footer/Footer';
 export { default as Header } from './Header/Header';
 export { default as Loader } from './Loader/Loader';
