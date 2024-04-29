@@ -51,7 +51,7 @@ const NewsSwiper = ({ slides }: { slides: IMappedCategoryPost[] }) => {
                                    blurDataURL={blurDataUrl}
                                    sizes={'(max-width: 1920px) 70vw, (max-width: 800px) 50vw'}/>
                         </div>
-                        <Label text={'новости братства'} size={'big'} color={'red'}/>
+                        <Label text={'ŞTIRI INTERNE'} size={'big'} color={'red'}/>
                         <h2 className={css.caption}>{slide.title}</h2>
                         <div className={css.excerpt}><p>{slide.excerpt}</p></div>
                     </Link>

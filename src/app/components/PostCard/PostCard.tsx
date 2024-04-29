@@ -28,7 +28,7 @@ const PostCard = (post: IMappedCategoryPost) => {
                 </div>
                 <div className={css.button_wrapper}>
                     <Link href={{ pathname: post.subtype || 'post', query: { id: String(post.id), query: post.query } }}>
-                        <button className={css.more_button}>далее</button>
+                        <button className={css.more_button}>mai mult</button>
                     </Link>
                 </div>
             </div>

@@ -8,7 +8,7 @@ const Header = () => {
     return (
         <header>
             <div className={css.header_top}>
-                <h1> Союз церквей <span className={css.red_text}> евангельских христиан-баптистов </span>Молдовы </h1>
+                <h1>  Uniunea Bisericilor <span className={css.red_text}> creștini evanghelici Baptiștii </span>  din Moldova </h1>
                 <div className={css.social_wrapper}>
                     <SocialIcons/>
                 </div>

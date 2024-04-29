@@ -5,7 +5,7 @@
  */
 const config = {
     // output: 'export',
-    // distDir: 'dist',
+    distDir: 'dist',
     images: {
         domains: ['baptist.org.md'],
     },

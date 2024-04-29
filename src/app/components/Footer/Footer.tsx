@@ -12,24 +12,23 @@ const Footer = () => {
         <footer className={css.footer_wrapper}>
             <div className={css.footer_top}>
                 <div className={css.footer_block}>
-                    <h4>о союзе ЕХБ</h4>
+                    <h4>DESPRE NOI</h4>
                     <div>
-                        <Link href={'page?id=11'}><p>ИСТОРИЯ</p></Link>
-                        <Link href={'page?id=12'}><p>ВЕРОУЧЕНИЕ</p></Link>
-                        <Link href={'page?id=14'}><p>СТРУКТУРА</p></Link>
+                        <Link href={'page?id=893'}><p>ISTORIA</p></Link>
+                        <Link href={'page?id=901'}><p>MĂRTURISIREA DE CREDINȚĂ</p></Link>
+                        <Link href={'page?id=898'}><p>STRUCTURA UBCEB</p></Link>
                     </div>
                 </div>
                 <div className={css.footer_block}>
-                    <h4>новости</h4>
+                    <h4>ŞTIRI</h4>
                     <div>
-                        <Link href={'category?id=17'}><p>НОВОСТИ БРАТСТВА</p></Link>
-                        <Link href={'category?id=27'}><p>ХРИСТИАНЕ В МИРЕ</p></Link>
+                        <Link href={'category?id=23'}><p>ŞTIRI INTERNE</p></Link>
+                        <Link href={'category?id=22'}><p>ŞTIRI EXTERNE</p></Link>
                     </div>
                 </div>
                 <div className={css.footer_block}>
-                    <h4>Контакты</h4>
-                    <div className={css.contacts_wrapper}><FaRegAddressCard size={'1.2em'}/>г. Кишинев ул. Сергея Лазо
-                        27/2
+                    <h4>contacte</h4>
+                    <div className={css.contacts_wrapper}><FaRegAddressCard size={'1.2em'}/>str. Serghei Lazo 27/2
                     </div>
                     <div className={css.contacts_wrapper}><FaPhoneVolume/> +373 22 29 6701</div>
                     <div className={css.contacts_wrapper}><MdOutlineEmail size={'1.4em'}/> baptunion@yahoo.com</div>

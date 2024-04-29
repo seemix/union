@@ -5,9 +5,9 @@ import { getSlides } from '@/app/components/Main/getSlides';
 import css from './Main.module.css';
 
 const Main = async () => {
-    const news = await getSlides(17, 5, 50);
-    const newsInWorld = await getSlides(27, 5, 0);
-    const prayerRelay = await getSlides(203, 1, 0);
+    const news = await getSlides(23, 5, 50);
+    const newsInWorld = await getSlides(22, 5, 0);
+    const prayerRelay = await getSlides(514, 3, 0);
     return (
         <div className={css.main_wrapper}>
             <div className={css.main_container}>
@@ -15,10 +15,10 @@ const Main = async () => {
                     <NewsSwiper slides={news}/>
                 </div>
                     <div className={css.small1}>
-                        <SmallNewsSwiper slides={newsInWorld} caption={'Христиане в мире'} color={'green'}/>
+                        <SmallNewsSwiper slides={newsInWorld} caption={'ŞTIRI EXTERNE'} color={'green'}/>
                     </div>
                     <div className={css.small2}>
-                        <SmallNewsSwiper slides={prayerRelay} caption={'молитвенная эстафета'} color={'red'}/>
+                        <SmallNewsSwiper slides={prayerRelay} caption={'ÎNTREBĂRI ŞI RĂSPUNSURI'} color={'red'}/>
                     </div>
             </div>
             <BottomWidgets/>
