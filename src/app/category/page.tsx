@@ -22,7 +22,6 @@ const Category = async ({ searchParams }: { searchParams: { id: string, page: st
     } else {
         posts = [];
     }
-
     return (
         <main className={'main'}>
             <CategoryName id={searchParams.id}/>

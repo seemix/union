@@ -13,12 +13,11 @@ import css from './post.module.css';
 
 const Page = async ({ searchParams }: { searchParams: { id: string, link: string, query?: string } }) => {
     const response = await fetch(baseURL + 'posts/' + searchParams.id + '&_embed=wp:term', {
-        cache: 'no-cache',
-        // next: {
-        //     revalidate: 10
-        // }
+       // cache: 'no-cache',
+        next: {
+            revalidate: 10
+        }
     });
-
     const rawPost: IRawPost = await response.json();
     const post = postMapper(rawPost);
     if (searchParams.query) {
