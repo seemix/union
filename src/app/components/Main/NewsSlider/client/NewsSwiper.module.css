@@ -10,6 +10,7 @@
 
 .single_slide:hover .excerpt {
     bottom: 0;
+    visibility: visible;
 }
 
 .single_slide .caption {
@@ -21,11 +22,13 @@
     padding: 15px;
     width: 100%;
     text-align: center;
-    transition: all .3s ease-in-out .5s;
+    visibility: visible;
+    transition: all .3s ease-in-out .2s;
 }
 
 .single_slide:hover .caption {
-    left: -900px;
+    /*left: -900px;*/
+    visibility: collapse;
 }
 
 .single_slide:hover a {
@@ -34,11 +37,12 @@
 
 .excerpt {
     position: absolute;
-    bottom: -500px;
+    visibility: hidden;
+    bottom: -20px;
     left: 0;
     padding: 30px;
-    background-color: rgba(255, 255, 255, .85);
-    transition: all .5s ease-in-out .4s;
+    background-color: rgba(255, 255, 255, .89);
+    transition: all .4s ease-in-out .1s;
 }
 
 .excerpt p {
