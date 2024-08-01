@@ -1,8 +1,17 @@
+/*.widgets_wrapper {*/
+/*    display: flex;*/
+/*    !*flex-wrap: wrap;*!*/
+/*    gap: calc(10px + (20 - 10) * ((100vw - 800px) / (1920 - 800)));*/
+/*    width: 100%;*/
+/*    justify-content: center;*/
+/*    margin-top: 30px;*/
+/*}*/
 .widgets_wrapper {
-    display: flex;
-    gap: calc(10px + (20 - 10) * ((100vw - 800px) / (1920 - 800)));
-    width: 100%;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: calc(10px + (20 - 10) * ((100vw - 800px) / (1920 - 800)));
+    max-width: 100%;
     margin-top: 30px;
 }
 
@@ -14,7 +23,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 250px;
+    max-width: 250px;
 }
 
 .widget_card h3 {
@@ -22,9 +31,11 @@
     margin-top: 20px;
     text-align: center;
 }
+
 .widget_card p {
     font-size: calc(14px + (15 - 14) * ((100vw - 360px) / (1920 - 360)));;
 }
+
 .link {
     display: flex;
     align-items: center;
@@ -34,6 +45,17 @@
 .link:hover h3 {
     color: rgb(var(--red));
 }
+
 .link:hover svg {
     color: rgb(var(--red));
+}
+
+@media screen and (max-width: 800px) {
+    .widgets_wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-row-gap: calc(20px + (30 - 20) * ((100vw - 800px) / (1920 - 800)));
+        grid-column-gap: calc(20px + (30 - 20) * ((100vw - 800px) / (1920 - 800)));
+    }
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { LuChurch } from 'react-icons/lu';
 import { LiaBibleSolid } from 'react-icons/lia';
 import { MdOutlineOnlinePrediction } from 'react-icons/md';
+import { FaHandHoldingHeart } from 'react-icons/fa';
 import Link from 'next/link';
 
 import { biblePassage } from '@/app/components/Main/bible';
@@ -28,6 +29,12 @@ const BottomWidgets = () => {
                 <Link href={'/page?id=45477'} className={css.link}>
                     <MdOutlineOnlinePrediction size={'3em'} color={'var(--red-hex)'}/>
                     <h3>Церковь он-лайн</h3>
+                </Link>
+            </div>
+            <div className={css.widget_card}>
+                <Link href={'/category?id=205'} className={css.link}>
+                    <FaHandHoldingHeart size={'3em'} color={'var(--green-hex)'}/>
+                    <h3>Дом милосердия "Тавифа"</h3>
                 </Link>
             </div>
         </div>
