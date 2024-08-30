@@ -3,15 +3,37 @@ import { baseURL } from '@/app/assets/common';
 import { ContentRender } from '@/app/components';
 import { contentTransformer, imageParser } from '@/app/common';
 import { pageMapper } from '@/app/page/mapper';
+import { IRawPost } from '@/app/post/types';
+import { Metadata } from 'next';
 
-const Page = async ({ searchParams }: { searchParams: { id: string } }) => {
+interface ISearchParams {
+    id: string,
+    link: string,
+    query?: string
+}
+
+const getData = async (searchParams: ISearchParams) => {
     const response = await fetch(baseURL + 'pages/' + searchParams.id, {
+        // cache: 'no-cache',
         next: {
-            revalidate: 60
+            revalidate: 10
         }
     });
-    const rawPage = await response.json();
-    const page = pageMapper(rawPage);
+    const rawPost: IRawPost = await response.json();
+    return pageMapper(rawPost);
+
+};
+
+export const generateMetadata = async ({ searchParams }: { searchParams: ISearchParams }): Promise<Metadata> => {
+    const page = await getData(searchParams);
+    return {
+        title: page.title,
+        description: page.content.split('.')[0],
+    };
+};
+
+const Page = async ({ searchParams }: { searchParams: ISearchParams }) => {
+    const page = await getData(searchParams);
     const slides = imageParser(page.content);
     return (
         <div className={'main'}>

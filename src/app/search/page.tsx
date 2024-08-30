@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { baseURL } from '@/app/assets/common';
 import { mappedSearchResults } from '@/app/search/mapper';
 import { IMappedCategoryPost } from '@/app/search/types';
@@ -13,6 +14,7 @@ const Search = async ({ searchParams }: { searchParams: { query: string, page: s
     const pages = Number(response.headers.get('X-WP-TotalPages'));
     const data = await response.json();
     const posts: IMappedCategoryPost[] = mappedSearchResults(data);
+
     return (
         <div className={'main'}>
             <h2>результаты поиска  <span className={css.red_text}> '{searchParams.query}' </span></h2>
