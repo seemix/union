@@ -7,7 +7,13 @@ const config = {
     // output: 'export',
     // distDir: 'dist',
     images: {
-        domains: ['baptist.org.md'],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'baptist.org.md',
+                pathname: '**',
+            },
+        ],
     },
 };
 
