@@ -1,5 +1,5 @@
 import React from 'react';
-import { baseURL } from '@/app/assets/common';
+import { baseURL, siteTitle } from '@/app/assets/common';
 import { ContentRender } from '@/app/components';
 import { contentTransformer, imageParser } from '@/app/common';
 import { pageMapper } from '@/app/page/mapper';
@@ -27,7 +27,7 @@ const getData = async (searchParams: ISearchParams) => {
 export const generateMetadata = async ({ searchParams }: { searchParams: ISearchParams }): Promise<Metadata> => {
     const page = await getData(searchParams);
     return {
-        title: page.title,
+        title: page.title + ' | ' + siteTitle,
         description: page.content.split('.')[0],
     };
 };

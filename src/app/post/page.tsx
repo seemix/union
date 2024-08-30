@@ -2,7 +2,7 @@ import React from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
 
-import { baseURL } from '@/app/assets/common';
+import { baseURL, siteTitle } from '@/app/assets/common';
 import { IRawPost } from '@/app/post/types';
 import { imageParser } from '@/app/common/functions/imageParser';
 import { contentTransformer } from '@/app/common/functions/contentTransformer';
@@ -31,7 +31,7 @@ const getData = async (searchParams: ISearchParams) => {
 export const generateMetadata = async ({ searchParams }: { searchParams: ISearchParams }): Promise<Metadata> => {
     const post = await getData(searchParams);
     return {
-        title: post.title,
+        title: post.title + ' | ' + siteTitle,
         description: post.content.split('.')[0],
         openGraph: {
             images: post.fimg_url

@@ -1,12 +1,22 @@
 import React from 'react';
+import { Metadata } from 'next';
 
-import { baseURL } from '@/app/assets/common';
+import { baseURL, siteTitle } from '@/app/assets/common';
 import { mappedCategoryPosts } from '@/app/category/mapper';
 import { IMappedCategoryPost } from '@/app/category/types';
 import { AnimatedComponent, CategoryName, Pagination, PostCard } from '@/app/components';
 import { blockAppearAnimation } from '@/app/category/animation';
+import { getCategoryName } from '@/app/category/getCategoryName';
+// import categoryName from '@/app/components/CategoryName/CategoryName';
 import css from './page.module.css';
 
+
+export const generateMetadata = async ({ searchParams }: { searchParams: { id: string } }): Promise<Metadata> => {
+    const category = await getCategoryName(searchParams);
+    return {
+        title: category + ' | ' + siteTitle
+    };
+};
 const Category = async ({ searchParams }: { searchParams: { id: string, page: string } }) => {
     let queryString = 'posts&categories=' + searchParams.id + '&per_page=8';
     if (searchParams.page) queryString += '&page=' + searchParams.page;
@@ -22,11 +32,12 @@ const Category = async ({ searchParams }: { searchParams: { id: string, page: st
     } else {
         posts = [];
     }
+    const category = await getCategoryName(searchParams);
     return (
         <main className={'main'}>
-            <CategoryName id={searchParams.id}/>
+            <CategoryName categoryName={category}/>
             <div className={css.cards_wrapper}>
-                {!response.ok && <h1>33333</h1>}
+                {!response.ok && <h1>Error occurred!</h1>}
                 {posts.length > 0 && posts.map(post =>
                     <AnimatedComponent
                         key={post.id}
