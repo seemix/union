@@ -47,6 +47,7 @@ const Page = async ({ searchParams }: { searchParams: ISearchParams }) => {
     const slides = imageParser(post.content);
     return (
         <div className={'main'}>
+            {/*<FacebookRepost title={post.title} quote={post.content}/>*/}
             <div className={css.categories_wrapper}>
                 {post.categories.map(cat => <Link href={cat.link} key={cat.id}>{cat.name}</Link>)}
             </div>

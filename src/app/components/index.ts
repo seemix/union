@@ -1,3 +1,5 @@
+import exp from 'node:constants';
+
 export { default as AnimatedComponent } from './client/AnimatedComponent/AnimatedComponent';
 export { default as ArrowUp } from './client/ArrowUp/ArrowUp';
 export { default as BottomWidgets } from './Main/BottomWidgets/BottomWidgets';
@@ -6,6 +8,7 @@ export { default as CategoryName } from './CategoryName/CategoryName';
 export { default as ContentRender } from './client/ContentRender/ContentRender';
 export { default as DateViews } from './DateViews/DateViews';
 export { default as Error } from './Error/Error';
+export { default as FacebookRepost } from './FacebookRepost/FacebookRepost';
 export { default as Footer } from './Footer/Footer';
 export { default as Header } from './Header/Header';
 export { default as Loader } from './Loader/Loader';
