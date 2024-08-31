@@ -29,7 +29,7 @@ const SmallNewsSwiper = ({ slides, caption = '', color = 'red' }: {
             delay: 7000,
         },
         effect: 'fade',
-        lazyLoad: true,
+        //lazyLoad: true,
         modules: [Autoplay, EffectFade, Navigation, Pagination],
     };
     return (

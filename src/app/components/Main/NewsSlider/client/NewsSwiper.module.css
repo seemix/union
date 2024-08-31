@@ -9,8 +9,16 @@
 }
 
 .single_slide:hover .excerpt {
-    bottom: 0;
-    visibility: visible;
+    opacity: 1;
+    scale: 1;
+}
+
+.single_slide:hover .caption {
+    opacity: 0;
+}
+
+.single_slide:hover a {
+    color: inherit;
 }
 
 .single_slide .caption {
@@ -22,27 +30,21 @@
     padding: 15px;
     width: 100%;
     text-align: center;
-    visibility: visible;
-    transition: all .3s ease-in-out .2s;
+    opacity: 1;
+    transition: all .25s ease-in-out .25s;
+
 }
 
-.single_slide:hover .caption {
-    /*left: -900px;*/
-    visibility: collapse;
-}
-
-.single_slide:hover a {
-    color: inherit;
-}
 
 .excerpt {
     position: absolute;
-    visibility: hidden;
+    opacity: 0;
+    scale: .8;
     bottom: -20px;
     left: 0;
     padding: 30px;
     background-color: rgba(255, 255, 255, .89);
-    transition: all .4s ease-in-out .1s;
+    transition: all .25s ease-in-out .25s;
 }
 
 .excerpt p {
