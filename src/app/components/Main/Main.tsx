@@ -5,9 +5,9 @@ import { getSlides } from '@/app/components/Main/getSlides';
 import css from './Main.module.css';
 
 const Main = async () => {
-    const news = await getSlides(17, 5, 50);
-    const newsInWorld = await getSlides(27, 5, 0);
-    const prayerRelay = await getSlides(203, 1, 0);
+    const news = await getSlides('17,157', 5, 50);
+    const newsInWorld = await getSlides('27', 5, 0);
+    const prayerRelay = await getSlides('203', 1, 0);
     return (
         <div className={css.main_wrapper}>
             <div className={css.main_container}>
