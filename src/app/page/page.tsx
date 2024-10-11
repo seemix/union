@@ -1,10 +1,12 @@
 import React from 'react';
+import { Metadata } from 'next';
+
 import { baseURL, siteTitle } from '@/app/assets/common';
 import { ContentRender } from '@/app/components';
 import { contentTransformer, imageParser } from '@/app/common';
 import { pageMapper } from '@/app/page/mapper';
 import { IRawPost } from '@/app/post/types';
-import { Metadata } from 'next';
+import { metaDescriptionTransformer } from '@/app/common/functions/metaDescriptionTransformer';
 
 interface ISearchParams {
     id: string,
@@ -28,7 +30,7 @@ export const generateMetadata = async ({ searchParams }: { searchParams: ISearch
     const page = await getData(searchParams);
     return {
         title: page.title + ' | ' + siteTitle,
-        description: page.content.split('.')[0],
+        description: metaDescriptionTransformer(page.content)
     };
 };
 

@@ -8,7 +8,8 @@ import { imageParser } from '@/app/common/functions/imageParser';
 import { contentTransformer } from '@/app/common/functions/contentTransformer';
 import { ContentRender, DateViews } from '@/app/components';
 import { postMapper } from '@/app/post/mapper';
-import { markText } from '@/app/common//functions/markText';
+import { markText } from '@/app/common/functions/markText';
+import { metaDescriptionTransformer } from '@/app/common/functions/metaDescriptionTransformer';
 import css from './post.module.css';
 
 interface ISearchParams {
@@ -19,7 +20,6 @@ interface ISearchParams {
 
 const getData = async (searchParams: ISearchParams) => {
     const response = await fetch(baseURL + 'posts/' + searchParams.id + '&_embed=wp:term', {
-        // cache: 'no-cache',
         next: {
             revalidate: 10
         }
@@ -32,7 +32,7 @@ export const generateMetadata = async ({ searchParams }: { searchParams: ISearch
     const post = await getData(searchParams);
     return {
         title: post.title + ' | ' + siteTitle,
-        description: post.content.split('.')[0],
+        description: metaDescriptionTransformer(post.content),
         openGraph: {
             images: post.fimg_url
         },
