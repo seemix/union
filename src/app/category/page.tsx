@@ -7,7 +7,6 @@ import { IMappedCategoryPost } from '@/app/category/types';
 import { AnimatedComponent, CategoryName, Pagination, PostCard } from '@/app/components';
 import { blockAppearAnimation } from '@/app/category/animation';
 import { getCategoryName } from '@/app/category/getCategoryName';
-// import categoryName from '@/app/components/CategoryName/CategoryName';
 import css from './page.module.css';
 
 

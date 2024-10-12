@@ -1,3 +1,7 @@
 export const metaDescriptionTransformer = (description: string): string => {
-    return description.split('.')[0].replace(/<\/?[^>]+(>|$)/g, '');
+    const match = description.match(/<p>(.*?)<\/p>/);
+    if (match && match[1]) {
+        return match[1].replace(/<\/?[^>]+(>|$)/g, ''); // Видаляємо всі HTML теги
+    }
+    return description;
 };
