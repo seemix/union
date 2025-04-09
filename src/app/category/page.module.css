@@ -1,7 +1,9 @@
 .cards_wrapper {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 2fr));
     gap: 30px;
-    flex-wrap: wrap;
+    /*row-gap: 30px;*/
+    justify-items: center;
     width: 100%;
     justify-content: center;
 }
@@ -18,7 +20,7 @@
     height: calc(33px + (40 - 33) * ((100vw - 360px) / (1920 - 360)));
     font-size: 0.7rem;
     line-height: 13px;
-    letter-spacing: 1.1px;
+    letter-spacing: 1px;
     transition: .2s .1s;
     border: 0 solid;
     overflow: hidden;

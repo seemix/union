@@ -1,11 +1,13 @@
 .card {
     background-color: #fff;
     box-shadow: 0 6px 26px rgba(0, 0, 0, .15);
-    width: calc(360px + (450 - 360) * ((100vw - 360px) / (1920 - 360)));
+    /*width: calc(380px + (490 - 380) * ((100vw - 360px) / (1920 - 360)));*/
+    width: fit-content;
+    /*width: 100%;*/
     position: relative;
     overflow: hidden;
     border-radius: 4px;
-    min-height: calc(380px + (480 - 380) * ((100vw - 360px) / (1920 - 360)));
+    /*min-height: calc(380px + (480 - 380) * ((100vw - 360px) / (1920 - 360)));*/
 }
 
 .picture_overlay:hover {
@@ -41,7 +43,9 @@
 
 .card_picture {
     width: 100%;
-    height: calc(170px + (235 - 170) * ((100vw - 360px) / (1920 - 360)));
+    /*height: calc(170px + (235 - 170) * ((100vw - 360px) / (1920 - 360)));*/
+    /*height: 100%;*/
+    aspect-ratio: 1;
     display: flex;
     border-radius: 4px 4px 0 0;
     flex-direction: column;
@@ -66,7 +70,6 @@
 }
 
 .picture_overlay {
-    /*background: rgba(var(--blue), 0.9);*/
     background: linear-gradient(to top, rgba(var(--text, 1)) 2%, rgb(var(--red)) 92%);
     position: absolute;
     height: calc(170px + (235 - 170) * ((100vw - 360px) / (1920 - 360)));
