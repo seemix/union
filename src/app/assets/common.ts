@@ -1,6 +1,8 @@
 export const frontendUrl = 'https://ro.baptist.org.md/';
 export const graphqlUrl = 'https://baptist.org.md/ro/index.php?graphql';
+export const siteTitle = 'Uniunea Bisericilor Creștine Evanghelice Baptiste din Moldova';
 export const baseURL = 'https://baptist.org.md/ro/?rest_route=/wp/v2/';
+export const customBaseURL = 'https://baptist.org.md/ro/?rest_route=';
 export const faceBookUrl = 'https://www.facebook.com/baptist.md';
 export const youtubeUrl = 'https://www.youtube.com/@baptistmd';
 export const instagramUrl = 'https://www.instagram.com/baptist.md/';
