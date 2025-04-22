@@ -11,6 +11,7 @@ import { postMapper } from '@/app/post/mapper';
 import { markText } from '@/app/common/functions/markText';
 import { metaDescriptionTransformer } from '@/app/common/functions/metaDescriptionTransformer';
 import css from './post.module.css';
+import PostViewCounter from '@/app/components/client/PostViewCounter/PostViewCounter';
 
 interface ISearchParams {
     id: string,
@@ -54,6 +55,7 @@ const Page = async ({ searchParams }: { searchParams: ISearchParams }) => {
             <h2>{contentTransformer(post.title)}</h2>
             <DateViews views={post.views} date={post.date}/>
             <ContentRender content={post.content} slides={slides}/>
+            <PostViewCounter postId={post.id}/>
         </div>
     );
 };
