@@ -2,13 +2,12 @@ import type { Metadata } from 'next';
 import { ArrowUp, Footer, Header, Menu } from '@/app/components';
 import TopBar from '@/app/components/client/TopBar/TopBar';
 import AppWrapper from '@/app/context/context';
+import { siteTitle } from '@/app/assets/common';
 import './globals.css';
 
-// const inter = Inter({ subsets: ['latin'] });
-
 export const metadata: Metadata = {
-    title: 'Baptist Union of Moldova',
-    description: 'Союз церквей евангельских христиан-баптистов Молдовы',
+    title: siteTitle
+    // description: 'Союз церквей евангельских христиан-баптистов Молдовы',
 };
 
 export default function RootLayout({ children }: Readonly<{
