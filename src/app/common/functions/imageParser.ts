@@ -13,7 +13,6 @@ export const imageParser1 = (inputString: string): SlideImage[] => {
 
 export const imageParser = (text: string) => {
     const urlRegex = /<img.*?src=["'](.*?)["']/g;
-    // const urlRegex = /<a\s+(?:[^>]*?\s+)?href=([^\s>]+)/g;
     const matches = text.match(urlRegex);
     if (!matches) return [];
 

@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Lightbox, { SlideImage } from 'yet-another-react-lightbox';
-import { Zoom, Slideshow } from 'yet-another-react-lightbox/plugins';
+import { Zoom, Slideshow, Thumbnails } from 'yet-another-react-lightbox/plugins';
 import 'yet-another-react-lightbox/plugins/thumbnails.css';
 import 'yet-another-react-lightbox/styles.css';
 
@@ -16,7 +16,7 @@ const LightBox = ({ slides, index, open, setOpen }: {
                   index={index || 0}
                   close={() => setOpen(false)}
                   slides={slides}
-                  plugins={[Slideshow, Zoom]}
+                  plugins={[Slideshow, Zoom, Thumbnails]}
         >
         </Lightbox>
     );
