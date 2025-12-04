@@ -22,7 +22,7 @@ import css from './NewsSwiper.module.css';
 const NewsSwiper = ({ slides }: { slides: IMappedCategoryPost[] }) => {
     const swiperSettings = {
         speed: 1500,
-        lazy: true,
+       // lazy: true,
         spaceBetween: 0,
         slidesPerView: 1,
         autoplay: {

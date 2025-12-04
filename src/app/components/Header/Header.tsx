@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import { BurgerMenuButton, SearchForm, SocialIcons } from '@/app/components';
-import logo from '../../assets/images/logo.webp';
+import mainLogo from '../../assets/images/logo.webp';
 import css from './Header.module.css';
 
 const Header = () => {
@@ -16,7 +16,7 @@ const Header = () => {
             </div>
             <div className={css.header_wrapper}>
                 <div className={css.logo_wrapper}>
-                    <Image src={logo.src} alt={'logo'} fill/>
+                    <Image src={mainLogo.src+'?v=2'} alt={'logo'} placeholder={'empty'} fill/>
                 </div>
                 <SearchForm/>
                 <BurgerMenuButton/>
