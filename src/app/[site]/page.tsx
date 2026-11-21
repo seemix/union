@@ -5,6 +5,7 @@ import { homeLd } from '@/lib/seo/json-ld';
 import { buildMetadata, homeLanguages } from '@/lib/seo/metadata';
 import { postHref } from '@/lib/site/href';
 import { excerptOf, featuredImage, getPosts, plainText, type WpPostSummary } from '@/lib/wp';
+import { getDictionary } from '@/i18n';
 import { JsonLd } from './_components/JsonLd/JsonLd';
 import { HomeSliderSection } from './_components/HomeSlider/HomeSliderSection';
 import type { Slide } from './_components/HomeSlider/SlideContent';
@@ -45,6 +46,13 @@ export default async function HomePage({ params }: PageProps<'/[site]'>) {
   const { site: siteId } = await params;
   if (!isSiteId(siteId)) notFound();
   const site = getSite(siteId);
+  const dict = await getDictionary(siteId);
+  const sliderA11y = {
+    carousel: dict.a11y.carousel,
+    slide: dict.a11y.slide,
+    prev: dict.a11y.prevSlide,
+    next: dict.a11y.nextSlide,
+  };
 
   // All slider queries at once; category ids / counts come from the config.
   const lists = await Promise.all(
@@ -62,6 +70,7 @@ export default async function HomePage({ params }: PageProps<'/[site]'>) {
               variant={slider.variant}
               label={slider.label}
               tone={slider.tone === 'green' ? 'green' : 'red'}
+              a11y={sliderA11y}
             />
           </div>
         ))}

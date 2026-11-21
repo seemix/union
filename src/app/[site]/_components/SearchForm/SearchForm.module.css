@@ -59,6 +59,16 @@
   border: 2px solid rgb(var(--red));
 }
 
+/* The input has no ring of its own (it is invisible until focused): ring the whole field. */
+.search:has(:focus-visible) {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.search :focus-visible {
+  outline: 0;
+}
+
 .search:focus-within .search__input {
   opacity: 1;
   z-index: initial;
@@ -70,11 +80,6 @@
   background: rgb(var(--red));
   color: white;
   transition: transform 500ms ease-out;
-}
-
-.search:focus-within .search__submit:hover,
-.search:focus-within .search__submit:focus {
-  outline: 0;
 }
 
 @media screen and (max-width: 800px) {

@@ -14,6 +14,7 @@ export function Pagination({
   label,
   prevLabel,
   nextLabel,
+  pageLabel,
 }: {
   current: number;
   total: number;
@@ -25,6 +26,8 @@ export function Pagination({
   label: string;
   prevLabel: string;
   nextLabel: string;
+  /** Prefix of the per-page link label, e.g. "Page" → "Page 3". */
+  pageLabel: string;
 }) {
   if (total < 2) return null;
   const href = hrefOf ?? ((page: number) => (page > 1 ? `${basePath}/${page}` : basePath));
@@ -44,14 +47,19 @@ export function Pagination({
             {item}
           </span>
         ) : (
-          <Link key={item} href={href(item)} className={css.pagination}>
+          <Link
+            key={item}
+            href={href(item)}
+            className={css.pagination}
+            aria-label={`${pageLabel} ${item}`}
+          >
             {item}
           </Link>
         ),
       )}
       {current < total && (
         <Link href={href(current + 1)} className={css.pagination} aria-label={nextLabel}>
-          ➡
+          <span aria-hidden="true">➡</span>
         </Link>
       )}
     </nav>

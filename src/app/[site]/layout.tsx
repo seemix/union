@@ -89,16 +89,21 @@ export default async function SiteLayout({ children, params }: LayoutProps<'/[si
   return (
     <html lang={site.lang} className={`${oswald.variable} ${robotoSlab.variable}`}>
       <body>
+        <a href="#main-content" className="skip_link">
+          {dict.a11y.skipToContent}
+        </a>
         <MenuStateProvider>
           <Header site={site} dict={dict} />
           <TopBar
             social={<SocialIcons social={site.footer.social} />}
             closeLabel={dict.a11y.closeMenu}
           >
-            <Menu site={siteId} />
+            <Menu site={siteId} label={dict.a11y.mainMenu} />
           </TopBar>
         </MenuStateProvider>
-        <main style={{ minHeight: '50vh' }}>{children}</main>
+        <main id="main-content" tabIndex={-1} style={{ minHeight: '50vh' }}>
+          {children}
+        </main>
         <Footer site={site} />
         <ArrowUp label={dict.a11y.scrollTop} />
       </body>

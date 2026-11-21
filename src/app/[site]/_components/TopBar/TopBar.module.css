@@ -25,6 +25,8 @@
     max-width: 320px;
     border-left: 1px solid rgb(var(--text));
     right: -100%;
+    /* Closed drawer is off-screen: keep its links out of the tab order. */
+    visibility: hidden;
     flex-direction: column;
   }
 
@@ -49,4 +51,16 @@
 /* After the media query on purpose: must win over `right: -100%`. */
 .opened_menu {
   right: 0;
+  visibility: visible;
+}
+
+/* Desktop: the bar is dark, so the focus ring is light; the mobile drawer is light. */
+.top_bar :focus-visible {
+  --focus-ring: whitesmoke;
+}
+
+@media screen and (max-width: 800px) {
+  .top_bar :focus-visible {
+    --focus-ring: rgb(var(--text));
+  }
 }

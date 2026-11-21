@@ -44,7 +44,7 @@ export function ArrowUp({ label }: { label: string }) {
           whileHover={reduceMotion ? undefined : 'hover'}
           whileTap={reduceMotion ? undefined : 'tap'}
         >
-          <big>⬆</big>
+          <big aria-hidden="true">⬆</big>
         </motion.button>
       )}
     </AnimatePresence>

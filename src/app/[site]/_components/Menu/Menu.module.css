@@ -71,7 +71,8 @@ nav.menu {
   box-sizing: border-box;
 }
 
-.menu ul li:hover > ul {
+.menu ul li:hover > ul,
+.menu ul li.open > ul {
   visibility: visible;
   transition: all 0.3s ease-in-out;
   opacity: 1;
@@ -81,15 +82,31 @@ nav.menu {
   text-shadow: initial;
 }
 
-.menu ul li input {
-  display: none;
+.menu ul li > button {
+  display: block;
+  background: none;
+  border: 0;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  text-align: inherit;
+  color: inherit;
+  cursor: pointer;
 }
 
-.menu ul li:hover > label span .arrow_right {
+/* Esc dismisses a submenu that is shown by hover or focus until the pointer leaves. */
+.menu ul li.dismissed > ul {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.menu ul li:hover > button span .arrow_right,
+.menu ul li.open > button span .arrow_right {
   border-color: rgb(var(--red));
 }
 
-.menu ul li:hover > label span {
+.menu ul li:hover > button span,
+.menu ul li.open > button span {
   color: rgb(var(--red));
   background-color: var(--background-dark);
 }
@@ -141,7 +158,13 @@ nav.menu {
     background-color: inherit;
   }
 
-  .menu ul li input:checked ~ ul {
+  .menu ul li:hover > ul {
+    visibility: inherit;
+    opacity: 0;
+    height: inherit;
+  }
+
+  .menu ul li.open > ul {
     visibility: visible;
     height: fit-content;
     transition: all 0s ease;
@@ -149,14 +172,13 @@ nav.menu {
     top: 0;
   }
 
-  .menu ul li:has(input:checked) {
+  .menu ul li.open {
     height: auto;
   }
 
-  .menu ul li:hover > ul {
-    visibility: inherit;
+  .menu ul li.dismissed > ul {
+    visibility: hidden;
     opacity: 0;
-    height: inherit;
   }
 
   .menu ul {

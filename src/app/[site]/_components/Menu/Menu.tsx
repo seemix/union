@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { SiteId } from '@/config/sites';
 import { getMenu, type MenuItem } from '@/lib/wp';
 import css from './Menu.module.css';
+import { MenuParent } from './MenuParent';
 
 /** The CSS supports one submenu level: deeper descendants are flattened into it. */
 function flatten(items: readonly MenuItem[]): MenuItem[] {
@@ -14,7 +15,7 @@ function ItemLink({ item }: { item: MenuItem }) {
   return <Link href={item.href}>{item.label}</Link>;
 }
 
-export async function Menu({ site }: { site: SiteId }) {
+export async function Menu({ site, label }: { site: SiteId; label: string }) {
   let items: readonly MenuItem[] = [];
   try {
     items = await getMenu(site);
@@ -24,7 +25,7 @@ export async function Menu({ site }: { site: SiteId }) {
   }
 
   return (
-    <nav className={css.menu}>
+    <nav className={css.menu} aria-label={label}>
       <ul>
         {items.map((item) => {
           const children = flatten(item.children);
@@ -35,23 +36,14 @@ export async function Menu({ site }: { site: SiteId }) {
               </li>
             );
           }
-          const toggleId = `menu-item-${site}-${item.id}`;
           return (
-            <li key={item.id}>
-              <label htmlFor={toggleId}>
-                <span>
-                  {item.label} <i className={css.arrow_right} />{' '}
-                </span>
-              </label>
-              <input type="checkbox" id={toggleId} />
-              <ul>
-                {children.map((child) => (
-                  <li key={child.id}>
-                    <ItemLink item={child} />
-                  </li>
-                ))}
-              </ul>
-            </li>
+            <MenuParent key={item.id} label={item.label}>
+              {children.map((child) => (
+                <li key={child.id}>
+                  <ItemLink item={child} />
+                </li>
+              ))}
+            </MenuParent>
           );
         })}
       </ul>

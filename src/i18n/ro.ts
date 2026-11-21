@@ -43,5 +43,12 @@ export const ro: Dictionary = {
     pagination: 'Paginare',
     views: 'Vizualizări',
     loading: 'Se încarcă',
+    skipToContent: 'Sari la conținut',
+    mainMenu: 'Meniu principal',
+    page: 'Pagina',
+    carousel: 'carusel',
+    slide: 'diapozitiv',
+    prevSlide: 'Diapozitivul anterior',
+    nextSlide: 'Diapozitivul următor',
   },
 };

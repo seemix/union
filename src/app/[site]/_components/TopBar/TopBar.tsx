@@ -3,6 +3,7 @@
 import { useEffect, useRef, type MouseEvent, type ReactNode } from 'react';
 import { IoMdClose } from 'react-icons/io';
 import { useMenuState } from '../menu-state';
+import { MENU_ID } from '../menu-id';
 import css from './TopBar.module.css';
 
 interface TopBarProps {
@@ -17,9 +18,12 @@ interface TopBarProps {
 export function TopBar({ social, children, closeLabel }: TopBarProps) {
   const { open, setOpen } = useMenuState();
   const ref = useRef<HTMLDivElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!open) return;
+    // Drawer mode only (the close button is hidden on desktop): move focus into the drawer.
+    if (closeRef.current?.offsetParent) closeRef.current.focus();
     const onPointerDown = (event: PointerEvent) => {
       const target = event.target as Element;
       // The burger button toggles by itself.
@@ -27,7 +31,9 @@ export function TopBar({ social, children, closeLabel }: TopBarProps) {
       setOpen(false);
     };
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setOpen(false);
+      if (event.key !== 'Escape') return;
+      setOpen(false);
+      document.querySelector<HTMLElement>('[data-menu-toggle]')?.focus();
     };
     document.addEventListener('pointerdown', onPointerDown);
     document.addEventListener('keydown', onKeyDown);
@@ -45,12 +51,13 @@ export function TopBar({ social, children, closeLabel }: TopBarProps) {
   return (
     <div
       ref={ref}
+      id={MENU_ID}
       className={open ? `${css.top_bar} ${css.opened_menu}` : css.top_bar}
       onClick={onClick}
     >
       <div className={css.close_button_wrapper}>
         {social}
-        <button type="button" onClick={() => setOpen(false)} aria-label={closeLabel}>
+        <button ref={closeRef} type="button" onClick={() => setOpen(false)} aria-label={closeLabel}>
           <IoMdClose size="2.9em" />
         </button>
       </div>

@@ -47,6 +47,13 @@ export const ru = {
     pagination: 'Страницы',
     views: 'Просмотры',
     loading: 'Загрузка',
+    skipToContent: 'Перейти к содержимому',
+    mainMenu: 'Главное меню',
+    page: 'Страница',
+    carousel: 'карусель',
+    slide: 'слайд',
+    prevSlide: 'Предыдущий слайд',
+    nextSlide: 'Следующий слайд',
   },
 };
 
