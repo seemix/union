@@ -26,7 +26,7 @@ openssl rand -hex 32
 define('UNION_VIEWS_SECRET',      '<64 hex, = VIEWS_SECRET_RU у .env фронтенду>');
 define('UNION_SITE',              'ru');
 define('UNION_FRONTEND_URL',      'https://ru.baptist.org.md');
-define('UNION_REVALIDATE_SECRET', '<64 hex, секрет ревалідації ru>');
+define('UNION_REVALIDATE_SECRET', '<64 hex, = REVALIDATE_SECRET_RU у .env фронтенду>');
 ```
 
 **ro** (`baptist.org.md/ro/wp-config.php`):
@@ -35,7 +35,7 @@ define('UNION_REVALIDATE_SECRET', '<64 hex, секрет ревалідації 
 define('UNION_VIEWS_SECRET',      '<64 hex, = VIEWS_SECRET_RO у .env фронтенду>');
 define('UNION_SITE',              'ro');
 define('UNION_FRONTEND_URL',      'https://ro.baptist.org.md');
-define('UNION_REVALIDATE_SECRET', '<64 hex, секрет ревалідації ro>');
+define('UNION_REVALIDATE_SECRET', '<64 hex, = REVALIDATE_SECRET_RO у .env фронтенду>');
 ```
 
 - Поки v2 працює на staging (Q21), у `UNION_FRONTEND_URL` можна вказати кілька адрес через кому: `'https://next.ru.baptist.org.md'` або `'https://ru.baptist.org.md,https://next.ru.baptist.org.md'`.
@@ -95,7 +95,7 @@ curl -s "${BASE}/baptist/v1/views/${ID}"
 
 Невалідний id (`0`, `007`) → 400 `rest_invalid_param`: WP перевіряє параметри маршруту раніше за `permission_callback`. Нічого не розкриває.
 
-**Ревалідація.** Поки `/api/revalidate` на фронтенді немає (ROADMAP, етап 4), подивитися запит можна так: тимчасово `define('UNION_FRONTEND_URL', 'https://<id>.requestcatcher.com')` (або будь-який сервіс для перехоплення запитів, або свій сервер), оновити опублікований пост — має прийти:
+**Ревалідація.** Найпростіше — оновити опублікований пост і подивитися лог фронтенду (рядок `[revalidate] ru post:… update → …`). Подивитися сирий запит можна так: тимчасово `define('UNION_FRONTEND_URL', 'https://<id>.requestcatcher.com')` (або будь-який сервіс для перехоплення запитів, або свій сервер), оновити опублікований пост — має прийти:
 
 ```http
 POST /api/revalidate
@@ -109,12 +109,15 @@ X-Union-Secret: <UNION_REVALIDATE_SECRET>
 
 ### Контракт для `/api/revalidate` (Next)
 
-- Перевірити `X-Union-Secret` проти секрету сайту з `site` (секрети ru і ro різні, тому `.env` фронтенду потрібні два: напр. `REVALIDATE_SECRET_RU` / `REVALIDATE_SECRET_RO` замість одного `REVALIDATE_SECRET`).
+Реалізовано в `src/lib/revalidate/handler.ts` (тести поруч).
+
+- `X-Union-Secret` перевіряється (`timingSafeEqual`) проти секрету сайту, який обслуговує цей хост (`x-site` з proxy): `REVALIDATE_SECRET_RU` / `REVALIDATE_SECRET_RO`. Без секрету / з чужим → 401. `site` у тілі має збігатися з хостом, інакше 400 (помилка `UNION_SITE`/`UNION_FRONTEND_URL`).
 - Мапінг на теги з `src/lib/wp/tags.ts`:
   - `post` → `posts:<s>`, `post:<s>:<id>`
   - `page` → `pages:<s>`, `page:<s>:<id>`
   - `category` → `categories:<s>`, `category:<s>:<id>`, `posts:<s>`
   - `menu` → `menu:<s>`
+- Профіль: `publish`/`update` → `'max'` (stale-while-revalidate), `unpublish`/`delete` → `{ expire: 0 }` (знятий контент не показується жодного разу).
 - Відповідь WP не читає (`blocking: false`), тож помилки треба логувати на стороні Next.
 
 ## 4. Прибирання старого коду з `functions.php` (після перемикання на v2)

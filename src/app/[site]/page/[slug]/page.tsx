@@ -2,6 +2,7 @@ import { cache } from 'react';
 import type { Metadata } from 'next';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { getSite, isSiteId, type SiteId } from '@/config/sites';
+import { buildMetadata } from '@/lib/seo/metadata';
 import { pageHref, slugForUrl } from '@/lib/site/href';
 import { getPage, metaDescription, plainText, type WpPage } from '@/lib/wp';
 import { ContentRender } from '../../_components/ContentRender/ContentRender';
@@ -41,37 +42,22 @@ export async function generateMetadata({
   const { site: siteId, page } = await loadPage(siteParam, slug);
   const site = getSite(siteId);
 
-  const title = plainText(page.title.rendered);
-  const description =
-    metaDescription(page.excerpt.rendered) ??
-    metaDescription(page.content.rendered) ??
-    site.description;
-  // Always the production domain, also on staging (no duplicate canonicals).
-  const url = `${site.domain}${pageHref(page)}`;
-
-  return {
-    title: `${title} | ${site.siteTitle}`,
-    description: description ?? undefined,
-    alternates: { canonical: url },
-    openGraph: {
-      type: 'website',
-      url,
-      title,
-      description: description ?? undefined,
-      siteName: site.siteTitle,
-      locale: site.locale,
-    },
-  };
+  return buildMetadata({
+    site,
+    title: plainText(page.title.rendered),
+    description: metaDescription(page.excerpt.rendered) ?? metaDescription(page.content.rendered),
+    path: pageHref(page),
+  });
 }
 
 export default async function WpPageView({ params }: PageProps<'/[site]/page/[slug]'>) {
-  const { site, slug } = await params;
-  const { page } = await loadPage(site, slug);
+  const { site: siteParam, slug } = await params;
+  const { site, page } = await loadPage(siteParam, slug);
 
   return (
     <div className="main">
       <h2>{plainText(page.title.rendered)}</h2>
-      <ContentRender html={page.content.rendered} />
+      <ContentRender html={page.content.rendered} site={site} />
     </div>
   );
 }

@@ -1,9 +1,11 @@
 import { cache } from 'react';
 import type { Metadata } from 'next';
 import { notFound, permanentRedirect } from 'next/navigation';
-import { getSite, isSiteId, type SiteId } from '@/config/sites';
+import { absoluteUrl, getSite, isSiteId, type SiteId } from '@/config/sites';
 import { getDictionary } from '@/i18n';
 import { formatDate, formatNumber } from '@/i18n/format';
+import { breadcrumbLd } from '@/lib/seo/json-ld';
+import { buildMetadata } from '@/lib/seo/metadata';
 import { categoryHref, parseListPage, postHref, slugForUrl } from '@/lib/site/href';
 import {
   DEFAULT_PER_PAGE,
@@ -17,6 +19,7 @@ import {
   type WpList,
   type WpPostSummary,
 } from '@/lib/wp';
+import { JsonLd } from '../../../_components/JsonLd/JsonLd';
 import { Pagination } from '../../../_components/Pagination/Pagination';
 import { PostCard, type PostCardData } from '../../../_components/PostCard/PostCard';
 import css from './category.module.css';
@@ -90,23 +93,13 @@ export async function generateMetadata({
 
   const name = plainText(category.name);
   const heading = page > 1 ? `${name} — ${dict.pagination.page} ${page}` : name;
-  const description = metaDescription(category.description) ?? site.description ?? undefined;
-  // Each pagination page is canonical to itself; production domain also on staging.
-  const url = `${site.domain}${categoryHref(category, page)}`;
-
-  return {
-    title: `${heading} | ${site.siteTitle}`,
-    description,
-    alternates: { canonical: url },
-    openGraph: {
-      type: 'website',
-      url,
-      title: heading,
-      description,
-      siteName: site.siteTitle,
-      locale: site.locale,
-    },
-  };
+  return buildMetadata({
+    site,
+    title: heading,
+    description: metaDescription(category.description),
+    // Each pagination page is canonical to itself.
+    path: categoryHref(category, page),
+  });
 }
 
 export default async function CategoryPage({
@@ -115,6 +108,7 @@ export default async function CategoryPage({
   const { site: siteParam, slug, page: segments } = await params;
   const { site, category, page, list } = await loadCategory(siteParam, slug, segments);
   const dict = await getDictionary(site);
+  const siteConfig = getSite(site);
 
   const cards: PostCardData[] = list.items.map((p) => ({
     href: postHref(p),
@@ -127,6 +121,12 @@ export default async function CategoryPage({
 
   return (
     <div className="main">
+      <JsonLd
+        data={breadcrumbLd([
+          { name: dict.breadcrumb.home, url: absoluteUrl(siteConfig, '/') },
+          { name: plainText(category.name), url: absoluteUrl(siteConfig, categoryHref(category)) },
+        ])}
+      />
       <h2>{plainText(category.name)}</h2>
       <div className={css.cards_wrapper}>
         {cards.map((post, i) => (

@@ -1,7 +1,11 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getSite, isSiteId, type HomeSlider as SliderConfig } from '@/config/sites';
+import { homeLd } from '@/lib/seo/json-ld';
+import { buildMetadata, homeLanguages } from '@/lib/seo/metadata';
 import { postHref } from '@/lib/site/href';
 import { excerptOf, featuredImage, getPosts, plainText, type WpPostSummary } from '@/lib/wp';
+import { JsonLd } from './_components/JsonLd/JsonLd';
 import { HomeSliderSection } from './_components/HomeSlider/HomeSliderSection';
 import type { Slide } from './_components/HomeSlider/SlideContent';
 import { HomeWidgets } from './_components/Widgets/HomeWidgets';
@@ -23,6 +27,20 @@ function toSlide(post: WpPostSummary, excerptLength: number): Slide {
   };
 }
 
+/** The only page with hreflang (Q7): ru ⇄ ro home pages, each with a self reference. */
+export async function generateMetadata({ params }: PageProps<'/[site]'>): Promise<Metadata> {
+  const { site: siteId } = await params;
+  if (!isSiteId(siteId)) return {};
+  const site = getSite(siteId);
+  return buildMetadata({
+    site,
+    title: site.siteTitle,
+    absoluteTitle: true,
+    path: '/',
+    languages: homeLanguages(),
+  });
+}
+
 export default async function HomePage({ params }: PageProps<'/[site]'>) {
   const { site: siteId } = await params;
   if (!isSiteId(siteId)) notFound();
@@ -35,6 +53,7 @@ export default async function HomePage({ params }: PageProps<'/[site]'>) {
 
   return (
     <div className={css.main_wrapper}>
+      <JsonLd data={homeLd(site)} />
       <div className={css.main_container}>
         {site.sliders.map((slider, i) => (
           <div key={slider.id} className={AREA[slider.id]}>

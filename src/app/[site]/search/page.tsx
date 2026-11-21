@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getSite, isSiteId, type SiteId } from '@/config/sites';
+import { isSiteId, type SiteId } from '@/config/sites';
 import { getDictionary } from '@/i18n';
 import { formatDate, formatNumber } from '@/i18n/format';
 import { normalizeQuery } from '@/lib/search/query';
@@ -33,11 +33,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { site: siteParam } = await params;
   if (!isSiteId(siteParam)) return {};
-  const site = getSite(siteParam);
   const dict = await getDictionary(siteParam);
   const q = normalizeQuery((await searchParams).q);
   return {
-    title: `${q ? `${dict.search.results} '${q}'` : dict.a11y.search} | ${site.siteTitle}`,
+    title: q ? `${dict.search.results} '${q}'` : dict.a11y.search,
     // Result pages are thin / infinite: keep them out of the index, let crawlers follow links.
     robots: { index: false, follow: true },
   };

@@ -1,0 +1,62 @@
+# Старі URL ru.baptist.org.md для scripts/check-redirects.ts (P5.2).
+# Формат: [404] <url> [# коментар]. Без префікса: перший крок 301 на новий формат, фінал 200.
+# `404` — id, якого не існує: без редиректу, відповідь 404.
+# Джерело: головна, меню, футер і віджети чинного ru-сайту (станом на 2026-11-21).
+
+# Головна — без редиректу
+https://ru.baptist.org.md/
+
+# Пости (обов'язковий + пости з головної)
+https://ru.baptist.org.md/post?id=113186
+https://ru.baptist.org.md/post?id=112535
+https://ru.baptist.org.md/post?id=112563
+https://ru.baptist.org.md/post?id=112953
+https://ru.baptist.org.md/post?id=113038
+https://ru.baptist.org.md/post?id=113110
+https://ru.baptist.org.md/post?id=113117
+https://ru.baptist.org.md/post?id=113149
+https://ru.baptist.org.md/post?id=113157
+https://ru.baptist.org.md/post?id=113171
+https://ru.baptist.org.md/post?id=113175
+
+# Сторінки: футер (11, 12, 14), віджети (111876 контакти церков, 45477 онлайн), меню
+https://ru.baptist.org.md/page?id=11
+https://ru.baptist.org.md/page?id=12
+https://ru.baptist.org.md/page?id=14
+https://ru.baptist.org.md/page?id=111876
+https://ru.baptist.org.md/page?id=45477
+https://ru.baptist.org.md/page?id=16
+https://ru.baptist.org.md/page?id=33
+https://ru.baptist.org.md/page?id=36
+https://ru.baptist.org.md/page?id=1186
+https://ru.baptist.org.md/page?id=110099
+
+# Категорії: слайдери/футер (17, 27, 157), віджет «Тавифа» (205) та рубрики меню
+https://ru.baptist.org.md/category?id=17
+https://ru.baptist.org.md/category?id=27
+https://ru.baptist.org.md/category?id=157
+https://ru.baptist.org.md/category?id=205
+https://ru.baptist.org.md/category?id=28
+https://ru.baptist.org.md/category?id=4
+https://ru.baptist.org.md/category?id=5
+https://ru.baptist.org.md/category?id=10
+https://ru.baptist.org.md/category?id=19
+https://ru.baptist.org.md/category?id=24
+https://ru.baptist.org.md/category?id=26
+https://ru.baptist.org.md/category?id=29
+
+# Пагінація категорій (page=1 → без номера)
+https://ru.baptist.org.md/category?id=17&page=2
+https://ru.baptist.org.md/category?id=17&page=3
+https://ru.baptist.org.md/category?id=28&page=2
+https://ru.baptist.org.md/category?id=28&page=1
+
+# Пошук (кирилиця, percent-encoded як у браузері)
+https://ru.baptist.org.md/search?query=%D0%BC%D0%BE%D0%BB%D0%B8%D1%82%D0%B2%D0%B0
+https://ru.baptist.org.md/search?query=%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D1%8F&page=2
+
+# Параметри: utm зберігається, fbclid прибирається
+https://ru.baptist.org.md/post?id=113186&utm_source=facebook&utm_medium=social&fbclid=IwAR0test
+
+# Неіснуючий id → 404, без редиректу
+404 https://ru.baptist.org.md/post?id=999999999

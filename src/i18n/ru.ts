@@ -15,6 +15,10 @@ export const ru = {
     noResults: 'Ничего не найдено',
     enterQuery: 'Введите запрос для поиска',
   },
+  breadcrumb: {
+    /** First item of BreadcrumbList JSON-LD. */
+    home: 'Главная',
+  },
   card: {
     more: 'далее',
   },

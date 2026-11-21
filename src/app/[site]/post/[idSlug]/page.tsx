@@ -1,12 +1,15 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound, permanentRedirect } from 'next/navigation';
-import { getSite, isSiteId, type SiteId } from '@/config/sites';
+import { absoluteUrl, getSite, isSiteId, type SiteConfig, type SiteId } from '@/config/sites';
 import { getDictionary } from '@/i18n';
 import { formatDate, formatNumber } from '@/i18n/format';
+import { breadcrumbLd, isoFromGmt, newsArticleLd } from '@/lib/seo/json-ld';
+import { buildMetadata, defaultDescription, defaultShareImage } from '@/lib/seo/metadata';
 import { categoryHref, parsePostIdSlug, postHref, slugForUrl } from '@/lib/site/href';
 import { getPost, getPosts, plainText, shareImage, type WpPost } from '@/lib/wp';
 import { ContentRender } from '../../_components/ContentRender/ContentRender';
+import { JsonLd } from '../../_components/JsonLd/JsonLd';
 import { DateViews } from '../../_components/DateViews/DateViews';
 import { PostViewCounter } from '../../_components/PostViewCounter/PostViewCounter';
 import css from './post.module.css';
@@ -82,8 +85,9 @@ function describe(post: WpPost): string | null {
   return `${(space > DESCRIPTION_MAX / 2 ? cut.slice(0, space) : cut).replace(/[\s,;:.–—-]+$/, '')}…`;
 }
 
-/** WP `*_gmt` fields are UTC without a zone. */
-const utc = (gmt: string) => (gmt ? `${gmt}Z` : undefined);
+/** Some posts have no title at all (ro 14853): metadata and JSON-LD need one, so use the site's. */
+const seoTitle = (post: WpPost, site: SiteConfig) =>
+  plainText(post.title.rendered) || site.siteTitle;
 
 export async function generateMetadata({
   params,
@@ -92,35 +96,16 @@ export async function generateMetadata({
   const { site: siteId, post } = await loadPost(siteParam, idSlug);
   const site = getSite(siteId);
 
-  const title = plainText(post.title.rendered);
-  const description = describe(post) ?? site.description ?? undefined;
-  // Always the production domain, also on staging (no duplicate canonicals).
-  const url = `${site.domain}${postHref(post)}`;
-  const image = shareImage(post);
-  const images = image ? [{ ...image, alt: image.alt || title }] : undefined;
-
-  return {
-    title: `${title} | ${site.siteTitle}`,
-    description,
-    alternates: { canonical: url },
-    openGraph: {
-      type: 'article',
-      url,
-      title,
-      description,
-      siteName: site.siteTitle,
-      locale: site.locale,
-      publishedTime: utc(post.date_gmt),
-      modifiedTime: utc(post.modified_gmt),
-      images,
-    },
-    twitter: {
-      card: image ? 'summary_large_image' : 'summary',
-      title,
-      description,
-      images: images?.map((i) => i.url),
-    },
-  };
+  return buildMetadata({
+    site,
+    title: seoTitle(post, site),
+    description: describe(post),
+    path: postHref(post),
+    type: 'article',
+    image: shareImage(post),
+    publishedTime: isoFromGmt(post.date_gmt),
+    modifiedTime: isoFromGmt(post.modified_gmt),
+  });
 }
 
 export default async function PostPage({ params }: PageProps<'/[site]/post/[idSlug]'>) {
@@ -128,12 +113,44 @@ export default async function PostPage({ params }: PageProps<'/[site]/post/[idSl
   const { site, post } = await loadPost(siteParam, idSlug);
   const dict = await getDictionary(site);
 
+  const siteConfig = getSite(site);
+  const title = seoTitle(post, siteConfig);
+  const url = absoluteUrl(siteConfig, postHref(post));
   const categories = (post._embedded?.['wp:term']?.[0] ?? []).filter(
     (t) => t.taxonomy === 'category',
   );
 
+  const firstCategory = categories[0];
+  const image = shareImage(post)?.url ?? defaultShareImage(siteConfig).url;
+
   return (
     <div className="main">
+      <JsonLd
+        data={newsArticleLd({
+          site: siteConfig,
+          title,
+          description: describe(post) ?? defaultDescription(siteConfig),
+          url,
+          image,
+          publishedGmt: post.date_gmt,
+          modifiedGmt: post.modified_gmt,
+          section: firstCategory ? plainText(firstCategory.name) : null,
+        })}
+      />
+      <JsonLd
+        data={breadcrumbLd([
+          { name: dict.breadcrumb.home, url: absoluteUrl(siteConfig, '/') },
+          ...(firstCategory
+            ? [
+                {
+                  name: plainText(firstCategory.name),
+                  url: absoluteUrl(siteConfig, categoryHref(firstCategory)),
+                },
+              ]
+            : []),
+          { name: title, url },
+        ])}
+      />
       <div className={css.categories_wrapper}>
         {categories.map((c) => (
           <Link key={c.id} href={categoryHref(c)}>
@@ -143,12 +160,12 @@ export default async function PostPage({ params }: PageProps<'/[site]/post/[idSl
       </div>
       <h2>{plainText(post.title.rendered)}</h2>
       <DateViews
-        // Value as cached with the post; live counts come with P4.7.
+        // Value as cached with the post (refreshed with it); PostViewCounter only increments.
         views={post.views > 0 ? formatNumber(post.views, site) : null}
         date={formatDate(post.date, site)}
         viewsLabel={dict.a11y.views}
       />
-      <ContentRender html={post.content.rendered} />
+      <ContentRender html={post.content.rendered} site={site} />
       <PostViewCounter postId={post.id} />
     </div>
   );

@@ -1,9 +1,16 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { site } from 'next/root-params';
 import { isSiteId } from '@/config/sites';
 import { getDictionary } from '@/i18n';
 import { SearchForm } from './_components/SearchForm/SearchForm';
 import css from './_components/StatusPage/StatusPage.module.css';
+
+export async function generateMetadata(): Promise<Metadata> {
+  const siteId = await site();
+  const dict = await getDictionary(isSiteId(siteId) ? siteId : 'ru');
+  return { title: dict.error.notFound };
+}
 
 // Rendered inside the `[site]` layout (header, menu, footer) for `notFound()` and for
 // unknown paths (`[...rest]`). Next adds `noindex`; the HTTP status is 404 as long as

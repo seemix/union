@@ -1,8 +1,9 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Oswald, Roboto_Slab } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { SITE_IDS, getSite, isSiteId } from '@/config/sites';
 import { getDictionary } from '@/i18n';
+import { defaultDescription, defaultShareImage } from '@/lib/seo/metadata';
 import { ArrowUp } from './_components/ArrowUp/ArrowUp';
 import { Footer } from './_components/Footer/Footer';
 import { Header } from './_components/Header/Header';
@@ -32,10 +33,51 @@ export function generateStaticParams() {
   return SITE_IDS.map((site) => ({ site }));
 }
 
-export async function generateMetadata({ params }: LayoutProps<'/[site]'>): Promise<Metadata> {
+export async function generateViewport({ params }: LayoutProps<'/[site]'>): Promise<Viewport> {
   const { site } = await params;
-  if (!isSiteId(site)) return {};
-  return { title: getSite(site).siteTitle };
+  return isSiteId(site) ? { themeColor: getSite(site).themeColor } : {};
+}
+
+/**
+ * Site-wide defaults. Pages build their own full metadata with `buildMetadata()`
+ * (src/lib/seo/metadata.ts), because `openGraph`/`twitter` of a page replace these.
+ * No `metadataBase`: canonical and share URLs are absolute on the production domain on
+ * purpose, while icons and the manifest stay relative so staging serves its own.
+ */
+export async function generateMetadata({ params }: LayoutProps<'/[site]'>): Promise<Metadata> {
+  const { site: siteParam } = await params;
+  if (!isSiteId(siteParam)) return {};
+  const site = getSite(siteParam);
+  const description = defaultDescription(site);
+  const image = defaultShareImage(site);
+  return {
+    title: { default: site.siteTitle, template: `%s | ${site.siteTitle}` },
+    description,
+    applicationName: site.siteTitle,
+    manifest: '/manifest.webmanifest',
+    icons: {
+      icon: [
+        { url: site.icons.favicon, sizes: 'any' },
+        { url: site.icons.icon32, type: 'image/png', sizes: '32x32' },
+        { url: site.icons.icon192, type: 'image/png', sizes: '192x192' },
+      ],
+      apple: [{ url: site.icons.appleTouch, sizes: '180x180', type: 'image/png' }],
+    },
+    openGraph: {
+      type: 'website',
+      siteName: site.siteTitle,
+      locale: site.locale,
+      title: site.siteTitle,
+      description,
+      images: [image],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: site.siteTitle,
+      description,
+      images: [image.url],
+    },
+  };
 }
 
 export default async function SiteLayout({ children, params }: LayoutProps<'/[site]'>) {

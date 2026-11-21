@@ -12,6 +12,10 @@ export const ro: Dictionary = {
     noResults: 'Nu s-a găsit nimic',
     enterQuery: 'Introduceți un termen de căutare',
   },
+  breadcrumb: {
+    /** First item of BreadcrumbList JSON-LD. */
+    home: 'Acasă',
+  },
   card: {
     more: 'mai mult',
   },

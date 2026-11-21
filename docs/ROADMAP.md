@@ -27,10 +27,10 @@
 ## Етап 2. Шар даних WordPress
 - [x] `lib/wp/client.ts`: fetch до REST з `site`, `_fields`, `_embed`, обробка помилок/404, теги кешу (`cacheTag`/`cacheLife`) — **Opus 5.5**
 - [x] Типи відповідей WP (posts, pages, categories, media, search) — **Sonnet 5.5**
-- [ ] Featured image через `_embed=wp:featuredmedia` з fallback за розмірами; прибрати залежність від `fimg_url` — **Sonnet 5.5** · 1:1 зі старим сайтом = `source_url` (оригінал): `app-thumb` ніколи не існував, див. `wp/README.md`
-- [ ] Єдиний маппер постів/excerpt (замість двох дублікатів), безпечне декодування HTML-сутностей — **Sonnet 5.5**
-- [ ] Меню через WPGraphQL (Q11), типізований запит + кеш — **Sonnet 5.5**
-- [ ] Unit-тести мапперів і хелперів (Vitest) — **Sonnet 5.5**
+- [x] Featured image через `_embed=wp:featuredmedia` з fallback за розмірами; прибрати залежність від `fimg_url` — **Sonnet 5.5** · 1:1 зі старим сайтом = `source_url` (оригінал): `app-thumb` ніколи не існував, див. `wp/README.md`
+- [x] Єдиний маппер постів/excerpt (замість двох дублікатів), безпечне декодування HTML-сутностей — **Sonnet 5.5**
+- [x] Меню через WPGraphQL (Q11), типізований запит + кеш — **Sonnet 5.5**
+- [x] Unit-тести мапперів і хелперів (Vitest) — **Sonnet 5.5**
 
 ## Етап 3. WordPress: mu-плагін (замість `functions.php`)
 - [x] `mu-plugins/baptist-headless.php`: захищений ендпойнт інкременту `views` (той самий мета-ключ, що й WP-PostViews; секрет із `wp-config.php`, валідація id, лише `publish`-пости) — **Opus 5.5**
@@ -47,21 +47,21 @@
 - [x] `/category/[slug]/[[...page]]` + метадані (у ro їх зараз немає) — **Sonnet 5.5**
 - [x] `/search` (Q17): лише пости, сортування за датою, безпечна підсвітка (екранування, лише текстові вузли), `noindex` — **Sonnet 5.5**
 - [x] Пагінація на `<Link>` (краулиться), `rel=prev/next` не потрібен, але коректні canonical — **Sonnet 5.5**
-- [ ] `ContentRender` на `html-react-parser`: `<img>`→оптимізовані картинки, внутрішні `<a>`→`Link`, iframe-обгортки, lightbox — **Sonnet 5.5**
+- [x] `ContentRender` на `html-react-parser`: `<img>`→оптимізовані картинки, внутрішні `<a>`→`Link`, iframe-обгортки, lightbox — **Sonnet 5.5**
 - [x] `error.tsx`, `not-found.tsx`, `loading.tsx` локалізовані — **Haiku 5.5**
-- [ ] Route handler `/api/views/[id]`: rate-limit, фільтр ботів, проксі в WP із секретом; клієнт на `sendBeacon` — **Opus 5.5**
-- [ ] Route handler `/api/revalidate` із секретом — **Sonnet 5.5**
+- [x] Route handler `/api/views/[id]`: rate-limit, фільтр ботів, проксі в WP із секретом; клієнт на `sendBeacon` — **Opus 5.5**
+- [x] Route handler `/api/revalidate` із секретом — **Sonnet 5.5**
 
 ## Етап 5. Зворотна сумісність URL
-- [ ] Редиректи 301 у `proxy.ts`: `/post?id=`, `/page?id=`, `/category?id=&page=`, `/search?query=` — **Opus 5.5**
-- [ ] Кеш lookup id→slug (щоб редирект не бив WP щоразу) — **Opus 5.5**
-- [ ] Тест-набір: список реальних старих URL → очікуваний 301 → 200 (скрипт/e2e) — **Sonnet 5.5**
+- [x] Редиректи 301 у `proxy.ts`: `/post?id=`, `/page?id=`, `/category?id=&page=`, `/search?query=` — **Opus 5.5**
+- [x] Кеш lookup id→slug (щоб редирект не бив WP щоразу) — **Opus 5.5**
+- [x] Тест-набір: список реальних старих URL → очікуваний 301 → 200 (скрипт/e2e) — **Sonnet 5.5** · `npm run check:redirects -- "https://{site}.baptist.org.md"`
 
 ## Етап 6. SEO
-- [ ] `generateMetadata` для всіх сторінок: title, description, canonical, OG, Twitter — **Sonnet 5.5**
-- [ ] `sitemap.ts` (пости з пагінацією WP, сторінки, категорії), `robots.ts` — для кожного сайту окремо — **Sonnet 5.5**
-- [ ] JSON-LD: `Organization`, `NewsArticle`, `BreadcrumbList` — **Sonnet 5.5**
-- [ ] `hreflang` лише на головній (Q7), OG-зображення за замовчуванням, favicon/manifest — **Haiku 5.5**
+- [x] `generateMetadata` для всіх сторінок: title, description, canonical, OG, Twitter — **Sonnet 5.5**
+- [x] `sitemap.ts` (пости з пагінацією WP, сторінки, категорії), `robots.ts` — для кожного сайту окремо — **Sonnet 5.5**
+- [x] JSON-LD: `Organization`, `NewsArticle`, `BreadcrumbList` — **Sonnet 5.5**
+- [x] `hreflang` лише на головній (Q7), OG-зображення за замовчуванням, favicon/manifest — **Haiku 5.5**
 - [ ] `alt` картинок із WP (`alt_text`), а не URL — **Haiku 5.5**
 
 ## Етап 7. UI та анімації

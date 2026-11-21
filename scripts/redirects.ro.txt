@@ -1,0 +1,56 @@
+# Старі URL ro.baptist.org.md для scripts/check-redirects.ts (P5.2).
+# Формат: [404] <url> [# коментар]. Без префікса: перший крок 301 на новий формат, фінал 200.
+# `404` — id, якого не існує: без редиректу, відповідь 404.
+# Джерело: головна, футер і віджети чинного ro-сайту (станом на 2026-11-21).
+
+# Головна — без редиректу
+https://ro.baptist.org.md/
+
+# Пости (обов'язковий + пости з головної)
+https://ro.baptist.org.md/post?id=16303
+https://ro.baptist.org.md/post?id=13063
+https://ro.baptist.org.md/post?id=16002
+https://ro.baptist.org.md/post?id=16047
+https://ro.baptist.org.md/post?id=16053
+https://ro.baptist.org.md/post?id=16063
+https://ro.baptist.org.md/post?id=16070
+https://ro.baptist.org.md/post?id=16133
+https://ro.baptist.org.md/post?id=16150
+https://ro.baptist.org.md/post?id=16182
+https://ro.baptist.org.md/post?id=16185
+https://ro.baptist.org.md/post?id=16188
+https://ro.baptist.org.md/post?id=16275
+
+# Сторінки: футер (893, 901, 898) і віджет «онлайн» (15459)
+https://ro.baptist.org.md/page?id=893
+https://ro.baptist.org.md/page?id=901
+https://ro.baptist.org.md/page?id=898
+https://ro.baptist.org.md/page?id=15459
+
+# Категорії: слайдери головної/футер (23, 22, 514) та великі рубрики
+https://ro.baptist.org.md/category?id=23
+https://ro.baptist.org.md/category?id=22
+https://ro.baptist.org.md/category?id=514
+https://ro.baptist.org.md/category?id=2
+https://ro.baptist.org.md/category?id=464
+https://ro.baptist.org.md/category?id=1083
+https://ro.baptist.org.md/category?id=1614
+https://ro.baptist.org.md/category?id=1617
+https://ro.baptist.org.md/category?id=138
+https://ro.baptist.org.md/category?id=1409
+
+# Пагінація категорій (page=1 → без номера)
+https://ro.baptist.org.md/category?id=23&page=2
+https://ro.baptist.org.md/category?id=23&page=3
+https://ro.baptist.org.md/category?id=2&page=2
+https://ro.baptist.org.md/category?id=2&page=1
+
+# Пошук
+https://ro.baptist.org.md/search?query=biblia
+https://ro.baptist.org.md/search?query=Dumnezeu&page=2
+
+# Параметри: utm зберігається, fbclid прибирається
+https://ro.baptist.org.md/post?id=16303&utm_source=facebook&utm_medium=social&fbclid=IwAR0test
+
+# Неіснуючий id → 404, без редиректу
+404 https://ro.baptist.org.md/post?id=999999999
