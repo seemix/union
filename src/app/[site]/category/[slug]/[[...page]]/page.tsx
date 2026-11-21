@@ -1,0 +1,152 @@
+import { cache } from 'react';
+import type { Metadata } from 'next';
+import { notFound, permanentRedirect } from 'next/navigation';
+import { getSite, isSiteId, type SiteId } from '@/config/sites';
+import { getDictionary } from '@/i18n';
+import { formatDate, formatNumber } from '@/i18n/format';
+import { categoryHref, parseListPage, postHref, slugForUrl } from '@/lib/site/href';
+import {
+  DEFAULT_PER_PAGE,
+  excerptOf,
+  featuredImage,
+  getCategoryBySlug,
+  getPosts,
+  metaDescription,
+  plainText,
+  type WpCategory,
+  type WpList,
+  type WpPostSummary,
+} from '@/lib/wp';
+import { Pagination } from '../../../_components/Pagination/Pagination';
+import { PostCard, type PostCardData } from '../../../_components/PostCard/PostCard';
+import css from './category.module.css';
+
+/**
+ * `/category/{slug}` and `/category/{slug}/{n}` (n ≥ 2). Same static-output rules as
+ * `/post/[idSlug]`: anything not prerendered at build is rendered completely before the
+ * response starts, so 404 / 308 are real HTTP statuses.
+ */
+export const ensureStatic = 'navigation';
+
+const EXCERPT_WORDS = 25;
+
+// `ensureStatic` needs one entry; a 404 placeholder will do. Real categories and pages
+// are rendered on first visit and then cached (tags: `category:{site}:{id}`, `posts:{site}`).
+export function generateStaticParams(): { slug: string; page: string[] }[] {
+  return [{ slug: '0', page: [] }];
+}
+
+interface CategoryView {
+  readonly site: SiteId;
+  readonly category: WpCategory;
+  readonly page: number;
+  readonly list: WpList<WpPostSummary>;
+}
+
+/**
+ * The one loader for `generateMetadata` and the page; `cache()` runs it once per request,
+ * so the category (name for the title) is never fetched twice — the name comes from the
+ * same `getCategoryBySlug` result that resolves the posts' category id.
+ *
+ * 404: unknown category, page not a number / `0` / past the last page.
+ * 308: `/…/1` → `/category/{slug}`, zero-padded numbers, a slug spelled differently from WP's.
+ */
+const loadCategory = cache(
+  async (
+    siteParam: string,
+    slug: string,
+    segments: readonly string[] | undefined,
+  ): Promise<CategoryView> => {
+    if (!isSiteId(siteParam)) notFound();
+    const parsed = parseListPage(segments);
+    if (!parsed) notFound();
+
+    const category = await getCategoryBySlug(siteParam, slug);
+    if (!category) notFound();
+
+    if (!parsed.canonical || !slugForUrl(category.slug, slug).matches) {
+      permanentRedirect(categoryHref(category, parsed.page));
+    }
+
+    // `null` = page past the end. An empty category is page 1 with no items (not a 404).
+    const list = await getPosts(siteParam, {
+      categories: [category.id],
+      page: parsed.page,
+      perPage: DEFAULT_PER_PAGE,
+    });
+    if (!list || parsed.page > Math.max(list.totalPages, 1)) notFound();
+
+    return { site: siteParam, category, page: parsed.page, list };
+  },
+);
+
+export async function generateMetadata({
+  params,
+}: PageProps<'/[site]/category/[slug]/[[...page]]'>): Promise<Metadata> {
+  const { site: siteParam, slug, page: segments } = await params;
+  const { site: siteId, category, page } = await loadCategory(siteParam, slug, segments);
+  const site = getSite(siteId);
+  const dict = await getDictionary(siteId);
+
+  const name = plainText(category.name);
+  const heading = page > 1 ? `${name} — ${dict.pagination.page} ${page}` : name;
+  const description = metaDescription(category.description) ?? site.description ?? undefined;
+  // Each pagination page is canonical to itself; production domain also on staging.
+  const url = `${site.domain}${categoryHref(category, page)}`;
+
+  return {
+    title: `${heading} | ${site.siteTitle}`,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: 'website',
+      url,
+      title: heading,
+      description,
+      siteName: site.siteTitle,
+      locale: site.locale,
+    },
+  };
+}
+
+export default async function CategoryPage({
+  params,
+}: PageProps<'/[site]/category/[slug]/[[...page]]'>) {
+  const { site: siteParam, slug, page: segments } = await params;
+  const { site, category, page, list } = await loadCategory(siteParam, slug, segments);
+  const dict = await getDictionary(site);
+
+  const cards: PostCardData[] = list.items.map((p) => ({
+    href: postHref(p),
+    title: plainText(p.title.rendered),
+    excerpt: excerptOf(p.excerpt.rendered, EXCERPT_WORDS),
+    image: featuredImage(p),
+    date: formatDate(p.date, site),
+    views: p.views > 0 ? formatNumber(p.views, site) : null,
+  }));
+
+  return (
+    <div className="main">
+      <h2>{plainText(category.name)}</h2>
+      <div className={css.cards_wrapper}>
+        {cards.map((post, i) => (
+          <PostCard
+            key={post.href}
+            post={post}
+            moreLabel={dict.card.more}
+            viewsLabel={dict.a11y.views}
+            priority={i < 2}
+          />
+        ))}
+      </div>
+      <Pagination
+        current={page}
+        total={list.totalPages}
+        basePath={categoryHref(category)}
+        label={dict.a11y.pagination}
+        prevLabel={dict.a11y.prevPage}
+        nextLabel={dict.a11y.nextPage}
+      />
+    </div>
+  );
+}

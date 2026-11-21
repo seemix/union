@@ -1,0 +1,15 @@
+.categories_wrapper {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 25px;
+  margin-top: 15px;
+}
+
+.categories_wrapper a {
+  font-family: var(--font-roboto-slab), sans-serif;
+  text-transform: uppercase;
+}
+
+.categories_wrapper a:hover {
+  color: rgb(var(--red));
+}

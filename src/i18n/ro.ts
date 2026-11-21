@@ -9,9 +9,14 @@ export const ro: Dictionary = {
     placeholder: 'căutare...',
     // Legacy bug: Russian "результаты поиска".
     results: 'rezultatele căutării',
+    noResults: 'Nu s-a găsit nimic',
+    enterQuery: 'Introduceți un termen de căutare',
   },
   card: {
     more: 'mai mult',
+  },
+  pagination: {
+    page: 'Pagina',
   },
   error: {
     // Legacy bug: Russian "Ошибка" / "404 | Страница не найдена".
@@ -28,6 +33,7 @@ export const ro: Dictionary = {
     scrollTop: 'Sus',
     prevPage: 'Pagina anterioară',
     nextPage: 'Pagina următoare',
+    pagination: 'Paginare',
     views: 'Vizualizări',
   },
 };

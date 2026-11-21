@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Baptist Headless
  * Description: Union v2 headless support: protected views counter (WP-PostViews compatible), on-demand revalidation of the Next.js frontend, `app-thumb` image size.
- * Version:     1.0.0
+ * Version:     1.1.0
  * Requires PHP: 7.4
  *
  * Must-use plugin: copy to wp-content/mu-plugins/baptist-headless.php (same file on ru and ro).
@@ -353,4 +353,33 @@ function baptist_headless_register_image_size(): void
     $crop = defined('UNION_APP_THUMB_CROP') ? (bool) UNION_APP_THUMB_CROP : true;
     // Same name as the theme's size: re-registering overrides it, the theme keeps working.
     add_image_size('app-thumb', max(0, $width), max(0, $height), $crop);
+}
+
+/* -------------------------------------------------------------------------
+ * 4. Public nav menus for WPGraphQL (independent of the theme)
+ *
+ * WPGraphQL hides a menu from anonymous requests unless it is assigned to a registered
+ * theme location. Block themes (Twenty Twenty-Five) register none, so `menu(id: …)` is
+ * `null` and Appearance → Menus is missing. The frontend reads the menu by ID, so:
+ *  - menus and their items are made public;
+ *  - a `primary` location is registered, which also brings the Menus screen back.
+ * ---------------------------------------------------------------------- */
+
+add_filter('graphql_data_is_private', 'baptist_headless_public_menus', 10, 2);
+
+/**
+ * @param bool   $is_private
+ * @param string $model_name WPGraphQL model: `MenuObject`/`MenuItemObject` (v1.x+), `MenuModel`/`MenuItemModel` (older).
+ */
+function baptist_headless_public_menus($is_private, $model_name)
+{
+    $menu_models = array('MenuObject', 'MenuItemObject', 'MenuModel', 'MenuItemModel');
+    return in_array($model_name, $menu_models, true) ? false : $is_private;
+}
+
+add_action('after_setup_theme', 'baptist_headless_register_menu_location', 20);
+
+function baptist_headless_register_menu_location(): void
+{
+    register_nav_menus(array('primary' => 'Primary (headless)'));
 }

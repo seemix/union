@@ -1,4 +1,5 @@
 import { GoSearch } from 'react-icons/go';
+import { MAX_QUERY_LENGTH } from '@/lib/search/query';
 import css from './SearchForm.module.css';
 
 interface SearchFormProps {
@@ -18,6 +19,7 @@ export function SearchForm({ placeholder, label }: SearchFormProps) {
           placeholder={placeholder}
           aria-label={label}
           minLength={3}
+          maxLength={MAX_QUERY_LENGTH}
           required
         />
         <button type="submit" className={css.search__submit} aria-label={label}>

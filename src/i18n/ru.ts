@@ -12,9 +12,15 @@ export const ru = {
     placeholder: 'поиск...',
     /** Heading before the highlighted query: `результаты поиска '{query}'`. */
     results: 'результаты поиска',
+    noResults: 'Ничего не найдено',
+    enterQuery: 'Введите запрос для поиска',
   },
   card: {
     more: 'далее',
+  },
+  pagination: {
+    /** Title suffix of list pages after the first: `{category} — Страница 2`. */
+    page: 'Страница',
   },
   error: {
     title: 'Ошибка',
@@ -31,6 +37,7 @@ export const ru = {
     scrollTop: 'Наверх',
     prevPage: 'Предыдущая страница',
     nextPage: 'Следующая страница',
+    pagination: 'Страницы',
     views: 'Просмотры',
   },
 };

@@ -1,0 +1,35 @@
+.pagination_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 90px;
+  margin-bottom: 20px;
+}
+
+.pagination {
+  background-image: none;
+  width: 35px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: whitesmoke;
+  line-height: 0;
+  border-radius: 2px;
+  background-color: rgb(var(--red));
+  border: 0;
+}
+
+.active {
+  border: 1px solid rgb(var(--red));
+  font-weight: 600;
+  font-size: 1em;
+  color: rgb(var(--text));
+  background-color: white;
+}
+
+.dots {
+  width: 40px;
+  height: 40px;
+  border-bottom: 2px dotted rgb(var(--text));
+}

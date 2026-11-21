@@ -67,3 +67,44 @@ export function featuredImage(post: Pick<WpPostSummary, '_embedded'>): PostImage
   const src = m.media_details.sizes?.large?.source_url ?? m.source_url;
   return src ? { src, alt: m.alt_text } : null;
 }
+
+export interface ShareImage {
+  readonly url: string;
+  readonly width?: number;
+  readonly height?: number;
+  readonly alt: string;
+}
+
+/**
+ * Featured image for Open Graph / Twitter: the `large` size (≈1024 px), else the
+ * original; with dimensions when WP knows them. `null` when absent/deleted.
+ */
+export function shareImage(post: Pick<WpPostSummary, '_embedded'>): ShareImage | null {
+  const media = post._embedded?.['wp:featuredmedia']?.[0];
+  if (!media || !('source_url' in media)) return null;
+  const m: WpMedia = media;
+  const large = m.media_details.sizes?.large;
+  if (large?.source_url) {
+    return { url: large.source_url, width: large.width, height: large.height, alt: m.alt_text };
+  }
+  if (!m.source_url) return null;
+  const { width, height } = m.media_details;
+  return width && height
+    ? { url: m.source_url, width, height, alt: m.alt_text }
+    : { url: m.source_url, alt: m.alt_text };
+}
+
+/**
+ * Meta description from rendered HTML: plain text without WP's trailing `[…]`, cut on a
+ * word boundary to `max` characters. `null` when there is no text.
+ */
+export function metaDescription(html: string, max = 160): string | null {
+  const text = plainText(html)
+    .replace(/\s*\[(?:…|\.\.\.)\]\s*$/, '')
+    .trim();
+  if (!text) return null;
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max - 1);
+  const space = cut.lastIndexOf(' ');
+  return `${(space > max / 2 ? cut.slice(0, space) : cut).replace(/[\s,;:.–—-]+$/, '')}…`;
+}

@@ -11,6 +11,7 @@
  */
 import { cacheLife, cacheTag } from 'next/cache';
 import type { SiteId } from '@/config/sites';
+import { normalizeQuery } from '@/lib/search/query';
 import { unwrapWp, wpRequest, type WpParams, type WpResult } from './client';
 import { wpTags } from './tags';
 import type {
@@ -24,7 +25,15 @@ import type {
 } from './types';
 
 const POST_SUMMARY_FIELDS = ['id', 'date', 'slug', 'title', 'excerpt', 'featured_media', 'views'];
-const POST_FIELDS = [...POST_SUMMARY_FIELDS, 'modified', 'content', 'categories'];
+const POST_FIELDS = [
+  ...POST_SUMMARY_FIELDS,
+  'status',
+  'date_gmt',
+  'modified',
+  'modified_gmt',
+  'content',
+  'categories',
+];
 const PAGE_FIELDS = ['id', 'slug', 'modified', 'title', 'content', 'excerpt'];
 const CATEGORY_FIELDS = ['id', 'name', 'slug', 'description', 'parent', 'count'];
 
@@ -37,7 +46,6 @@ const POST_SUMMARY_PARAMS = {
 export const DEFAULT_PER_PAGE = 8;
 const MAX_PER_PAGE = 100;
 const MAX_SLUG_LENGTH = 200;
-const MAX_QUERY_LENGTH = 200;
 
 // ---------- input helpers ----------
 
@@ -70,6 +78,19 @@ function toList<T>(result: WpResult<T[]>): WpList<T> | null {
   };
 }
 
+/**
+ * Anonymous `GET posts/<id>` of a draft/pending/private/trashed post is a 401/403
+ * `rest_forbidden` (a missing id is a 404). For a public site that post does not exist.
+ * Single-post lookups only: elsewhere `rest_forbidden` means a misconfigured API and throws.
+ */
+function forbiddenAsNotFound<T>(r: WpResult<T>): WpResult<T> {
+  return r.status === 'error' &&
+    (r.error.status === 401 || r.error.status === 403) &&
+    r.error.code === 'rest_forbidden'
+    ? { status: 'not_found' }
+    : r;
+}
+
 function firstOf<T>(result: WpResult<T[]>): T | null {
   return unwrapWp(result)?.data[0] ?? null;
 }
@@ -79,10 +100,12 @@ function firstOf<T>(result: WpResult<T[]>): T | null {
 async function cachedPost(site: SiteId, id: number): Promise<WpResult<WpPost>> {
   'use cache';
   cacheTag(wpTags.site(site), wpTags.post(site, id));
-  const r = await wpRequest<WpPost>(site, `posts/${id}`, {
-    _fields: POST_FIELDS,
-    _embed: ['wp:featuredmedia', 'wp:term'],
-  });
+  const r = forbiddenAsNotFound(
+    await wpRequest<WpPost>(site, `posts/${id}`, {
+      _fields: POST_FIELDS,
+      _embed: ['wp:featuredmedia', 'wp:term'],
+    }),
+  );
   if (r.status === 'ok') cacheLife('hours');
   else if (r.status === 'not_found') cacheLife('minutes');
   else cacheLife('seconds');
@@ -98,7 +121,9 @@ export async function getPost(site: SiteId, id: number): Promise<WpPost | null> 
 async function cachedPostIdSlug(site: SiteId, id: number): Promise<WpResult<WpPostIdSlug>> {
   'use cache';
   cacheTag(wpTags.site(site), wpTags.post(site, id));
-  const r = await wpRequest<WpPostIdSlug>(site, `posts/${id}`, { _fields: ['id', 'slug'] });
+  const r = forbiddenAsNotFound(
+    await wpRequest<WpPostIdSlug>(site, `posts/${id}`, { _fields: ['id', 'slug'] }),
+  );
   if (r.status === 'ok') cacheLife('hours');
   else if (r.status === 'not_found') cacheLife('minutes');
   else cacheLife('seconds');
@@ -196,7 +221,7 @@ export async function searchPosts(
   { q, page = 1 }: SearchPostsOptions,
 ): Promise<WpList<WpSearchResult> | null> {
   if (!isId(page)) return null;
-  const query = q.trim().replace(/\s+/g, ' ').slice(0, MAX_QUERY_LENGTH);
+  const query = normalizeQuery(q);
   if (query.length === 0) return page === 1 ? EMPTY_LIST : null;
   return toList(await cachedSearch(site, query, page));
 }

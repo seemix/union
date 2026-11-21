@@ -42,11 +42,11 @@
 ## Етап 4. Сторінки та маршрути
 - [x] Layout: Header, TopBar/Menu, Footer, ArrowUp з конфігу/словника, правильний `lang` — **Sonnet 5.5**
 - [x] Головна: паралельні запити (`Promise.all`), слайдери з конфігу, віджети з конфігу — **Sonnet 5.5**
-- [ ] `/post/[idSlug]`: дані, метадані, canonical-редирект при неспівпадінні slug, `notFound()` — **Opus 5.5**
-- [ ] `/page/[slug]` — **Sonnet 5.5**
-- [ ] `/category/[slug]/[[...page]]` + метадані (у ro їх зараз немає) — **Sonnet 5.5**
+- [x] `/post/[idSlug]`: дані, метадані, canonical-редирект при неспівпадінні slug, `notFound()` — **Opus 5.5**
+- [x] `/page/[slug]` — **Sonnet 5.5**
+- [x] `/category/[slug]/[[...page]]` + метадані (у ro їх зараз немає) — **Sonnet 5.5**
 - [ ] `/search` (Q17): лише пости, сортування за датою, безпечна підсвітка (екранування, лише текстові вузли), `noindex` — **Sonnet 5.5**
-- [ ] Пагінація на `<Link>` (краулиться), `rel=prev/next` не потрібен, але коректні canonical — **Sonnet 5.5**
+- [x] Пагінація на `<Link>` (краулиться), `rel=prev/next` не потрібен, але коректні canonical — **Sonnet 5.5**
 - [ ] `ContentRender` на `html-react-parser`: `<img>`→оптимізовані картинки, внутрішні `<a>`→`Link`, iframe-обгортки, lightbox — **Sonnet 5.5**
 - [ ] `error.tsx`, `not-found.tsx`, `loading.tsx` локалізовані — **Haiku 5.5**
 - [ ] Route handler `/api/views/[id]`: rate-limit, фільтр ботів, проксі в WP із секретом; клієнт на `sendBeacon` — **Opus 5.5**

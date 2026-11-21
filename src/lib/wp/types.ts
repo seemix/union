@@ -79,7 +79,16 @@ export interface WpPostSummary {
 
 /** Full post (`/post/[idSlug]`). */
 export interface WpPost extends Omit<WpPostSummary, '_embedded'> {
+  /**
+   * Anonymous REST only returns `publish` (drafts/private answer 401, see `getPost`);
+   * still checked by the page in case the API ever runs authenticated.
+   */
+  readonly status: 'publish' | 'future' | 'draft' | 'pending' | 'private' | (string & {});
+  /** UTC, ISO without zone. */
+  readonly date_gmt: string;
   readonly modified: string;
+  /** UTC, ISO without zone. */
+  readonly modified_gmt: string;
   readonly content: WpRendered;
   readonly categories: readonly number[];
   readonly _embedded?: WpEmbedded;
