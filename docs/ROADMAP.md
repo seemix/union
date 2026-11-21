@@ -20,7 +20,7 @@
 - [x] ESLint 9 flat config + Prettier, alias `@/`, `.env.example` — **Haiku 5.5**
 - [x] `src/config/sites.ts` — типізована схема конфігу сайту + значення ru/ro — **Sonnet 5.5**
 - [x] `proxy.ts`: визначення сайту за Host, rewrite → `/[site]/…`, dev-override — **Opus 5.5**
-- [ ] Словники `i18n/ru.ts`, `i18n/ro.ts` + хелпер `getDictionary(site)` — **Sonnet 5.5**
+- [x] Словники `i18n/ru.ts`, `i18n/ro.ts` + хелпер `getDictionary(site)` — **Sonnet 5.5**
 - [ ] Перенести `bible.ts` у `data/bible/{ru,ro}.ts` (статично, Q13), віджет без посилання (Q13a) — **Haiku 5.5**
 - [ ] `next.config.ts`: `output: 'standalone'`, `images.remotePatterns`, заголовки безпеки — **Sonnet 5.5**
 

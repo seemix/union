@@ -1,0 +1,33 @@
+import type { Dictionary } from './ru';
+
+/**
+ * UI strings for ro.baptist.org.md. Typed as `Dictionary`: a missing or extra
+ * key is a TS error. Source: docs/SITES-CONFIG.md §2 (legacy `romana`).
+ */
+export const ro: Dictionary = {
+  search: {
+    placeholder: 'căutare...',
+    // Legacy bug: Russian "результаты поиска".
+    results: 'rezultatele căutării',
+  },
+  card: {
+    more: 'mai mult',
+  },
+  error: {
+    // Legacy bug: Russian "Ошибка" / "404 | Страница не найдена".
+    title: 'Eroare',
+    notFound: '404 | Pagina nu a fost găsită',
+    // Legacy bug: placeholder "33333".
+    fetch: 'A apărut o eroare!',
+  },
+  a11y: {
+    menu: 'Meniu',
+    closeMenu: 'Închide meniul',
+    search: 'Căutare',
+    logo: 'Logo',
+    scrollTop: 'Sus',
+    prevPage: 'Pagina anterioară',
+    nextPage: 'Pagina următoare',
+    views: 'Vizualizări',
+  },
+};
