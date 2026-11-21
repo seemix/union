@@ -40,8 +40,8 @@
 - [ ] Після запуску v2: видалити старий код (`fimg_url`, `custom/v1/view-post`) — він у **ядрі** `wp-includes/functions.php`, а не в темі (оновлення WP його зітре), див. `wp/README.md` §4 — *людина*
 
 ## Етап 4. Сторінки та маршрути
-- [ ] Layout: Header, TopBar/Menu, Footer, ArrowUp з конфігу/словника, правильний `lang` — **Sonnet 5.5**
-- [ ] Головна: паралельні запити (`Promise.all`), слайдери з конфігу, віджети з конфігу — **Sonnet 5.5**
+- [x] Layout: Header, TopBar/Menu, Footer, ArrowUp з конфігу/словника, правильний `lang` — **Sonnet 5.5**
+- [x] Головна: паралельні запити (`Promise.all`), слайдери з конфігу, віджети з конфігу — **Sonnet 5.5**
 - [ ] `/post/[idSlug]`: дані, метадані, canonical-редирект при неспівпадінні slug, `notFound()` — **Opus 5.5**
 - [ ] `/page/[slug]` — **Sonnet 5.5**
 - [ ] `/category/[slug]/[[...page]]` + метадані (у ro їх зараз немає) — **Sonnet 5.5**

@@ -1,0 +1,13 @@
+.arrow_up {
+  position: fixed;
+  background-color: rgb(var(--red));
+  bottom: calc(12px + (18 - 12) * ((100vw - 800px) / (1920 - 800)));
+  right: calc(12px + (18 - 12) * ((100vw - 800px) / (1920 - 800)));
+  width: calc(37px + (40 - 37) * ((100vw - 800px) / (1920 - 800)));
+  height: calc(37px + (40 - 37) * ((100vw - 800px) / (1920 - 800)));
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  border: 0;
+  z-index: 100;
+}
