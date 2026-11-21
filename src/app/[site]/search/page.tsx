@@ -96,6 +96,7 @@ async function Results({
               moreLabel={dict.card.more}
               viewsLabel={dict.a11y.views}
               priority={i < 2}
+              index={i}
               highlight={q}
             />
           ))}
@@ -109,6 +110,7 @@ async function Results({
         label={dict.a11y.pagination}
         prevLabel={dict.a11y.prevPage}
         nextLabel={dict.a11y.nextPage}
+        pageLabel={dict.a11y.page}
       />
     </>
   );

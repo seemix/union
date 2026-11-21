@@ -2,6 +2,7 @@ import { SafeImage } from '../SafeImage/SafeImage';
 import Link from 'next/link';
 import { Highlight } from '../Highlight/Highlight';
 import { DateViews } from '../DateViews/DateViews';
+import { Reveal } from '../Reveal/Reveal';
 import css from './PostCard.module.css';
 
 export interface PostCardData {
@@ -22,6 +23,7 @@ export function PostCard({
   viewsLabel,
   priority = false,
   highlight = '',
+  index = 0,
 }: {
   post: PostCardData;
   moreLabel: string;
@@ -29,11 +31,13 @@ export function PostCard({
   priority?: boolean;
   /** Search query whose words are highlighted in title and excerpt. */
   highlight?: string;
+  /** Position in the list: drives the stagger delay. */
+  index?: number;
 }) {
   const caption =
     post.title.length > 60 ? `${css.card_caption} ${css.cc_smaller}` : css.card_caption;
   return (
-    <div className={css.card}>
+    <Reveal className={css.card} index={index}>
       <div className={css.picture_wrapper}>
         {post.image && (
           <SafeImage
@@ -71,6 +75,6 @@ export function PostCard({
           </Link>
         </div>
       </div>
-    </div>
+    </Reveal>
   );
 }

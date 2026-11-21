@@ -136,6 +136,7 @@ export default async function CategoryPage({
             moreLabel={dict.card.more}
             viewsLabel={dict.a11y.views}
             priority={i < 2}
+            index={i}
           />
         ))}
       </div>
@@ -146,6 +147,7 @@ export default async function CategoryPage({
         label={dict.a11y.pagination}
         prevLabel={dict.a11y.prevPage}
         nextLabel={dict.a11y.nextPage}
+        pageLabel={dict.a11y.page}
       />
     </div>
   );

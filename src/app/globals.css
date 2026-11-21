@@ -175,3 +175,48 @@ dl {
 .swiper-button-prev {
   color: rgb(var(--red)) !important;
 }
+
+/* Accessibility: keyboard focus ring, skip link. Mouse users see no change (:focus-visible). */
+:root {
+  --focus-ring: rgb(var(--text));
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Dark surface: the footer (the desktop menu bar does the same in TopBar.module.css). */
+footer :focus-visible {
+  --focus-ring: whitesmoke;
+}
+
+main:focus {
+  outline: none; /* programmatic target of the skip link, not an interactive control */
+}
+
+.skip_link {
+  position: absolute;
+  left: 8px;
+  top: -100px;
+  z-index: 1000;
+  padding: 10px 16px;
+  background: rgb(var(--text));
+  color: whitesmoke !important;
+  border-radius: 3px;
+}
+
+.skip_link:focus {
+  top: 8px;
+  --focus-ring: whitesmoke;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

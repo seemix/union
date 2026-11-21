@@ -62,14 +62,14 @@
 - [x] `sitemap.ts` (пости з пагінацією WP, сторінки, категорії), `robots.ts` — для кожного сайту окремо — **Sonnet 5.5**
 - [x] JSON-LD: `Organization`, `NewsArticle`, `BreadcrumbList` — **Sonnet 5.5**
 - [x] `hreflang` лише на головній (Q7), OG-зображення за замовчуванням, favicon/manifest — **Haiku 5.5**
-- [ ] `alt` картинок із WP (`alt_text`), а не URL — **Haiku 5.5**
+- [x] `alt` картинок із WP (`alt_text`), а не URL — **Haiku 5.5**
 
 ## Етап 7. UI та анімації
 - [ ] Перенести CSS-модулі 1:1 (Q19), прибрати `FacebookRepost` (Q15), звірити зі скриншотами еталону — **Haiku 5.5**
-- [ ] Оновити Swiper / lightbox / react-icons, перевірити слайдери — **Sonnet 5.5**
-- [ ] `motion` (Q16): поява карток (stagger, `whileInView`), підменю, перехід сторінок, ArrowUp; `useReducedMotion`; слайдери — Swiper — **Sonnet 5.5**
-- [ ] Прибрати серверні HEAD-перевірки картинок → клієнтський fallback `onError` — **Haiku 5.5**
-- [ ] Доступність: фокус, `aria`, контраст, клавіатурна навігація меню — **Sonnet 5.5**
+- [x] Оновити Swiper / lightbox / react-icons, перевірити слайдери — **Sonnet 5.5**
+- [x] `motion` (Q16): поява карток (stagger, `whileInView`), підменю, перехід сторінок, ArrowUp; `useReducedMotion`; слайдери — Swiper — **Sonnet 5.5**
+- [x] Прибрати серверні HEAD-перевірки картинок → клієнтський fallback `onError` — **Haiku 5.5**
+- [x] Доступність: фокус, `aria`, контраст, клавіатурна навігація меню — **Sonnet 5.5**
 
 ## Етап 8. Якість і перевірка
 - [ ] e2e (Playwright): головна, пост, категорія + пагінація, пошук, редиректи — для обох сайтів — **Sonnet 5.5**
