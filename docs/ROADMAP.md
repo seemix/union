@@ -27,16 +27,17 @@
 ## Етап 2. Шар даних WordPress
 - [x] `lib/wp/client.ts`: fetch до REST з `site`, `_fields`, `_embed`, обробка помилок/404, теги кешу (`cacheTag`/`cacheLife`) — **Opus 5.5**
 - [x] Типи відповідей WP (posts, pages, categories, media, search) — **Sonnet 5.5**
-- [ ] Featured image через `_embed=wp:featuredmedia` з fallback за розмірами; прибрати залежність від `fimg_url` — **Sonnet 5.5**
+- [ ] Featured image через `_embed=wp:featuredmedia` з fallback за розмірами; прибрати залежність від `fimg_url` — **Sonnet 5.5** · 1:1 зі старим сайтом = `source_url` (оригінал): `app-thumb` ніколи не існував, див. `wp/README.md`
 - [ ] Єдиний маппер постів/excerpt (замість двох дублікатів), безпечне декодування HTML-сутностей — **Sonnet 5.5**
 - [ ] Меню через WPGraphQL (Q11), типізований запит + кеш — **Sonnet 5.5**
 - [ ] Unit-тести мапперів і хелперів (Vitest) — **Sonnet 5.5**
 
 ## Етап 3. WordPress: mu-плагін (замість `functions.php`)
-- [ ] `mu-plugins/baptist-headless.php`: захищений ендпойнт інкременту `views` (той самий мета-ключ, що й WP-PostViews; секрет із `wp-config.php`, валідація id, лише `publish`-пости) — **Opus 5.5**
-- [ ] Хук публікації/оновлення → `POST /api/revalidate` на відповідний фронтенд — **Opus 5.5**
-- [ ] (Опц.) `add_image_size('app-thumb')` в mu-плагіні, щоб розмір не залежав від теми — **Haiku 5.5**
-- [ ] Встановити в **обидві** WP-інсталяції (свій секрет і URL фронтенду в кожній), перевірити, видалити старий код із `functions.php`; WP-PostViews не вимикати — *людина* + **Sonnet 5.5**
+- [x] `mu-plugins/baptist-headless.php`: захищений ендпойнт інкременту `views` (той самий мета-ключ, що й WP-PostViews; секрет із `wp-config.php`, валідація id, лише `publish`-пости) — **Opus 5.5**
+- [x] Хук публікації/оновлення → `POST /api/revalidate` на відповідний фронтенд — **Opus 5.5**
+- [x] (Опц.) `add_image_size('app-thumb')` в mu-плагіні, щоб розмір не залежав від теми — **Haiku 5.5** · тема його не реєструвала (`fimg_url` = оригінал), тому за замовчуванням не реєструється; опційно через `UNION_APP_THUMB_*`
+- [x] Встановити в **обидві** WP-інсталяції (свій секрет і URL фронтенду в кожній), перевірити; WP-PostViews не вимикати — *людина* + **Sonnet 5.5** · 2026-11-21: маршрут живий (401 без секрету) на ru і ro; `display_errors` вимкнено, публічні `debug.log` видалено. Лишилось: `curl` інкременту із секретом
+- [ ] Після запуску v2: видалити старий код (`fimg_url`, `custom/v1/view-post`) — він у **ядрі** `wp-includes/functions.php`, а не в темі (оновлення WP його зітре), див. `wp/README.md` §4 — *людина*
 
 ## Етап 4. Сторінки та маршрути
 - [ ] Layout: Header, TopBar/Menu, Footer, ArrowUp з конфігу/словника, правильний `lang` — **Sonnet 5.5**
