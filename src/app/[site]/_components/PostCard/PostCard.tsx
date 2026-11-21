@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { SafeImage } from '../SafeImage/SafeImage';
 import Link from 'next/link';
 import { Highlight } from '../Highlight/Highlight';
 import { DateViews } from '../DateViews/DateViews';
@@ -36,7 +36,7 @@ export function PostCard({
     <div className={css.card}>
       <div className={css.picture_wrapper}>
         {post.image && (
-          <Image
+          <SafeImage
             src={post.image.src}
             alt={post.image.alt || post.title}
             fill
@@ -66,8 +66,8 @@ export function PostCard({
           </div>
         </div>
         <div className={css.button_wrapper}>
-          <Link href={post.href} className={css.more_button}>
-            {moreLabel}
+          <Link href={post.href}>
+            <span className={css.more_button}>{moreLabel}</span>
           </Link>
         </div>
       </div>

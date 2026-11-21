@@ -1,5 +1,5 @@
 import { createElement, type ReactElement, type ReactNode } from 'react';
-import Image from 'next/image';
+import { SafeImage } from '../SafeImage/SafeImage';
 import Link from 'next/link';
 import parse, {
   attributesToProps,
@@ -145,7 +145,7 @@ function renderImage(node: Element, slides: ContentSlide[]): ReactElement {
   const height = positiveInt(node.attribs.height);
   if (width && height && canOptimize(src)) {
     return (
-      <Image
+      <SafeImage
         {...props}
         {...extra}
         src={src}

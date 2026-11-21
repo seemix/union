@@ -52,7 +52,7 @@ export default async function HomePage({ params }: PageProps<'/[site]'>) {
   );
 
   return (
-    <div className={css.main_wrapper}>
+    <div className={`main ${css.main_wrapper}`}>
       <JsonLd data={homeLd(site)} />
       <div className={css.main_container}>
         {site.sliders.map((slider, i) => (

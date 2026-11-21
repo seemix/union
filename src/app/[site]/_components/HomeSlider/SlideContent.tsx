@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { SafeImage } from '../SafeImage/SafeImage';
 import Link from 'next/link';
 import { Label, type LabelTone } from '../Label/Label';
 import css from './HomeSlider.module.css';
@@ -38,7 +38,7 @@ export function SlideContent({
     <Link href={slide.href}>
       <div className="slide_picture">
         {slide.image && (
-          <Image
+          <SafeImage
             src={slide.image.src}
             alt={slide.image.alt || slide.title}
             fill
