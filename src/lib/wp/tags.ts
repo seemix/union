@@ -11,6 +11,7 @@ import type { SiteId } from '@/config/sites';
  * - `page:<s>:<id>`       — one page
  * - `categories:<s>`      — every slug → category lookup
  * - `category:<s>:<id>`   — one category, and post lists filtered by it
+ * - `menu:<s>`            — the site menu (WPGraphQL, ./menu.ts)
  */
 export const wpTags = {
   site: (site: SiteId) => `site:${site}`,
@@ -20,4 +21,5 @@ export const wpTags = {
   page: (site: SiteId, id: number) => `page:${site}:${id}`,
   categories: (site: SiteId) => `categories:${site}`,
   category: (site: SiteId, id: number) => `category:${site}:${id}`,
+  menu: (site: SiteId) => `menu:${site}`,
 } as const;
