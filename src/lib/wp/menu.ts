@@ -4,8 +4,9 @@
  * Cached with tags `menu:{site}` + `site:{site}`, same outcome-based lifetimes as ./api.ts.
  * Returns the item tree (any depth) with URLs already converted to v2 routes.
  */
-import { cacheLife, cacheTag } from 'next/cache';
+import { cacheTag } from 'next/cache';
 import { getSite, type SiteId } from '@/config/sites';
+import { cacheLifeFor } from './cache-life';
 import { WP_TIMEOUT_MS, WpError, type WpErrorInfo } from './client';
 import { resolveMenuHref, type MenuConnectedObject } from './menu-url';
 import { wpTags } from './tags';
@@ -123,9 +124,7 @@ async function cachedMenu(site: SiteId): Promise<MenuResult> {
   'use cache';
   cacheTag(wpTags.site(site), wpTags.menu(site));
   const r = await requestMenu(site);
-  if (r.status === 'ok') cacheLife('hours');
-  else if (r.status === 'not_found') cacheLife('minutes');
-  else cacheLife('seconds');
+  cacheLifeFor(r.status, 'hours');
   return r;
 }
 

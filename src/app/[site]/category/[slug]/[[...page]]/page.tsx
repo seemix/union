@@ -3,14 +3,11 @@ import type { Metadata } from 'next';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { absoluteUrl, getSite, isSiteId, type SiteId } from '@/config/sites';
 import { getDictionary } from '@/i18n';
-import { formatDate, formatNumber } from '@/i18n/format';
 import { breadcrumbLd } from '@/lib/seo/json-ld';
 import { buildMetadata } from '@/lib/seo/metadata';
-import { categoryHref, parseListPage, postHref, slugForUrl } from '@/lib/site/href';
+import { categoryHref, parseListPage, slugForUrl } from '@/lib/site/href';
 import {
   DEFAULT_PER_PAGE,
-  excerptOf,
-  featuredImage,
   getCategoryBySlug,
   getPosts,
   metaDescription,
@@ -21,8 +18,7 @@ import {
 } from '@/lib/wp';
 import { JsonLd } from '../../../_components/JsonLd/JsonLd';
 import { Pagination } from '../../../_components/Pagination/Pagination';
-import { PostCard, type PostCardData } from '../../../_components/PostCard/PostCard';
-import css from './category.module.css';
+import { PostGrid } from '../../../_components/PostCard/PostGrid';
 
 /**
  * `/category/{slug}` and `/category/{slug}/{n}` (n ≥ 2). Same static-output rules as
@@ -30,8 +26,6 @@ import css from './category.module.css';
  * response starts, so 404 / 308 are real HTTP statuses.
  */
 export const ensureStatic = 'navigation';
-
-const EXCERPT_WORDS = 25;
 
 // `ensureStatic` needs one entry; a 404 placeholder will do. Real categories and pages
 // are rendered on first visit and then cached (tags: `category:{site}:{id}`, `posts:{site}`).
@@ -110,15 +104,6 @@ export default async function CategoryPage({
   const dict = await getDictionary(site);
   const siteConfig = getSite(site);
 
-  const cards: PostCardData[] = list.items.map((p) => ({
-    href: postHref(p),
-    title: plainText(p.title.rendered),
-    excerpt: excerptOf(p.excerpt.rendered, EXCERPT_WORDS),
-    image: featuredImage(p),
-    date: formatDate(p.date, site),
-    views: p.views > 0 ? formatNumber(p.views, site) : null,
-  }));
-
   return (
     <div className="main">
       <JsonLd
@@ -128,18 +113,7 @@ export default async function CategoryPage({
         ])}
       />
       <h2>{plainText(category.name)}</h2>
-      <div className={css.cards_wrapper}>
-        {cards.map((post, i) => (
-          <PostCard
-            key={post.href}
-            post={post}
-            moreLabel={dict.card.more}
-            viewsLabel={dict.a11y.views}
-            priority={i < 2}
-            index={i}
-          />
-        ))}
-      </div>
+      <PostGrid posts={list.items} site={site} dict={dict} />
       <Pagination
         current={page}
         total={list.totalPages}

@@ -40,6 +40,7 @@ define('UNION_REVALIDATE_SECRET', '<64 hex, = REVALIDATE_SECRET_RO у .env фр�
 
 - Поки v2 працює на staging (Q21), у `UNION_FRONTEND_URL` можна вказати кілька адрес через кому: `'https://next.ru.baptist.org.md'` або `'https://ru.baptist.org.md,https://next.ru.baptist.org.md'`.
 - Без `UNION_VIEWS_SECRET` маршрут `baptist/v1/views` не реєструється (404 `rest_no_route`).
+- Адреси в `UNION_FRONTEND_URL` мають бути `https://` (секрет іде в заголовку); `http://` приймається лише для `localhost`, `*.localhost`, `127.0.0.1`. Інші пропускаються із записом у `error_log`.
 - Без будь-якої з `UNION_SITE` / `UNION_FRONTEND_URL` / `UNION_REVALIDATE_SECRET` ревалідація вимкнена, решта працює.
 
 ### `app-thumb` (необов'язково)
@@ -114,8 +115,8 @@ X-Union-Secret: <UNION_REVALIDATE_SECRET>
 - `X-Union-Secret` перевіряється (`timingSafeEqual`) проти секрету сайту, який обслуговує цей хост (`x-site` з proxy): `REVALIDATE_SECRET_RU` / `REVALIDATE_SECRET_RO`. Без секрету / з чужим → 401. `site` у тілі має збігатися з хостом, інакше 400 (помилка `UNION_SITE`/`UNION_FRONTEND_URL`).
 - Мапінг на теги з `src/lib/wp/tags.ts`:
   - `post` → `posts:<s>`, `post:<s>:<id>`
-  - `page` → `pages:<s>`, `page:<s>:<id>`
-  - `category` → `categories:<s>`, `category:<s>:<id>`, `posts:<s>`
+  - `page` → `pages:<s>`, `page:<s>:<id>`, `menu:<s>` (пункти меню посилаються на slug)
+  - `category` → `categories:<s>`, `category:<s>:<id>`, `posts:<s>`, `menu:<s>`
   - `menu` → `menu:<s>`
 - Профіль: `publish`/`update` → `'max'` (stale-while-revalidate), `unpublish`/`delete` → `{ expire: 0 }` (знятий контент не показується жодного разу).
 - Відповідь WP не читає (`blocking: false`), тож помилки треба логувати на стороні Next.

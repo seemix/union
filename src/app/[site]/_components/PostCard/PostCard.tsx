@@ -1,4 +1,4 @@
-import { SafeImage } from '../SafeImage/SafeImage';
+import { FALLBACK_IMAGE, SafeImage } from '../SafeImage/SafeImage';
 import Link from 'next/link';
 import { Highlight } from '../Highlight/Highlight';
 import { DateViews } from '../DateViews/DateViews';
@@ -16,14 +16,13 @@ export interface PostCardData {
   readonly views: string | null;
 }
 
-/** Post card of the list pages (category, later search). */
+/** Post card of the list pages (category, search). */
 export function PostCard({
   post,
   moreLabel,
   viewsLabel,
   priority = false,
   highlight = '',
-  index = 0,
 }: {
   post: PostCardData;
   moreLabel: string;
@@ -31,24 +30,21 @@ export function PostCard({
   priority?: boolean;
   /** Search query whose words are highlighted in title and excerpt. */
   highlight?: string;
-  /** Position in the list: drives the stagger delay. */
-  index?: number;
 }) {
   const caption =
     post.title.length > 60 ? `${css.card_caption} ${css.cc_smaller}` : css.card_caption;
   return (
-    <Reveal className={css.card} index={index}>
+    <Reveal className={css.card}>
       <div className={css.picture_wrapper}>
-        {post.image && (
-          <SafeImage
-            src={post.image.src}
-            alt={post.image.alt || post.title}
-            fill
-            priority={priority}
-            className={css.picture}
-            sizes="(max-width: 600px) 100vw, 400px"
-          />
-        )}
+        {/* No featured image → the placeholder, like the legacy card (`MyImage`). */}
+        <SafeImage
+          src={post.image?.src ?? FALLBACK_IMAGE}
+          alt={post.image?.alt || post.title}
+          fill
+          priority={priority}
+          className={css.picture}
+          sizes="(max-width: 600px) 100vw, 400px"
+        />
       </div>
       <div className={css.picture_overlay}>
         <h3>

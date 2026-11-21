@@ -49,8 +49,13 @@ describe('POST /api/revalidate', () => {
   it.each([
     ['post', 'update', ['post:ru:113186', 'posts:ru'], 'max'],
     ['post', 'unpublish', ['post:ru:113186', 'posts:ru'], { expire: 0 }],
-    ['page', 'publish', ['page:ru:113186', 'pages:ru'], 'max'],
-    ['category', 'delete', ['category:ru:113186', 'categories:ru', 'posts:ru'], { expire: 0 }],
+    ['page', 'publish', ['page:ru:113186', 'pages:ru', 'menu:ru'], 'max'],
+    [
+      'category',
+      'delete',
+      ['category:ru:113186', 'categories:ru', 'posts:ru', 'menu:ru'],
+      { expire: 0 },
+    ],
     ['menu', 'update', ['menu:ru'], 'max'],
   ])('%s/%s → tags', async (type, action, tags, profile) => {
     const info = vi.spyOn(console, 'info').mockImplementation(() => {});

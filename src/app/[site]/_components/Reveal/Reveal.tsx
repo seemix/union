@@ -1,36 +1,12 @@
-'use client';
-
 import type { ReactNode } from 'react';
-import { motion, useReducedMotion } from 'motion/react';
+import css from './Reveal.module.css';
 
-const STAGGER_STEP = 0.07;
-const STAGGER_MAX_ITEMS = 6;
-
-/** Fades/slides its box in once it enters the viewport; siblings stagger by `index`. */
-export function Reveal({
-  children,
-  className,
-  index = 0,
-}: {
-  children: ReactNode;
-  className?: string;
-  index?: number;
-}) {
-  const reduceMotion = useReducedMotion();
-  if (reduceMotion) return <div className={className}>{children}</div>;
-  return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{
-        duration: 0.5,
-        ease: 'easeOut',
-        delay: (index % STAGGER_MAX_ITEMS) * STAGGER_STEP,
-      }}
-    >
-      {children}
-    </motion.div>
-  );
+/**
+ * Fades/slides its box in as it scrolls into view. Pure CSS (scroll-driven animation), so it
+ * is a Server Component: no JS, nothing hidden in the server HTML (a JS-driven reveal starts at
+ * `opacity: 0` until hydration, which delays LCP on list pages). Browsers without
+ * `animation-timeline` simply show the box.
+ */
+export function Reveal({ children, className }: { children: ReactNode; className?: string }) {
+  return <div className={className ? `${css.reveal} ${className}` : css.reveal}>{children}</div>;
 }

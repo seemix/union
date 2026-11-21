@@ -1,0 +1,4 @@
+/* Legacy search heading: the query is red. */
+.query {
+  color: rgb(var(--red));
+}

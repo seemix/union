@@ -87,8 +87,3 @@
     aspect-ratio: 16 / 9;
   }
 }
-
-/* Static stand-in for Swiper (first slide only) */
-.static .slide {
-  height: 100%;
-}

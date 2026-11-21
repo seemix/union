@@ -1,7 +1,8 @@
 import { describe, expect, it, vi } from 'vitest';
-import { createViewsHandler, viewsUrl, VIEW_WINDOW_MS } from './handler';
+import { clientKey, createViewsHandler, POST_WINDOW_MS, viewsUrl, VIEW_WINDOW_MS } from './handler';
 import { isBot } from './bots';
-import { TtlLru } from './ttl-lru';
+import { TtlCache } from '@/lib/cache/ttl-cache';
+import { WindowCounter } from './window-counter';
 
 const CHROME =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36';
@@ -25,7 +26,7 @@ function setup(opts: { now?: () => number; status?: number } = {}) {
   );
   const handle = createViewsHandler({
     fetch,
-    limiter: new TtlLru(100, VIEW_WINDOW_MS, opts.now),
+    limiter: new TtlCache<true>(100, opts.now),
     env: { VIEWS_SECRET_RO: 'ro-secret', VIEWS_SECRET_RU: 'ru-secret' },
   });
   return { fetch, handle };
@@ -76,6 +77,34 @@ describe('POST /api/views/[id]', () => {
     // after the window: counted again
     now += 2;
     await handle(req(), '16303');
+    expect(fetch).toHaveBeenCalledTimes(4);
+  });
+
+  it('ignores client-set X-Real-IP and the left-most X-Forwarded-For entries', async () => {
+    const { fetch, handle } = setup();
+    await handle(
+      req({ 'x-real-ip': '1.1.1.1', 'x-forwarded-for': '9.9.9.1, 203.0.113.7' }),
+      '16303',
+    );
+    await handle(
+      req({ 'x-real-ip': '2.2.2.2', 'x-forwarded-for': '9.9.9.2, 203.0.113.7' }),
+      '16303',
+    );
+    expect(fetch).toHaveBeenCalledTimes(1);
+  });
+
+  it('caps counted views per post, whatever the claimed IP', async () => {
+    const fetch = vi.fn<typeof globalThis.fetch>(async () => new Response('{}'));
+    const handle = createViewsHandler({
+      fetch,
+      postLimiter: new WindowCounter(3, POST_WINDOW_MS, 100, () => 0),
+      env: { VIEWS_SECRET_RO: 'ro-secret' },
+    });
+    for (let i = 1; i <= 10; i++) {
+      await handle(req({ 'x-forwarded-for': `198.51.100.${i}` }), '16303');
+    }
+    expect(fetch).toHaveBeenCalledTimes(3);
+    await handle(req({ 'x-forwarded-for': '198.51.100.99' }), '16304'); // other post: own budget
     expect(fetch).toHaveBeenCalledTimes(4);
   });
 
@@ -140,6 +169,47 @@ describe('POST /api/views/[id]', () => {
   });
 });
 
+describe('clientKey', () => {
+  const h = (init: Record<string, string>) => new Headers({ 'user-agent': 'UA', ...init });
+
+  it('takes the right-most X-Forwarded-For entry (appended by our proxy)', () => {
+    expect(clientKey(h({ 'x-forwarded-for': '6.6.6.6, 203.0.113.7' }))).toBe('ip:203.0.113.7');
+  });
+
+  it('ignores X-Real-IP / CF-Connecting-IP unless configured', () => {
+    expect(clientKey(h({ 'x-real-ip': '1.1.1.1', 'cf-connecting-ip': '2.2.2.2' }))).toBe('ua:UA');
+    expect(clientKey(h({ 'x-real-ip': '1.1.1.1' }), 'x-real-ip')).toBe('ip:1.1.1.1');
+  });
+
+  it('falls back to the User-Agent for garbage values', () => {
+    expect(clientKey(h({ 'x-forwarded-for': 'not an ip' }))).toBe('ua:UA');
+  });
+
+  it('CLIENT_IP_HEADER selects the header', async () => {
+    const fetch = vi.fn<typeof globalThis.fetch>(async () => new Response('{}'));
+    const handle = createViewsHandler({
+      fetch,
+      env: { VIEWS_SECRET_RO: 's', CLIENT_IP_HEADER: 'X-Real-IP' },
+    });
+    await handle(req({ 'x-real-ip': '1.1.1.1', 'x-forwarded-for': '9.9.9.1' }), '16303');
+    await handle(req({ 'x-real-ip': '1.1.1.1', 'x-forwarded-for': '9.9.9.2' }), '16303');
+    expect(fetch).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('WindowCounter', () => {
+  it('resets after the window and refunds a hit', () => {
+    let now = 0;
+    const c = new WindowCounter(1, 1000, 10, () => now);
+    expect(c.take('a')).toBe(true);
+    expect(c.take('a')).toBe(false);
+    c.refund('a');
+    expect(c.take('a')).toBe(true);
+    now = 1000;
+    expect(c.take('a')).toBe(true);
+  });
+});
+
 describe('isBot', () => {
   it.each([
     CHROME,
@@ -148,17 +218,5 @@ describe('isBot', () => {
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0 YaBrowser/25.8 Safari/537.36',
   ])('lets real browsers through: %s', (ua) => {
     expect(isBot(ua)).toBe(false);
-  });
-});
-
-describe('TtlLru', () => {
-  it('evicts the oldest entries beyond maxSize', () => {
-    const lru = new TtlLru(2, 1000, () => 0);
-    lru.add('a');
-    lru.add('b');
-    lru.add('c');
-    expect(lru.size).toBe(2);
-    expect(lru.has('a')).toBe(false);
-    expect(lru.has('c')).toBe(true);
   });
 });

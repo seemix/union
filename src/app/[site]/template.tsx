@@ -1,15 +1,21 @@
 'use client';
 
-import type { ReactNode } from 'react';
-import { motion, useReducedMotion } from 'motion/react';
+import { useEffect, type ReactNode } from 'react';
 
-/** Re-mounts on every navigation: a short fade-in is the page transition. */
+/**
+ * Set once the first page has hydrated. Effects never run on the server, so server renders
+ * and the hydrating render always see `false`.
+ */
+let hydrated = false;
+
+/**
+ * Re-mounts on every navigation: a short fade-in (`.page_enter`, globals.css) is the page
+ * transition. The first (server-rendered) page must NOT fade in: starting at `opacity: 0`
+ * hides the document and delays LCP, so only client-side navigations animate.
+ */
 export default function Template({ children }: { children: ReactNode }) {
-  const reduceMotion = useReducedMotion();
-  if (reduceMotion) return <>{children}</>;
-  return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
-      {children}
-    </motion.div>
-  );
+  useEffect(() => {
+    hydrated = true;
+  }, []);
+  return <div className={hydrated ? 'page_enter' : undefined}>{children}</div>;
 }

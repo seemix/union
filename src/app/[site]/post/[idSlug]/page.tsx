@@ -7,7 +7,7 @@ import { formatDate, formatNumber } from '@/i18n/format';
 import { breadcrumbLd, isoFromGmt, newsArticleLd } from '@/lib/seo/json-ld';
 import { buildMetadata, defaultDescription, defaultShareImage } from '@/lib/seo/metadata';
 import { categoryHref, parsePostIdSlug, postHref, slugForUrl } from '@/lib/site/href';
-import { getPost, getPosts, plainText, shareImage, type WpPost } from '@/lib/wp';
+import { getPost, getPosts, metaDescription, plainText, shareImage, type WpPost } from '@/lib/wp';
 import { ContentRender } from '../../_components/ContentRender/ContentRender';
 import { JsonLd } from '../../_components/JsonLd/JsonLd';
 import { DateViews } from '../../_components/DateViews/DateViews';
@@ -71,19 +71,8 @@ async function loadPost(
   return { site: siteParam, post };
 }
 
-const DESCRIPTION_MAX = 160;
-
 /** Excerpt as plain text without WP's trailing `[…]`, cut on a word boundary. */
-function describe(post: WpPost): string | null {
-  const text = plainText(post.excerpt.rendered)
-    .replace(/\s*\[(?:…|\.\.\.)\]\s*$/, '')
-    .trim();
-  if (!text) return null;
-  if (text.length <= DESCRIPTION_MAX) return text;
-  const cut = text.slice(0, DESCRIPTION_MAX - 1);
-  const space = cut.lastIndexOf(' ');
-  return `${(space > DESCRIPTION_MAX / 2 ? cut.slice(0, space) : cut).replace(/[\s,;:.–—-]+$/, '')}…`;
-}
+const describe = (post: WpPost): string | null => metaDescription(post.excerpt.rendered);
 
 /** Some posts have no title at all (ro 14853): metadata and JSON-LD need one, so use the site's. */
 const seoTitle = (post: WpPost, site: SiteConfig) =>

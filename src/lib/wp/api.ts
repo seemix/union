@@ -9,20 +9,13 @@
  *
  * Return: data, or `null` when WP has no such content (→ `notFound()`); other failures throw `WpError`.
  */
-import { cacheLife, cacheTag } from 'next/cache';
+import { cacheTag } from 'next/cache';
 import type { SiteId } from '@/config/sites';
 import { normalizeQuery } from '@/lib/search/query';
+import { cacheLifeFor } from './cache-life';
 import { unwrapWp, wpRequest, type WpParams, type WpResult } from './client';
 import { wpTags } from './tags';
-import type {
-  WpCategory,
-  WpList,
-  WpPage,
-  WpPost,
-  WpPostIdSlug,
-  WpPostSummary,
-  WpSearchResult,
-} from './types';
+import type { WpCategory, WpList, WpPage, WpPost, WpPostSummary, WpSearchResult } from './types';
 
 const POST_SUMMARY_FIELDS = ['id', 'date', 'slug', 'title', 'excerpt', 'featured_media', 'views'];
 const POST_FIELDS = [
@@ -106,9 +99,7 @@ async function cachedPost(site: SiteId, id: number): Promise<WpResult<WpPost>> {
       _embed: ['wp:featuredmedia', 'wp:term'],
     }),
   );
-  if (r.status === 'ok') cacheLife('hours');
-  else if (r.status === 'not_found') cacheLife('minutes');
-  else cacheLife('seconds');
+  cacheLifeFor(r.status, 'hours');
   return r;
 }
 
@@ -116,24 +107,6 @@ async function cachedPost(site: SiteId, id: number): Promise<WpResult<WpPost>> {
 export async function getPost(site: SiteId, id: number): Promise<WpPost | null> {
   if (!isId(id)) return null;
   return unwrapWp(await cachedPost(site, id))?.data ?? null;
-}
-
-async function cachedPostIdSlug(site: SiteId, id: number): Promise<WpResult<WpPostIdSlug>> {
-  'use cache';
-  cacheTag(wpTags.site(site), wpTags.post(site, id));
-  const r = forbiddenAsNotFound(
-    await wpRequest<WpPostIdSlug>(site, `posts/${id}`, { _fields: ['id', 'slug'] }),
-  );
-  if (r.status === 'ok') cacheLife('hours');
-  else if (r.status === 'not_found') cacheLife('minutes');
-  else cacheLife('seconds');
-  return r;
-}
-
-/** Light id → slug lookup for redirects (`/post?id=` → `/post/<id>-<slug>`). */
-export async function getPostIdSlug(site: SiteId, id: number): Promise<WpPostIdSlug | null> {
-  if (!isId(id)) return null;
-  return unwrapWp(await cachedPostIdSlug(site, id))?.data ?? null;
 }
 
 export interface GetPostsOptions {
@@ -164,9 +137,7 @@ async function cachedPosts(
     orderby: 'date',
     order: 'desc',
   });
-  if (r.status === 'ok') cacheLife('minutes');
-  else if (r.status === 'not_found') cacheLife('minutes');
-  else cacheLife('seconds');
+  cacheLifeFor(r.status, 'minutes');
   return r;
 }
 
@@ -204,9 +175,7 @@ async function cachedSearch(
     orderby: 'date',
     order: 'desc',
   });
-  if (r.status === 'ok') cacheLife('minutes');
-  else if (r.status === 'not_found') cacheLife('minutes');
-  else cacheLife('seconds');
+  cacheLifeFor(r.status, 'minutes');
   return r;
 }
 
@@ -234,10 +203,8 @@ async function cachedPageBySlug(site: SiteId, slug: string): Promise<WpResult<Wp
   const r = await wpRequest<WpPage[]>(site, 'pages', { _fields: PAGE_FIELDS, slug });
   if (r.status === 'ok') {
     for (const p of r.data) cacheTag(wpTags.page(site, p.id));
-    if (r.data.length > 0) cacheLife('hours');
-    else cacheLife('minutes');
-  } else if (r.status === 'not_found') cacheLife('minutes');
-  else cacheLife('seconds');
+  }
+  cacheLifeFor(r.status === 'ok' && r.data.length === 0 ? 'not_found' : r.status, 'hours');
   return r;
 }
 
@@ -251,9 +218,7 @@ async function cachedPageById(site: SiteId, id: number): Promise<WpResult<WpPage
   'use cache';
   cacheTag(wpTags.site(site), wpTags.page(site, id));
   const r = await wpRequest<WpPage>(site, `pages/${id}`, { _fields: PAGE_FIELDS });
-  if (r.status === 'ok') cacheLife('hours');
-  else if (r.status === 'not_found') cacheLife('minutes');
-  else cacheLife('seconds');
+  cacheLifeFor(r.status, 'hours');
   return r;
 }
 
@@ -271,10 +236,8 @@ async function cachedCategoryBySlug(site: SiteId, slug: string): Promise<WpResul
   const r = await wpRequest<WpCategory[]>(site, 'categories', { _fields: CATEGORY_FIELDS, slug });
   if (r.status === 'ok') {
     for (const c of r.data) cacheTag(wpTags.category(site, c.id));
-    if (r.data.length > 0) cacheLife('hours');
-    else cacheLife('minutes');
-  } else if (r.status === 'not_found') cacheLife('minutes');
-  else cacheLife('seconds');
+  }
+  cacheLifeFor(r.status === 'ok' && r.data.length === 0 ? 'not_found' : r.status, 'hours');
   return r;
 }
 
@@ -288,9 +251,7 @@ async function cachedCategoryById(site: SiteId, id: number): Promise<WpResult<Wp
   'use cache';
   cacheTag(wpTags.site(site), wpTags.category(site, id));
   const r = await wpRequest<WpCategory>(site, `categories/${id}`, { _fields: CATEGORY_FIELDS });
-  if (r.status === 'ok') cacheLife('hours');
-  else if (r.status === 'not_found') cacheLife('minutes');
-  else cacheLife('seconds');
+  cacheLifeFor(r.status, 'hours');
   return r;
 }
 

@@ -6,7 +6,7 @@
  * 2. The item URL: WP "plain" permalinks (`?page_id=`, `?cat=`, `?p=`) and `/category/{slug}`.
  *    Without a slug we fall back to the old `?id=` routes, which `src/proxy.ts` redirects.
  * 3. Own home (WP home or frontend domain) → `/`.
- * 4. Anything else (other hosts, `mailto:`, `tel:`) → external, unchanged.
+ * 4. Other http(s) hosts, `mailto:`, `tel:` → external, unchanged; any other scheme → no link.
  * `#` / empty → no link (a group heading with a submenu).
  */
 import type { SiteConfig } from '@/config/sites';
@@ -31,6 +31,9 @@ export interface MenuHref {
 }
 
 const NO_LINK: MenuHref = { href: null, external: false };
+
+/** Non-http schemes a menu item may link to. */
+const SAFE_OTHER_SCHEMES: ReadonlySet<string> = new Set(['mailto:', 'tel:']);
 
 function internal(href: string): MenuHref {
   return { href, external: false };
@@ -87,7 +90,8 @@ export function resolveMenuHref(link: RawMenuLink, site: SiteConfig): MenuHref {
     return NO_LINK;
   }
   if (url.protocol !== 'http:' && url.protocol !== 'https:') {
-    return { href: raw, external: true };
+    // Only harmless non-web schemes; `javascript:`, `data:`, `vbscript:`… → plain label.
+    return SAFE_OTHER_SCHEMES.has(url.protocol) ? { href: raw, external: true } : NO_LINK;
   }
 
   const ownHosts = new Set([

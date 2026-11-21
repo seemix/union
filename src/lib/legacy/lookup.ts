@@ -14,7 +14,7 @@
 import type { SiteId } from '@/config/sites';
 import { wpRequest, type WpResult } from '@/lib/wp/client';
 import type { WpPostIdSlug } from '@/lib/wp/types';
-import { TtlCache } from './ttl-cache';
+import { TtlCache } from '@/lib/cache/ttl-cache';
 
 export type LegacyKind = 'post' | 'page' | 'category';
 

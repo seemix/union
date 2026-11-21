@@ -31,7 +31,6 @@ export const ru = {
     notFound: '404 | Страница не найдена',
     /** Legacy ru showed English "Error occurred!" (SITES-CONFIG §2). */
     fetch: 'Произошла ошибка!',
-    notFoundHint: 'Возможно, страница была удалена или адрес введён неверно. Попробуйте поиск:',
     retry: 'Попробовать снова',
     backHome: 'На главную',
   },
@@ -54,6 +53,7 @@ export const ru = {
     slide: 'слайд',
     prevSlide: 'Предыдущий слайд',
     nextSlide: 'Следующий слайд',
+    embed: 'Встроенное содержимое',
   },
 };
 

@@ -16,11 +16,17 @@ import '../globals.css';
 // Cyrillic for ru, latin-ext for ro (ă, â, î, ș, ț).
 const oswald = Oswald({
   subsets: ['latin', 'latin-ext', 'cyrillic'],
+  // One file per subset would be preloaded (6 files, ~150 KB) and compete with the LCP image;
+  // `display: swap` + the size-adjusted fallback make late discovery harmless.
+  preload: false,
   variable: '--font-oswald',
   display: 'swap',
 });
 const robotoSlab = Roboto_Slab({
   subsets: ['latin', 'latin-ext', 'cyrillic'],
+  // One file per subset would be preloaded (6 files, ~150 KB) and compete with the LCP image;
+  // `display: swap` + the size-adjusted fallback make late discovery harmless.
+  preload: false,
   variable: '--font-roboto-slab',
   display: 'swap',
 });

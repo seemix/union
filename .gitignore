@@ -23,3 +23,10 @@ npm-debug.log*
 next-env.d.ts
 .vercel
 .idea/
+
+# e2e
+/e2e/report/
+/e2e/results/
+/test-results/
+/playwright-report/
+/perf/*.pem

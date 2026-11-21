@@ -76,6 +76,23 @@ describe('resolveMenuHref', () => {
     });
   });
 
+  it.each([
+    'javascript:alert(1)',
+    'JaVa\tScript:alert(1)',
+    'data:text/html,x',
+    'vbscript:x',
+    'ftp://x',
+  ])('drops the link for scheme %s', (url) => {
+    expect(resolveMenuHref({ url }, ru)).toEqual({ href: null, external: false });
+  });
+
+  it('keeps tel: links', () => {
+    expect(resolveMenuHref({ url: 'tel:+37322296701' }, ru)).toEqual({
+      href: 'tel:+37322296701',
+      external: true,
+    });
+  });
+
   it('returns no link for "#" and empty values', () => {
     expect(resolveMenuHref({ uri: '#', url: '#' }, ru)).toEqual({ href: null, external: false });
     expect(resolveMenuHref({ uri: '', url: null }, ru)).toEqual({ href: null, external: false });

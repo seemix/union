@@ -8,6 +8,15 @@ export function targetHref(target: ContentTarget): string {
   return `/${target.kind}?id=${target.id}`;
 }
 
+/** Slug routes of config targets, keyed by `targetHref(target)` (`resolveTargetHrefs()`). */
+export type TargetHrefs = Readonly<Record<string, string>>;
+
+/** Resolved href of a target; the legacy `?id=` form when it is not in `hrefs`. */
+export function hrefOf(hrefs: TargetHrefs | undefined, target: ContentTarget): string {
+  const legacy = targetHref(target);
+  return hrefs?.[legacy] ?? legacy;
+}
+
 function safeDecode(value: string): string {
   try {
     return decodeURIComponent(value);

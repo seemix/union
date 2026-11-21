@@ -6,7 +6,7 @@ import type { SiteId } from '@/config/sites';
  *
  * - `site:<s>`            — everything from that WP install
  * - `posts:<s>`           — every post list and search (any post published/changed/deleted)
- * - `post:<s>:<id>`       — one post (also its `not found` answer and id→slug lookup)
+ * - `post:<s>:<id>`       — one post (also its `not found` answer)
  * - `pages:<s>`           — every slug → page lookup (a new page may take a slug)
  * - `page:<s>:<id>`       — one page
  * - `categories:<s>`      — every slug → category lookup

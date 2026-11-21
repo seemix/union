@@ -3,8 +3,8 @@
  * (a `Map` keeps insertion order; a hit re-inserts the key, so the oldest key is the
  * least recently used one).
  *
- * The state lives in one Node process (Q1: one app per site on cPanel/Passenger) and
- * is lost on restart: fine for a lookup cache, the worst case is one more WP request.
+ * The state lives in one Node process (cPanel/Passenger, Q1) and is lost on restart: fine
+ * for the id→slug lookup (one more WP request) and the views limiter (one extra +1).
  */
 export class TtlCache<V> {
   private readonly entries = new Map<string, { readonly value: V; readonly expiresAt: number }>();

@@ -46,10 +46,12 @@ export function parseEvent(value: unknown): RevalidateEvent | null {
 
 /**
  * Tags to invalidate (names from `src/lib/wp/tags.ts`).
- * - post: the post itself (+ id→slug lookup) and every list/search/home slider (`posts:`),
+ * - post: the post itself and every list/search/home slider (`posts:`),
  *   which also covers category-filtered lists, whatever categories it moved between.
- * - page: the page and every slug lookup (a new/renamed page may take a slug).
- * - category: the category, slug lookups, and post lists (embedded term names, filters).
+ * - page: the page and every slug lookup (a new/renamed page may take a slug), and the menu,
+ *   whose items link to pages by slug (a rename would otherwise leave a 404 link there).
+ * - category: the category, slug lookups, post lists (embedded term names, filters) and the
+ *   menu (same reason as pages).
  * - menu: the site menu (there is one menu per site; the WP menu id is not needed).
  */
 export function tagsFor({ site, type, id }: RevalidateEvent): string[] {
@@ -57,9 +59,14 @@ export function tagsFor({ site, type, id }: RevalidateEvent): string[] {
     case 'post':
       return [wpTags.post(site, id), wpTags.posts(site)];
     case 'page':
-      return [wpTags.page(site, id), wpTags.pages(site)];
+      return [wpTags.page(site, id), wpTags.pages(site), wpTags.menu(site)];
     case 'category':
-      return [wpTags.category(site, id), wpTags.categories(site), wpTags.posts(site)];
+      return [
+        wpTags.category(site, id),
+        wpTags.categories(site),
+        wpTags.posts(site),
+        wpTags.menu(site),
+      ];
     case 'menu':
       return [wpTags.menu(site)];
   }

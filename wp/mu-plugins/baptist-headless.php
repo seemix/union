@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Baptist Headless
  * Description: Union v2 headless support: protected views counter (WP-PostViews compatible), on-demand revalidation of the Next.js frontend, `app-thumb` image size.
- * Version:     1.1.0
+ * Version:     1.1.1
  * Requires PHP: 7.4
  *
  * Must-use plugin: copy to wp-content/mu-plugins/baptist-headless.php (same file on ru and ro).
@@ -291,6 +291,26 @@ function baptist_headless_on_menu_deleted(int $menu_id): void
     baptist_headless_queue('menu', $menu_id, '', 'delete');
 }
 
+/**
+ * `https://…`, or `http://` only for localhost / *.localhost / 127.0.0.1 / [::1].
+ */
+function baptist_headless_is_secure_base(string $base): bool
+{
+    $scheme = strtolower((string) wp_parse_url($base, PHP_URL_SCHEME));
+    $host   = strtolower((string) wp_parse_url($base, PHP_URL_HOST));
+    if ($host === '') {
+        return false;
+    }
+    if ($scheme === 'https') {
+        return true;
+    }
+    $is_local = $host === 'localhost'
+        || substr($host, -strlen('.localhost')) === '.localhost'
+        || $host === '127.0.0.1'
+        || $host === '[::1]';
+    return $scheme === 'http' && $is_local;
+}
+
 /* Send everything once, at the end of the request. */
 add_action('shutdown', 'baptist_headless_flush_queue', 100);
 
@@ -313,6 +333,11 @@ function baptist_headless_flush_queue(): void
     $bases  = array_filter(array_map('trim', explode(',', baptist_headless_const('UNION_FRONTEND_URL'))));
 
     foreach ($bases as $base) {
+        // The secret goes in a header: never over plain http (except a local dev frontend).
+        if (!baptist_headless_is_secure_base($base)) {
+            error_log('[baptist-headless] UNION_FRONTEND_URL entry is not https, skipped: ' . $base);
+            continue;
+        }
         $url = untrailingslashit($base) . '/api/revalidate';
         foreach ($events as $event) {
             // blocking=false: WP does not wait for/parse the answer. The timeout must still be long

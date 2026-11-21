@@ -1,0 +1,489 @@
+{
+  "date": "2026-11-21T13:26:57.157Z",
+  "runs": 3,
+  "results": [
+    {
+      "env": "prod",
+      "site": "ru",
+      "page": "home",
+      "url": "https://ru.baptist.org.md/",
+      "runs": 3,
+      "perfRuns": [
+        84,
+        80,
+        88
+      ],
+      "finalUrl": "https://ru.baptist.org.md/",
+      "scores": {
+        "performance": 84,
+        "accessibility": 94,
+        "best-practices": 100,
+        "seo": 91
+      },
+      "metrics": {
+        "fcp": 1901.972,
+        "lcp": 4078.1629999999996,
+        "tbt": 141.5,
+        "cls": 0,
+        "si": 2115.7640285831694,
+        "bytes": 815128
+      },
+      "failed": [
+        {
+          "id": "first-contentful-paint",
+          "title": "First Contentful Paint",
+          "score": 0.87,
+          "display": "1.9 s",
+          "cats": [
+            "performance"
+          ]
+        },
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "score": 0.47,
+          "display": "4.1 s",
+          "cats": [
+            "performance"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "accessibility"
+          ]
+        },
+        {
+          "id": "heading-order",
+          "title": "Heading elements are not in a sequentially-descending order",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "accessibility"
+          ]
+        },
+        {
+          "id": "meta-description",
+          "title": "Document does not have a meta description",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "seo"
+          ]
+        }
+      ],
+      "a11yMin": 94
+    },
+    {
+      "env": "v2",
+      "site": "ru",
+      "page": "home",
+      "url": "http://ru.baptist.org.md/",
+      "error": "all runs failed"
+    },
+    {
+      "env": "prod",
+      "site": "ru",
+      "page": "post",
+      "url": "https://ru.baptist.org.md/post?id=113186",
+      "runs": 3,
+      "perfRuns": [
+        70,
+        85,
+        84
+      ],
+      "finalUrl": "https://ru.baptist.org.md/post?id=113186",
+      "scores": {
+        "performance": 84,
+        "accessibility": 90,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "fcp": 1898.7815,
+        "lcp": 4118.251,
+        "tbt": 123,
+        "cls": 0,
+        "si": 1956.9051879021258,
+        "bytes": 751989
+      },
+      "failed": [
+        {
+          "id": "first-contentful-paint",
+          "title": "First Contentful Paint",
+          "score": 0.87,
+          "display": "1.9 s",
+          "cats": [
+            "performance"
+          ]
+        },
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "score": 0.46,
+          "display": "4.1 s",
+          "cats": [
+            "performance"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "accessibility"
+          ]
+        },
+        {
+          "id": "heading-order",
+          "title": "Heading elements are not in a sequentially-descending order",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "accessibility"
+          ]
+        },
+        {
+          "id": "link-name",
+          "title": "Links do not have a discernible name",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "accessibility"
+          ]
+        }
+      ],
+      "a11yMin": 90
+    },
+    {
+      "env": "v2",
+      "site": "ru",
+      "page": "post",
+      "url": "http://ru.baptist.org.md/post?id=113186",
+      "error": "all runs failed"
+    },
+    {
+      "env": "prod",
+      "site": "ru",
+      "page": "category",
+      "url": "https://ru.baptist.org.md/category?id=17",
+      "runs": 3,
+      "perfRuns": [
+        78,
+        93,
+        89
+      ],
+      "finalUrl": "https://ru.baptist.org.md/category?id=17",
+      "scores": {
+        "performance": 89,
+        "accessibility": 92,
+        "best-practices": 100,
+        "seo": 91
+      },
+      "metrics": {
+        "fcp": 1808.2179999999996,
+        "lcp": 3629.064,
+        "tbt": 90.5,
+        "cls": 0,
+        "si": 2277.4364819940884,
+        "bytes": 551948
+      },
+      "failed": [
+        {
+          "id": "first-contentful-paint",
+          "title": "First Contentful Paint",
+          "score": 0.89,
+          "display": "1.8 s",
+          "cats": [
+            "performance"
+          ]
+        },
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "score": 0.6,
+          "display": "3.6 s",
+          "cats": [
+            "performance"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "accessibility"
+          ]
+        },
+        {
+          "id": "target-size",
+          "title": "Touch targets do not have sufficient size or spacing.",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "accessibility"
+          ]
+        },
+        {
+          "id": "meta-description",
+          "title": "Document does not have a meta description",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "seo"
+          ]
+        }
+      ],
+      "a11yMin": 92
+    },
+    {
+      "env": "v2",
+      "site": "ru",
+      "page": "category",
+      "url": "http://ru.baptist.org.md/category?id=17",
+      "error": "all runs failed"
+    },
+    {
+      "env": "prod",
+      "site": "ro",
+      "page": "home",
+      "url": "https://ro.baptist.org.md/",
+      "runs": 3,
+      "perfRuns": [
+        58,
+        90,
+        86
+      ],
+      "finalUrl": "https://ro.baptist.org.md/",
+      "scores": {
+        "performance": 86,
+        "accessibility": 94,
+        "best-practices": 100,
+        "seo": 91
+      },
+      "metrics": {
+        "fcp": 1863.2464999999997,
+        "lcp": 3979.602,
+        "tbt": 58.5,
+        "cls": 0.0006000066829822285,
+        "si": 2118.621900272257,
+        "bytes": 941653
+      },
+      "failed": [
+        {
+          "id": "first-contentful-paint",
+          "title": "First Contentful Paint",
+          "score": 0.88,
+          "display": "1.9 s",
+          "cats": [
+            "performance"
+          ]
+        },
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "score": 0.5,
+          "display": "4.0 s",
+          "cats": [
+            "performance"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "accessibility"
+          ]
+        },
+        {
+          "id": "heading-order",
+          "title": "Heading elements are not in a sequentially-descending order",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "accessibility"
+          ]
+        },
+        {
+          "id": "meta-description",
+          "title": "Document does not have a meta description",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "seo"
+          ]
+        }
+      ],
+      "a11yMin": 94
+    },
+    {
+      "env": "v2",
+      "site": "ro",
+      "page": "home",
+      "url": "http://ro.baptist.org.md/",
+      "error": "all runs failed"
+    },
+    {
+      "env": "prod",
+      "site": "ro",
+      "page": "post",
+      "url": "https://ro.baptist.org.md/post?id=16303",
+      "runs": 3,
+      "perfRuns": [
+        89,
+        98,
+        98
+      ],
+      "finalUrl": "https://ro.baptist.org.md/post?id=16303",
+      "scores": {
+        "performance": 98,
+        "accessibility": 95,
+        "best-practices": 96,
+        "seo": 100
+      },
+      "metrics": {
+        "fcp": 1891.3300000000004,
+        "lcp": 1891.3300000000004,
+        "tbt": 83.5,
+        "cls": 0,
+        "si": 1891.3300000000004,
+        "bytes": 1610977
+      },
+      "failed": [
+        {
+          "id": "first-contentful-paint",
+          "title": "First Contentful Paint",
+          "score": 0.87,
+          "display": "1.9 s",
+          "cats": [
+            "performance"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "accessibility"
+          ]
+        },
+        {
+          "id": "heading-order",
+          "title": "Heading elements are not in a sequentially-descending order",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "accessibility"
+          ]
+        },
+        {
+          "id": "inspector-issues",
+          "title": "Issues were logged in the `Issues` panel in Chrome Devtools",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "best-practices"
+          ]
+        }
+      ],
+      "a11yMin": 95
+    },
+    {
+      "env": "v2",
+      "site": "ro",
+      "page": "post",
+      "url": "http://ro.baptist.org.md/post?id=16303",
+      "error": "all runs failed"
+    },
+    {
+      "env": "prod",
+      "site": "ro",
+      "page": "category",
+      "url": "https://ro.baptist.org.md/category?id=23",
+      "runs": 3,
+      "perfRuns": [
+        79,
+        91,
+        94
+      ],
+      "finalUrl": "https://ro.baptist.org.md/category?id=23",
+      "scores": {
+        "performance": 91,
+        "accessibility": 92,
+        "best-practices": 100,
+        "seo": 91
+      },
+      "metrics": {
+        "fcp": 1811.303,
+        "lcp": 3351.772,
+        "tbt": 73.5,
+        "cls": 0,
+        "si": 2230.087640000951,
+        "bytes": 502927
+      },
+      "failed": [
+        {
+          "id": "first-contentful-paint",
+          "title": "First Contentful Paint",
+          "score": 0.89,
+          "display": "1.8 s",
+          "cats": [
+            "performance"
+          ]
+        },
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "score": 0.68,
+          "display": "3.4 s",
+          "cats": [
+            "performance"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "accessibility"
+          ]
+        },
+        {
+          "id": "target-size",
+          "title": "Touch targets do not have sufficient size or spacing.",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "accessibility"
+          ]
+        },
+        {
+          "id": "meta-description",
+          "title": "Document does not have a meta description",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "seo"
+          ]
+        }
+      ],
+      "a11yMin": 92
+    },
+    {
+      "env": "v2",
+      "site": "ro",
+      "page": "category",
+      "url": "http://ro.baptist.org.md/category?id=23",
+      "error": "all runs failed"
+    }
+  ]
+}

@@ -26,7 +26,10 @@ const csp = [
   "default-src 'self'",
   `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''}`,
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https://baptist.org.md",
+  // Any https host: old posts embed images from wixstatic, fbcdn, wp.com and other hosts
+  // (rendered as plain <img>, see `images` below); a host list would miss some and break
+  // them. Images cannot run code; `upgrade-insecure-requests` turns http ones into https.
+  "img-src 'self' data: blob: https:",
   "font-src 'self' data:",
   "media-src 'self' https://baptist.org.md",
   "connect-src 'self'",
@@ -73,7 +76,8 @@ const config: NextConfig = {
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           {
             key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()',
+            value:
+              'camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()',
           },
           // Legacy equivalent of CSP frame-ancestors.
           { key: 'X-Frame-Options', value: 'DENY' },

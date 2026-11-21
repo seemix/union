@@ -3,15 +3,12 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { isSiteId, type SiteId } from '@/config/sites';
 import { getDictionary } from '@/i18n';
-import { formatDate, formatNumber } from '@/i18n/format';
 import { normalizeQuery } from '@/lib/search/query';
-import { postHref, searchHref } from '@/lib/site/href';
-import { excerptOf, featuredImage, plainText, searchPosts } from '@/lib/wp';
+import { searchHref } from '@/lib/site/href';
+import { searchPosts } from '@/lib/wp';
 import { Pagination } from '../_components/Pagination/Pagination';
-import { PostCard, type PostCardData } from '../_components/PostCard/PostCard';
-import css from '../category/[slug]/[[...page]]/category.module.css';
-
-const EXCERPT_WORDS = 25;
+import { PostGrid } from '../_components/PostCard/PostGrid';
+import css from './page.module.css';
 
 type SearchParams = Promise<Record<string, string | string[] | undefined>>;
 
@@ -72,35 +69,16 @@ async function Results({
   const list = await searchPosts(site, { q, page });
   if (!list) notFound(); // page past the last one
 
-  const cards: PostCardData[] = list.items.map((p) => ({
-    href: postHref(p),
-    title: plainText(p.title.rendered),
-    excerpt: excerptOf(p.excerpt.rendered, EXCERPT_WORDS),
-    image: featuredImage(p),
-    date: formatDate(p.date, site),
-    views: p.views > 0 ? formatNumber(p.views, site) : null,
-  }));
-
   return (
     <>
       {/* React text child: the query is escaped, never parsed as HTML. */}
-      <h2>{`${dict.search.results} '${q}'`}</h2>
-      {cards.length === 0 ? (
+      <h2>
+        {dict.search.results} <span className={css.query}>{`'${q}'`}</span>
+      </h2>
+      {list.items.length === 0 ? (
         <p>{dict.search.noResults}</p>
       ) : (
-        <div className={css.cards_wrapper}>
-          {cards.map((post, i) => (
-            <PostCard
-              key={post.href}
-              post={post}
-              moreLabel={dict.card.more}
-              viewsLabel={dict.a11y.views}
-              priority={i < 2}
-              index={i}
-              highlight={q}
-            />
-          ))}
-        </div>
+        <PostGrid posts={list.items} site={site} dict={dict} highlight={q} />
       )}
       <Pagination
         current={page}

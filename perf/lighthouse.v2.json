@@ -1,0 +1,411 @@
+{
+  "date": "2026-11-21T14:19:25.909Z",
+  "runs": 3,
+  "results": [
+    {
+      "env": "v2",
+      "site": "ru",
+      "page": "home",
+      "url": "https://ru.baptist.org.md/",
+      "runs": 3,
+      "perfRuns": [
+        68,
+        69,
+        67
+      ],
+      "finalUrl": "https://ru.baptist.org.md/",
+      "scores": {
+        "performance": 68,
+        "accessibility": 94,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "fcp": 1368.832,
+        "lcp": 4373.664000000001,
+        "tbt": 106.5,
+        "cls": 0.3126024719686351,
+        "si": 1861.6480427002423,
+        "bytes": 500396
+      },
+      "failed": [
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "score": 0.4,
+          "display": "4.4 s",
+          "cats": [
+            "performance"
+          ]
+        },
+        {
+          "id": "cumulative-layout-shift",
+          "title": "Cumulative Layout Shift",
+          "score": 0.37,
+          "display": "0.313",
+          "cats": [
+            "performance"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "accessibility"
+          ]
+        },
+        {
+          "id": "heading-order",
+          "title": "Heading elements are not in a sequentially-descending order",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "accessibility"
+          ]
+        }
+      ],
+      "a11yMin": 94
+    },
+    {
+      "env": "v2",
+      "site": "ru",
+      "page": "post",
+      "url": "https://ru.baptist.org.md/post?id=113186",
+      "runs": 3,
+      "perfRuns": [
+        78,
+        84,
+        62
+      ],
+      "finalUrl": "https://ru.baptist.org.md/post/113186-%D0%BF%D1%80%D0%B0%D0%B7%D0%B4%D0%BD%D0%B8%D0%BA-40-%D0%BB%D0%B5%D1%82%D0%B8%D1%8F-%D0%BE%D1%81%D0%B2%D1%8F%D1%89%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B4%D0%BE%D0%BC%D0%B0-%D0%BC%D0%BE%D0%BB%D0%B8%D1%82%D0%B2",
+      "scores": {
+        "performance": 78,
+        "accessibility": 90,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "fcp": 1538.6970000000001,
+        "lcp": 4828.192,
+        "tbt": 235.00000000000068,
+        "cls": 0,
+        "si": 2157.078011543645,
+        "bytes": 603418
+      },
+      "failed": [
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "score": 0.3,
+          "display": "4.8 s",
+          "cats": [
+            "performance"
+          ]
+        },
+        {
+          "id": "total-blocking-time",
+          "title": "Total Blocking Time",
+          "score": 0.86,
+          "display": "240 ms",
+          "cats": [
+            "performance"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "accessibility"
+          ]
+        },
+        {
+          "id": "heading-order",
+          "title": "Heading elements are not in a sequentially-descending order",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "accessibility"
+          ]
+        },
+        {
+          "id": "link-name",
+          "title": "Links do not have a discernible name",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "accessibility"
+          ]
+        },
+        {
+          "id": "presentation-role-conflict",
+          "title": "Elements with `role=\"none\"` or `role=\"presentation\"` have conflicts",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "accessibility"
+          ]
+        }
+      ],
+      "a11yMin": 90
+    },
+    {
+      "env": "v2",
+      "site": "ru",
+      "page": "category",
+      "url": "https://ru.baptist.org.md/category?id=17",
+      "runs": 3,
+      "perfRuns": [
+        78,
+        75,
+        60
+      ],
+      "finalUrl": "https://ru.baptist.org.md/category/localnews",
+      "scores": {
+        "performance": 75,
+        "accessibility": 96,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "fcp": 1517.6505,
+        "lcp": 5190.4175,
+        "tbt": 268.1165000000001,
+        "cls": 0.001402615621129007,
+        "si": 2046.5407162426864,
+        "bytes": 815186
+      },
+      "failed": [
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "score": 0.23,
+          "display": "5.2 s",
+          "cats": [
+            "performance"
+          ]
+        },
+        {
+          "id": "total-blocking-time",
+          "title": "Total Blocking Time",
+          "score": 0.82,
+          "display": "270 ms",
+          "cats": [
+            "performance"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "accessibility"
+          ]
+        }
+      ],
+      "a11yMin": 96
+    },
+    {
+      "env": "v2",
+      "site": "ro",
+      "page": "home",
+      "url": "https://ro.baptist.org.md/",
+      "runs": 3,
+      "perfRuns": [
+        83,
+        82,
+        70
+      ],
+      "finalUrl": "https://ro.baptist.org.md/",
+      "scores": {
+        "performance": 82,
+        "accessibility": 94,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "fcp": 1373.018,
+        "lcp": 4586.3175,
+        "tbt": 95,
+        "cls": 0.0691149205903537,
+        "si": 1928.572404681494,
+        "bytes": 526316
+      },
+      "failed": [
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "score": 0.35,
+          "display": "4.6 s",
+          "cats": [
+            "performance"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "accessibility"
+          ]
+        },
+        {
+          "id": "heading-order",
+          "title": "Heading elements are not in a sequentially-descending order",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "accessibility"
+          ]
+        }
+      ],
+      "a11yMin": 94
+    },
+    {
+      "env": "v2",
+      "site": "ro",
+      "page": "post",
+      "url": "https://ro.baptist.org.md/post?id=16303",
+      "runs": 3,
+      "perfRuns": [
+        80,
+        60,
+        62
+      ],
+      "finalUrl": "https://ro.baptist.org.md/post/16303-reportaj-video-conferinta-pastorala-2026-trei-zile-de-partasie-invatatura-si-incurajare",
+      "scores": {
+        "performance": 62,
+        "accessibility": 95,
+        "best-practices": 92,
+        "seo": 100
+      },
+      "metrics": {
+        "fcp": 1555.0649999999998,
+        "lcp": 4041.5625000000005,
+        "tbt": 286.03975000000037,
+        "cls": 0.39296870429962855,
+        "si": 1746.9805513003412,
+        "bytes": 1577028
+      },
+      "failed": [
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "score": 0.48,
+          "display": "4.0 s",
+          "cats": [
+            "performance"
+          ]
+        },
+        {
+          "id": "total-blocking-time",
+          "title": "Total Blocking Time",
+          "score": 0.8,
+          "display": "290 ms",
+          "cats": [
+            "performance"
+          ]
+        },
+        {
+          "id": "cumulative-layout-shift",
+          "title": "Cumulative Layout Shift",
+          "score": 0.26,
+          "display": "0.393",
+          "cats": [
+            "performance"
+          ]
+        },
+        {
+          "id": "errors-in-console",
+          "title": "Browser errors were logged to the console",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "best-practices"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "accessibility"
+          ]
+        },
+        {
+          "id": "heading-order",
+          "title": "Heading elements are not in a sequentially-descending order",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "accessibility"
+          ]
+        },
+        {
+          "id": "inspector-issues",
+          "title": "Issues were logged in the `Issues` panel in Chrome Devtools",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "best-practices"
+          ]
+        }
+      ],
+      "a11yMin": 95
+    },
+    {
+      "env": "v2",
+      "site": "ro",
+      "page": "category",
+      "url": "https://ro.baptist.org.md/category?id=23",
+      "runs": 3,
+      "perfRuns": [
+        75,
+        77,
+        93
+      ],
+      "finalUrl": "https://ro.baptist.org.md/category/interne",
+      "scores": {
+        "performance": 77,
+        "accessibility": 96,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "fcp": 1532.6129999999998,
+        "lcp": 5197.839,
+        "tbt": 181.5,
+        "cls": 0.06228924838651283,
+        "si": 2400.939839939424,
+        "bytes": 765851
+      },
+      "failed": [
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "score": 0.23,
+          "display": "5.2 s",
+          "cats": [
+            "performance"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "score": 0,
+          "display": "",
+          "cats": [
+            "accessibility"
+          ]
+        }
+      ],
+      "a11yMin": 96
+    }
+  ]
+}

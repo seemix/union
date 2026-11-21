@@ -133,16 +133,16 @@ describe('sitemap entries', () => {
 describe('robots.txt', () => {
   it('staging and localhost are closed, with no sitemap', async () => {
     const { robotsTxt } = await import('./robots');
-    expect(robotsTxt(ru, 'next.ru.baptist.org.md', 0)).toBe('User-Agent: *\nDisallow: /\n');
-    expect(robotsTxt(ru, 'ru.localhost:3000', 0)).toBe('User-Agent: *\nDisallow: /\n');
+    expect(robotsTxt(ru, 'next.ru.baptist.org.md')).toBe('User-Agent: *\nDisallow: /\n');
+    expect(robotsTxt(ru, 'ru.localhost:3000')).toBe('User-Agent: *\nDisallow: /\n');
   });
 
-  it('production lists the own sitemaps only', async () => {
+  it('production lists only the own sitemap index (no WP call needed)', async () => {
     const { robotsTxt } = await import('./robots');
-    const txt = robotsTxt(ro, 'ro.baptist.org.md', 2);
+    const txt = robotsTxt(ro, 'ro.baptist.org.md');
     expect(txt).toContain('Allow: /');
-    expect(txt).toContain('Sitemap: https://ro.baptist.org.md/sitemap/0.xml');
-    expect(txt).toContain('Sitemap: https://ro.baptist.org.md/sitemap/1.xml');
+    expect(txt).toContain('Sitemap: https://ro.baptist.org.md/sitemap_index.xml');
+    expect(txt.match(/^Sitemap:/gm)).toHaveLength(1);
     expect(txt).not.toContain('ru.baptist');
   });
 });

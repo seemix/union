@@ -19,7 +19,7 @@ const SIZES = {
   small: '(max-width: 600px) 100vw, (max-width: 1100px) 50vw, 350px',
 } as const;
 
-/** Markup of one slide; shared by the Swiper slides and the static first-slide fallback. */
+/** Markup of one slide: server HTML that Swiper adopts on the client (see `HomeSlider`). */
 export function SlideContent({
   slide,
   variant,
@@ -43,6 +43,7 @@ export function SlideContent({
             alt={slide.image.alt || slide.title}
             fill
             priority={priority}
+            fetchPriority={priority ? 'high' : undefined}
             sizes={SIZES[variant]}
             style={{ objectFit: 'cover', objectPosition: 'center' }}
           />
@@ -56,27 +57,5 @@ export function SlideContent({
         </div>
       )}
     </Link>
-  );
-}
-
-/**
- * Server-rendered stand-in for the slider: its first slide, no Swiper. Swiper reads
- * `new Date()` while rendering, which Cache Components forbids in the static shell, so it
- * streams in behind `<Suspense>` and this is what the prerendered HTML contains.
- */
-export function StaticSlider(props: {
-  slides: readonly Slide[];
-  variant: SliderVariant;
-  label: string;
-  tone: LabelTone;
-}) {
-  const [first] = props.slides;
-  if (!first) return null;
-  return (
-    <div className={`${css[props.variant]} ${css.static}`}>
-      <div className={css.slide}>
-        <SlideContent {...props} slide={first} priority={props.variant === 'large'} />
-      </div>
-    </div>
   );
 }

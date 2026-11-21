@@ -28,7 +28,6 @@ export const ro: Dictionary = {
     notFound: '404 | Pagina nu a fost găsită',
     // Legacy bug: placeholder "33333".
     fetch: 'A apărut o eroare!',
-    notFoundHint: 'Poate că pagina a fost ștearsă sau adresa este greșită. Încercați căutarea:',
     retry: 'Încearcă din nou',
     backHome: 'Pagina principală',
   },
@@ -50,5 +49,6 @@ export const ro: Dictionary = {
     slide: 'diapozitiv',
     prevSlide: 'Diapozitivul anterior',
     nextSlide: 'Diapozitivul următor',
+    embed: 'Conținut încorporat',
   },
 };

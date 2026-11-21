@@ -46,16 +46,10 @@ describe.runIf(process.env.WP_LIVE === '1').each(SITE_IDS)('live WP: %s', (site)
     expect(lives).toEqual(['hours']);
   });
 
-  it('getPost / getPostIdSlug: missing id → null', async () => {
+  it('getPost: missing id → null', async () => {
     expect(await api.getPost(site, 999_999_999)).toBeNull();
     expect(lives).toEqual(['minutes']);
-    expect(await api.getPostIdSlug(site, 999_999_999)).toBeNull();
     expect(await api.getPost(site, -1)).toBeNull();
-  });
-
-  it('getPostIdSlug', async () => {
-    const r = await api.getPostIdSlug(site, k.post);
-    expect(r).toEqual({ id: k.post, slug: expect.any(String) });
   });
 
   it('getPageById + getPage by (decoded) slug', async () => {

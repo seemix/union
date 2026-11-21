@@ -77,7 +77,8 @@ function toProps(el: Element): Record<string, unknown> {
   return attributesToProps(el.attribs, el.name) as Record<string, unknown>;
 }
 
-export function parseContent(html: string, site: SiteId): ParsedContent {
+/** `embedTitle`: localized `title` for an iframe that has none (a11y). */
+export function parseContent(html: string, site: SiteId, embedTitle: string): ParsedContent {
   const slides: ContentSlide[] = [];
 
   const options: HTMLReactParserOptions = {
@@ -98,7 +99,7 @@ export function parseContent(html: string, site: SiteId): ParsedContent {
         case 'a':
           return renderLink(node, site, options);
         case 'iframe':
-          return renderIframe(node);
+          return renderIframe(node, embedTitle);
         case 'table':
           return (
             <div className={css.table_scroll}>
@@ -196,14 +197,14 @@ function renderLink(node: Element, site: SiteId, options: HTMLReactParserOptions
   );
 }
 
-function renderIframe(node: Element): ReactElement {
+function renderIframe(node: Element, fallbackTitle: string): ReactElement {
   const embed = resolveEmbed(node.attribs.src);
   if (!embed) return <></>;
   const { title, allow, height } = node.attribs;
   const frame = (
     <iframe
       src={embed.src}
-      title={title || 'Embedded content'}
+      title={title || fallbackTitle}
       allow={allow}
       allowFullScreen
       loading="lazy"

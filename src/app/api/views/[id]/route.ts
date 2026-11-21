@@ -1,6 +1,6 @@
 import { createViewsHandler } from '@/lib/views/handler';
 
-/** One limiter per process (see `TtlLru` for the single-process assumption). */
+/** One limiter per process (see `TtlCache` for the single-process assumption). */
 const handle = createViewsHandler();
 
 export async function POST(request: Request, ctx: RouteContext<'/api/views/[id]'>) {

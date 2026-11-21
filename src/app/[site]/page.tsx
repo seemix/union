@@ -7,7 +7,7 @@ import { postHref } from '@/lib/site/href';
 import { excerptOf, featuredImage, getPosts, plainText, type WpPostSummary } from '@/lib/wp';
 import { getDictionary } from '@/i18n';
 import { JsonLd } from './_components/JsonLd/JsonLd';
-import { HomeSliderSection } from './_components/HomeSlider/HomeSliderSection';
+import { HomeSlider } from './_components/HomeSlider/HomeSlider';
 import type { Slide } from './_components/HomeSlider/SlideContent';
 import { HomeWidgets } from './_components/Widgets/HomeWidgets';
 import css from './page.module.css';
@@ -65,11 +65,11 @@ export default async function HomePage({ params }: PageProps<'/[site]'>) {
       <div className={css.main_container}>
         {site.sliders.map((slider, i) => (
           <div key={slider.id} className={AREA[slider.id]}>
-            <HomeSliderSection
+            <HomeSlider
               slides={(lists[i]?.items ?? []).map((p) => toSlide(p, slider.excerptLength))}
               variant={slider.variant}
               label={slider.label}
-              tone={slider.tone === 'green' ? 'green' : 'red'}
+              tone={slider.tone}
               a11y={sliderA11y}
             />
           </div>

@@ -4,9 +4,9 @@ import { FaHandHoldingHeart } from 'react-icons/fa';
 import { LiaBibleSolid } from 'react-icons/lia';
 import { LuChurch } from 'react-icons/lu';
 import { MdOutlineOnlinePrediction } from 'react-icons/md';
-import type { SiteId, Widget } from '@/config/sites';
+import { widgetTarget, type SiteId, type Widget } from '@/config/sites';
 import { getReadingForDate } from '@/data/bible';
-import { targetHref } from '@/lib/site/href';
+import { hrefOf, type TargetHrefs } from '@/lib/site/href';
 import css from './Widgets.module.css';
 
 function Card({
@@ -46,15 +46,20 @@ export function Widgets({
   site,
   widgets,
   today,
+  hrefs,
 }: {
   site: SiteId;
   widgets: readonly Widget[];
   /** Day for the Bible reading; passed in so the caller decides how it is obtained. */
   today: Date;
+  /** Slug routes of the widget targets (`resolveTargetHrefs`); missing → legacy `?id=` href. */
+  hrefs?: TargetHrefs;
 }) {
   return (
     <div className={css.widgets_wrapper}>
       {widgets.map((widget) => {
+        const target = widgetTarget(widget);
+        const href = target ? hrefOf(hrefs, target) : undefined;
         switch (widget.type) {
           case 'bible':
             return (
@@ -68,17 +73,12 @@ export function Widgets({
                 key={widget.type}
                 widget={widget}
                 icon={<MdOutlineOnlinePrediction size="3em" />}
-                href={targetHref({ kind: 'page', id: widget.page })}
+                href={href}
               />
             );
           case 'churchContacts':
             return (
-              <Card
-                key={widget.type}
-                widget={widget}
-                icon={<LuChurch size="3em" />}
-                href={targetHref({ kind: 'page', id: widget.page })}
-              />
+              <Card key={widget.type} widget={widget} icon={<LuChurch size="3em" />} href={href} />
             );
           case 'category':
             return (
@@ -86,7 +86,7 @@ export function Widgets({
                 key={`${widget.type}-${widget.category}`}
                 widget={widget}
                 icon={<FaHandHoldingHeart size="3em" />}
-                href={targetHref({ kind: 'category', id: widget.category })}
+                href={href}
               />
             );
           default: {

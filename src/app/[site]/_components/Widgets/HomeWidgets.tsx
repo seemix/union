@@ -1,5 +1,6 @@
 import { cacheLife } from 'next/cache';
-import { getSite, type SiteId } from '@/config/sites';
+import { getSite, widgetTarget, type ContentTarget, type SiteId } from '@/config/sites';
+import { resolveTargetHrefs } from '@/lib/site/targets';
 import { Widgets } from './Widgets';
 
 /**
@@ -9,5 +10,10 @@ import { Widgets } from './Widgets';
 export async function HomeWidgets({ site }: { site: SiteId }) {
   'use cache';
   cacheLife({ stale: 300, revalidate: 900, expire: 3600 });
-  return <Widgets site={site} widgets={getSite(site).widgets} today={new Date()} />;
+  const { widgets } = getSite(site);
+  const hrefs = await resolveTargetHrefs(
+    site,
+    widgets.map(widgetTarget).filter((t): t is ContentTarget => t !== null),
+  );
+  return <Widgets site={site} widgets={widgets} today={new Date()} hrefs={hrefs} />;
 }

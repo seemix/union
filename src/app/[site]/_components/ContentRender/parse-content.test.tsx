@@ -5,7 +5,7 @@ import { resolveEmbed } from './embed';
 import { fullSizeSrc, parseContent } from './parse-content';
 
 function render(html: string, site: SiteId = 'ro') {
-  const { nodes, slides } = parseContent(html, site);
+  const { nodes, slides } = parseContent(html, site, 'Video');
   return { html: renderToStaticMarkup(<>{nodes}</>), slides };
 }
 
@@ -115,7 +115,7 @@ describe('iframes', () => {
     expect(html).toMatch(/^<div class="[^"]*embed[^"]*"><iframe /);
     expect(html).toContain('src="https://www.youtube.com/embed/abc"');
     expect(html).toContain('loading="lazy"');
-    expect(html).toContain('title="Embedded content"');
+    expect(html).toContain('title="Video"');
     expect(html).not.toContain('width="560"');
   });
 
@@ -173,6 +173,20 @@ describe('sanitizing', () => {
     expect(
       render('<img src="https://baptist.org.md/a.jpg" onerror="x()" alt="a">').html,
     ).not.toMatch(/onerror/i);
+  });
+
+  it('drops SVG/SMIL animation that could rewrite href', () => {
+    const { html } = render(
+      '<svg><a><set attributeName="href" to="javascript:alert(1)"/>' +
+        '<animate attributeName="href" values="javascript:alert(1)"/><text>x</text></a></svg>',
+    );
+    expect(html).not.toContain('javascript');
+    expect(html).not.toMatch(/<(set|animate)\b/i);
+    expect(html).toContain('<text>x</text>');
+  });
+
+  it('keeps <style> from WP gallery output', () => {
+    expect(render('<style>#gallery-1 { margin: auto; }</style>').html).toContain('<style>');
   });
 
   it('removes javascript: / vbscript: / data: URLs, also obfuscated', () => {

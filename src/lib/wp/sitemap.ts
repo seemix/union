@@ -13,6 +13,7 @@
  */
 import { cacheLife, cacheTag } from 'next/cache';
 import type { SiteId } from '@/config/sites';
+import { cacheLifeFor } from './cache-life';
 import { unwrapWp, wpRequest, type WpResult } from './client';
 import { wpTags } from './tags';
 
@@ -141,8 +142,7 @@ async function cachedPageRows(site: SiteId): Promise<WpResult<SitemapPageRow[]>>
     orderby: 'id',
     order: 'asc',
   });
-  if (r.status === 'ok') cacheLife('hours');
-  else cacheLife('seconds');
+  cacheLifeFor(r.status, 'hours');
   return r;
 }
 
@@ -160,8 +160,7 @@ async function cachedCategoryRows(site: SiteId): Promise<WpResult<SitemapCategor
     orderby: 'id',
     order: 'asc',
   });
-  if (r.status === 'ok') cacheLife('hours');
-  else cacheLife('seconds');
+  cacheLifeFor(r.status, 'hours');
   return r;
 }
 

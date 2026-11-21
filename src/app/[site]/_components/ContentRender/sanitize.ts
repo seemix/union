@@ -11,6 +11,16 @@ export const BLOCKED_TAGS: ReadonlySet<string> = new Set([
   'meta',
   'link',
   'form',
+  // SVG/SMIL animation can rewrite any attribute (`<set attributeName="href" to="javascript:…">`),
+  // which neither the attribute checks below nor React's own `javascript:` guard see.
+  'animate',
+  'animatemotion',
+  'animatetransform',
+  'set',
+  'discard',
+  // Legacy frames. `<style>` stays: WP `[gallery]` output relies on it.
+  'frame',
+  'frameset',
 ]);
 
 const URL_ATTRS = new Set(['href', 'src', 'action', 'formaction', 'xlink:href', 'poster', 'data']);

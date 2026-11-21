@@ -39,10 +39,24 @@ export type Widget =
 
 export type WidgetType = Widget['type'];
 
+/** WP entity a widget links to; `null` = not a link (the Bible widget, Q13a). */
+export function widgetTarget(widget: Widget): ContentTarget | null {
+  switch (widget.type) {
+    case 'online':
+    case 'churchContacts':
+      return { kind: 'page', id: widget.page };
+    case 'category':
+      return { kind: 'category', id: widget.category };
+    case 'bible':
+      return null;
+  }
+}
+
 export interface HomeSlider {
   readonly id: 'news' | 'world' | 'prayer';
   readonly variant: 'large' | 'small';
-  readonly tone: 'default' | 'green' | 'red';
+  /** Colour of the slider's label. */
+  readonly tone: 'red' | 'green';
   readonly categoryIds: readonly number[];
   readonly count: number;
   readonly excerptLength: number;
@@ -164,7 +178,7 @@ const ru: SiteConfig = {
     {
       id: 'news',
       variant: 'large',
-      tone: 'default',
+      tone: 'red',
       categoryIds: [17, 157],
       count: 5,
       excerptLength: 50,
@@ -263,7 +277,7 @@ const ro: SiteConfig = {
     {
       id: 'news',
       variant: 'large',
-      tone: 'default',
+      tone: 'red',
       categoryIds: [23],
       count: 5,
       excerptLength: 50,

@@ -1,0 +1,23 @@
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Scroll-driven: the global `animation-duration` override for reduced motion has no effect
+   on a view() timeline, so the reveal is opted in explicitly. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      /* Fully shown once 40% of its height has entered the viewport. */
+      animation-range: entry 0% entry 40%;
+    }
+  }
+}
