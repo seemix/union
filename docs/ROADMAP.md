@@ -25,8 +25,8 @@
 - [x] `next.config.ts`: `output: 'standalone'`, `images.remotePatterns`, заголовки безпеки — **Sonnet 5.5**
 
 ## Етап 2. Шар даних WordPress
-- [ ] `lib/wp/client.ts`: fetch до REST з `site`, `_fields`, `_embed`, обробка помилок/404, теги кешу (`cacheTag`/`cacheLife`) — **Opus 5.5**
-- [ ] Типи відповідей WP (posts, pages, categories, media, search) — **Sonnet 5.5**
+- [x] `lib/wp/client.ts`: fetch до REST з `site`, `_fields`, `_embed`, обробка помилок/404, теги кешу (`cacheTag`/`cacheLife`) — **Opus 5.5**
+- [x] Типи відповідей WP (posts, pages, categories, media, search) — **Sonnet 5.5**
 - [ ] Featured image через `_embed=wp:featuredmedia` з fallback за розмірами; прибрати залежність від `fimg_url` — **Sonnet 5.5**
 - [ ] Єдиний маппер постів/excerpt (замість двох дублікатів), безпечне декодування HTML-сутностей — **Sonnet 5.5**
 - [ ] Меню через WPGraphQL (Q11), типізований запит + кеш — **Sonnet 5.5**
